@@ -29,7 +29,8 @@ ul {
 /* -Desktop--------------------------------------------------------------------------- */
 @media (min-width: 768px) {
 
-    .mobile-nav-top {
+    .mobile-nav-top,
+    .mobile-nav-bottom {
         display: none;
     }
 
