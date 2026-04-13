@@ -5,6 +5,7 @@
     // logik kring aria-label - add to favorites / remove from favorites
 
 import "./movieCard.css";
+import "../../styles/variables.css"
 
 export default function MovieCard({ movie }) {
     return (

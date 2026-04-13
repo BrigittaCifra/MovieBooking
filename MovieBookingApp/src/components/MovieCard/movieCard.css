@@ -1,6 +1,4 @@
-
 /* Uppdatera efter:
-    - Färgvariabler
     - Carousel Layout
         skroll eller knapp ?
     - Favourites knapp
@@ -9,21 +7,26 @@
     hover effekt
 */
 
-* {
-    box-sizing: border-box;
-}
+
 .movieCard {
     flex: 0 0 40vw;
     max-width: 195px;
-    border-radius: 15px;
-    background-color: #1a1a1a;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 8px;
+    background-color: var(--clr-bg-surface);
     overflow: hidden;
+    border: 1px solid var(--clr-border-subtle);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movieCard:hover {
+    background-color: var(--clr-bg-elevated);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
 }
 
 .cardImg {
     width: 100%;
-    border-radius: 15px 15px 0 0;
+    border-radius: 4px 4px 0 0;
 }
 
 .cardInfo {
@@ -33,23 +36,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .cardTitle {
     max-width: 100%;
-    min-height: 2.7em;
-    font-size: 1rem;
-    font-weight: 600;
+    min-height: 2.3em;
+    font-size: 1.5rem;
+    font-family: var(--font-display);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-    color: #f5f5f5;
+    color: var(--clr-text-primary);
     padding-bottom: 2px;
-   
+    line-height: var(--leading-tight);
+
 }
 
 .containerGenreRated {
@@ -57,12 +61,14 @@
     display: flex;
     justify-content: space-between;
     text-wrap: wrap;
-    color: #b3b3b3;
+    color: var(--clr-text-secondary);
 }
 
+/* TA BORT */
 .carousel {
     display: flex;
     gap: 0.8rem;
-    overflow-x:scroll;
-    
+    overflow-x: scroll;
+    padding: 1rem 0;
+
 }
