@@ -1,0 +1,19 @@
+.showtime-picker {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.showtime-picker>div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.active {
+    background-color: var(--clr-accent);
+}
+
+.inactive {
+    background-color: rgb(141, 141, 141);
+}

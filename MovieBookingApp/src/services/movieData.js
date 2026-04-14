@@ -31,7 +31,7 @@ const titleData = [
 
 ];
 
-const showtimesData = [
+export const showtimesData = [
     // Airplane!
     { id: 1, movieId: 1, day: "monday", times: ["14:00", "17:00"] },
     { id: 2, movieId: 1, day: "tuesday", times: ["14:00", "17:00"] },
