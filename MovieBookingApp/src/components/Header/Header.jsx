@@ -1,20 +1,8 @@
 import { useState } from 'react';
+import { menuOpenIcon, menuCloseIcon, locationIcon } from '../Icons.jsx';
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
-
-//Ikoner
-const openIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f0ece4">
-        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-    </svg>
-);
-
-const closedIcon = (
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f0ece4">
-        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-    </svg>
-);
 
 function Header() {
     //Håller koll på om hamburgar menyn på mobila enheter (upp till 768 px) är öppen eller stängd
@@ -34,7 +22,7 @@ function Header() {
                 <div className='mobile-nav-top'>
                     <a href="#" className='header_logo'>CinEvent</a>
                     <Button
-                        text={mobileMenuOpen ? closedIcon : openIcon}
+                        text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
                         onClick={() => setMobileMenuOpen((prev) => !prev)}
                         ariaLabel={mobileMenuOpen ? "Stäng meny" : "Öppna meny"}
                     ></Button>
@@ -48,7 +36,7 @@ function Header() {
                         </ul>
                         <input type="text" placeholder="Search..." aria-label="Search" />
 
-
+                        <Button text={<>{locationIcon} Välj plats</>} type='icon'></Button>
                         <Button text="Logga in" type='secondary'></Button>
                         <Button text='Bli medlem' type='primary'></Button>
 
@@ -71,13 +59,14 @@ function Header() {
 
                     {/* Höger sida */}
                     <div>
+                        <Button text={<>{locationIcon} Välj plats</>} type='icon'></Button>
                         <Button text="Logga in" type='secondary'></Button>
                         <Button text='Bli medlem' type='primary'></Button>
                     </div>
                 </div>
 
             </nav >
-        </header>
+        </header >
     )
 
 }

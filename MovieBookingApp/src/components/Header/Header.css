@@ -54,7 +54,7 @@ a:hover {
 }
 
 /* -Desktop--------------------------------------------------------------------------- */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 
     .mobile-nav-top,
     .mobile-nav-bottom {

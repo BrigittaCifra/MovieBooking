@@ -1,7 +1,7 @@
 import './Button.css';
 import '../../styles/variables.css';
 
-function Button({ text, type, onClick, ariaLabel }) {
+function Button({ text, type = "", onClick, ariaLabel }) {
 
     const className = `btn ${type}`;
 
