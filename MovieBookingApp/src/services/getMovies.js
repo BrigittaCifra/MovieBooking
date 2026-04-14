@@ -62,6 +62,10 @@ export async function getMovie(movie) {
             genre: omdbData.Genre !== "N/A"
             ? omdbData.Genre.split(", ") : [],
 
+            // Skådespelare, kommer som en sträng, gör om till array
+            actors: omdbData.Actors !== "N/A"
+            ? omdbData.Actors.split(", ") : [],
+
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
             heroImg: hero || "/images/placeholderHero.png",
@@ -81,6 +85,7 @@ export async function getMovie(movie) {
             age: "-",
             runtime: "-",
             genre: "Unknown",
+            actors: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
             heroImg:"/images/placeholderHero.png",
             showtimes: movieShowtimes
