@@ -10,9 +10,9 @@ if (!TMDB_API_KEY || !OMDB_API_KEY) {
 }
 
 export async function getMovie(movie) {
-     // matchar ihop showtimesData med movie id
-     // innan try för att nås från try och catch
-        const movieShowtimes = showtimesData.filter((showtime) => showtime.movieId === movie.id);
+    // matchar ihop showtimesData med movie id
+    // innan try för att nås från try och catch
+    const movieShowtimes = showtimesData.filter((showtime) => showtime.movieId === movie.id);
     try {
         const omdbResponse = await fetch(`https://www.omdbapi.com/?t=${movie.title}&apikey=${OMDB_API_KEY}`);
         const omdbData = await omdbResponse.json();
@@ -40,20 +40,20 @@ export async function getMovie(movie) {
             comingSoon: movie.comingSoon,
 
             description: omdbData.Plot !== "N/A"
-            ? omdbData.Plot
-            : "No description available",
+                ? omdbData.Plot
+                : "No description available",
 
             rating: omdbData.imdbRating !== "N/A"
-            ? omdbData.imdbRating
-            : "No rating",
+                ? omdbData.imdbRating
+                : "No rating",
 
             runtime: omdbData.Runtime !== "N/A"
-            ? omdbData.Runtime
-            : "Runtime unknown",
+                ? omdbData.Runtime
+                : "Runtime unknown",
 
             genre: omdbData.Genre !== "N/A"
-            ? omdbData.Genre 
-            : "Unknown",
+                ? omdbData.Genre
+                : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
@@ -74,7 +74,7 @@ export async function getMovie(movie) {
             runtime: "-",
             genre: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
-            heroImg:"/images/placeholderHero.png",
+            heroImg: "/images/placeholderHero.png",
             showtimes: movieShowtimes
         };
     }
@@ -82,8 +82,13 @@ export async function getMovie(movie) {
 
 // använder getMovie och anropar alla
 export async function getMovies() {
-    const movies = await Promise.all(
-        titleData.map((movie) => getMovie(movie))
-    );
-    return movies;
+    try {
+        const movies = await Promise.all(
+            titleData.map((movie) => getMovie(movie))
+        );
+        return movies;
+    } catch (error) {
+        console.error("Error fetching movies");
+        return [];
+    }
 }
