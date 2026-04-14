@@ -42,6 +42,11 @@ a:hover {
     align-items: center;
 }
 
+.mobile-nav-top>div {
+    display: flex;
+    align-items: center;
+}
+
 .mobile-nav-bottom,
 .mobile-nav-bottom ul {
     display: flex;
@@ -51,6 +56,14 @@ a:hover {
 
 .mobile-nav-bottom {
     margin-top: var(--space-4);
+}
+
+.mobile-nav-bottom>div {
+    padding-top: var(--space-12);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
 }
 
 /* -Desktop--------------------------------------------------------------------------- */

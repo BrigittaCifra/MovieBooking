@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { menuOpenIcon, menuCloseIcon, locationIcon } from '../Icons.jsx';
+import { favoriteIcon, menuOpenIcon, menuCloseIcon, locationIcon } from '../Icons.jsx';
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
@@ -21,11 +21,15 @@ function Header() {
                 {/* Mobil nav — dold på desktop */}
                 <div className='mobile-nav-top'>
                     <a href="#" className='header_logo'>CinEvent</a>
-                    <Button
-                        text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
-                        onClick={() => setMobileMenuOpen((prev) => !prev)}
-                        ariaLabel={mobileMenuOpen ? "Stäng meny" : "Öppna meny"}
-                    ></Button>
+
+                    <div>
+                        <Button text={<>{locationIcon} Välj plats</>} type='small' />
+                        <Button
+                            text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
+                            onClick={() => setMobileMenuOpen((prev) => !prev)}
+                            ariaLabel={mobileMenuOpen ? "Stäng meny" : "Öppna meny"}
+                        />
+                    </div>
                 </div>
                 {mobileMenuOpen &&
                     <div className='mobile-nav-bottom'>
@@ -36,9 +40,11 @@ function Header() {
                         </ul>
                         <input type="text" placeholder="Search..." aria-label="Search" />
 
-                        <Button text={<>{locationIcon} Välj plats</>} type='icon'></Button>
-                        <Button text="Logga in" type='secondary'></Button>
-                        <Button text='Bli medlem' type='primary'></Button>
+                        <div>
+                            <Button text={<>{favoriteIcon} Favoriter</>} type='secondary' />
+                            <Button text="Logga in" type='secondary' />
+                            <Button text='Bli medlem' type='primary' />
+                        </div>
 
                     </div>
                 }
@@ -59,9 +65,10 @@ function Header() {
 
                     {/* Höger sida */}
                     <div>
-                        <Button text={<>{locationIcon} Välj plats</>} type='icon'></Button>
-                        <Button text="Logga in" type='secondary'></Button>
-                        <Button text='Bli medlem' type='primary'></Button>
+                        <Button text={<>{locationIcon} Välj plats</>} type='small' />
+                        <Button text={favoriteIcon} type='small' />
+                        <Button text="Logga in" type='secondary' />
+                        <Button text='Bli medlem' type='primary' />
                     </div>
                 </div>
 

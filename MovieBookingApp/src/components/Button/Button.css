@@ -7,8 +7,15 @@
 
     padding: var(--space-2) var(--space-6);
     border-radius: var(--radius-full);
+
+    /*För knappar med ikoner*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
 }
 
+/* -Primary--------------------------------------------------------------------------- */
 .primary {
     background-color: #D4AF37;
     color: var(--clr-text-on-accent);
@@ -20,6 +27,7 @@
     transition: var(--transition-fast);
 }
 
+/* -Secondary--------------------------------------------------------------------------- */
 .secondary {
     border: 2px solid #c9a96e;
     transition: var(--transition-fast);
@@ -30,9 +38,8 @@
     transition: var(--transition-fast);
 }
 
-/*För knappar med ikoner*/
-.icon {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
+/* -different sizes---------------------------------------------------------------------- */
+.small {
+    width: fit-content;
+    padding: var(--space-2);
 }
