@@ -1,21 +1,35 @@
 
 // DetailsHero tar trailer från DetailsPage
-// <DetailsHero movie={movie} trailerUrl={trailer} TrailerIsLoading={TrailerIsLoading} />
 import { getTrailer } from "../../services/getTrailer.js";
 import { useEffect, useState } from "react";
 import { DetailsHero } from "./DetailsHero.jsx";
 
+// för styling, ta bort sen
+const mockMovie = {
+  title: "Inception",
+  genre: ["Action", "Sci-Fi", "Thriller"],
+  runtime: "148 min",
+  rated: "PG-13",
+  description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea...",
+  language: "English",
+  country: "USA",
+  actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+  director: "Christopher Nolan",
+  released: "16 July 2010",
+  heroImg: "/images/placeholderHero.png"
+};
+
 export default function DetailsPage({ movie }) {
     const [trailerUrl, setTrailerUrl] = useState(null);
-    const [trailerIsLoading, setTrailerIsLoading] = useState(true);
+    const [isTrailerLoading, setIsTrailerLoading] = useState(true);
 
     useEffect(() => {
         async function fetchTrailer() {
-            setTrailerIsLoading(true);
+            setIsTrailerLoading(true);
             try {
             const trailer = await getTrailer(movieId);
             setTrailerUrl(trailer);
-            setTrailerIsLoading(false);
+            setIsTrailerLoading(false);
             } catch (err) {
                 console.error("Error fetching trailer");
                 return null;
@@ -26,11 +40,13 @@ export default function DetailsPage({ movie }) {
 
     return (
         <div>
+            {/* 
             <DetailsHero
             movie={movie}
             trailerUrl={trailerUrl}
-            trailerIsLoading={trailerIsLoading}
-            />
+            isTrailerLoading={isTrailerLoading}
+            />*/}
+            <DetailsHero movie={mockMovie} />
         </div>
     )
 
