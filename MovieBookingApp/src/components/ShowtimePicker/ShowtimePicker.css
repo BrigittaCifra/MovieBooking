@@ -7,13 +7,13 @@
 
 .showtime-picker>div {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.active {
-    background-color: var(--clr-accent);
-}
-
-.inactive {
-    background-color: rgb(141, 141, 141);
+.date,
+.showtime {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 230px));
+    gap: 1rem;
 }
