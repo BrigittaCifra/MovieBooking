@@ -55,6 +55,15 @@ export async function getMovie(movie) {
                 ? omdbData.Genre
                 : "Unknown",
 
+            country: omdbData.Country !== "N/A"
+                ? omdbData.Country
+                : "Unknown",
+
+            language: omdbData.Language !== "N/A"
+                ? omdbData.Language
+                : "Unknown",
+                
+
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
             heroImg: hero || "/images/placeholderHero.png",
