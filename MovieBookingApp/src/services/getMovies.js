@@ -43,17 +43,24 @@ export async function getMovie(movie) {
                 ? omdbData.Plot
                 : "No description available",
 
+            // omdöme
             rating: omdbData.imdbRating !== "N/A"
                 ? omdbData.imdbRating
                 : "No rating",
 
+            // åldersgräns
+            age: omdbData.Rated !== "N/A"
+            ? omdbData.Rated
+            : "-",
+
+            // längd
             runtime: omdbData.Runtime !== "N/A"
                 ? omdbData.Runtime
                 : "Runtime unknown",
 
+            // genre kommer som träng med komma, split gör om det till array
             genre: omdbData.Genre !== "N/A"
-                ? omdbData.Genre
-                : "Unknown",
+               ? omdbData.Genre.split(", ") : [],
 
             country: omdbData.Country !== "N/A"
                 ? omdbData.Country
@@ -62,7 +69,10 @@ export async function getMovie(movie) {
             language: omdbData.Language !== "N/A"
                 ? omdbData.Language
                 : "Unknown",
-                
+
+            // Skådespelare, kommer som en sträng, gör om till array
+            actors: omdbData.Actors !== "N/A"
+            ? omdbData.Actors.split(", ") : [],
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
@@ -80,8 +90,10 @@ export async function getMovie(movie) {
             comingSoon: movie.comingSoon,
             description: "Could not load description.",
             rating: "-",
+            age: "-",
             runtime: "-",
             genre: "Unknown",
+            actors: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
             heroImg: "/images/placeholderHero.png",
             showtimes: movieShowtimes
