@@ -1,12 +1,14 @@
 
 // DetailsHero tar trailer från DetailsPage
-import { getTrailer } from "../../services/getTrailer.js";
+import { getTrailer } from "../../../services/getTrailer.js";
 import { useEffect, useState } from "react";
-import { DetailsHero } from "./DetailsHero.jsx";
+import DetailsHero from "./DetailsHero.jsx";
+
+
 
 // för styling, ta bort sen
 const mockMovie = {
-  title: "Inception",
+  title: "The Devil Wears Prada",
   genre: ["Action", "Sci-Fi", "Thriller"],
   runtime: "148 min",
   rated: "PG-13",
@@ -18,6 +20,7 @@ const mockMovie = {
   released: "16 July 2010",
   heroImg: "/images/placeholderHero.png"
 };
+const mockTrailer = "https://www.youtube.com/embed/YoHD9XEInc0";
 
 export default function DetailsPage({ movie }) {
     const [trailerUrl, setTrailerUrl] = useState(null);
@@ -46,7 +49,7 @@ export default function DetailsPage({ movie }) {
             trailerUrl={trailerUrl}
             isTrailerLoading={isTrailerLoading}
             />*/}
-            <DetailsHero movie={mockMovie} />
+            <DetailsHero movie={mockMovie} trailerUrl={mockTrailer} isTrailerLoading={false} />
         </div>
     )
 

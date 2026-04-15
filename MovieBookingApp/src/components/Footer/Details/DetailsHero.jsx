@@ -1,5 +1,7 @@
 
 import { useState } from 'react';
+import "./DetailsHero.css";
+
 
 
 
@@ -9,7 +11,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
 
     const maxLength = 150;
     const shortText = movie.description.slice(0, maxLength);
-    const shouldShorten = movie.description.length > maxLength;
+    const shouldShowReadMore = movie.description.length > maxLength;
 
     return (
         // Visa video om tillgänglig, annars bild
@@ -31,7 +33,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <h1>{movie.title}</h1>
                 <div className="detailsHeadingInfo">
                     {/* Tar de två förste genrerna i arrayen och separerar med kommatecken*/}
-                    <p>`${movie.genre.slice(0, 2).join(", ")}</p>
+                    <p>{`${movie.genre.slice(0, 2).join(", ")}`}</p>
                     <div className="dot" />
                     <p>{movie.runtime}</p>
                     <div className="dot" />
@@ -42,12 +44,12 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <div className="detailsDescription">
                     <h3>Description</h3>
                     <p id="movie-description">
-                        {isExpanded || shouldShorten
+                        {isExpanded || !shouldShowReadMore
                             ? movie.description
                             : `${shortText}...`}
                     </p>
                     {/* toggle expanded */}
-                    {shouldexpand && (
+                    {shouldShowReadMore && (
                         <button className="toggleReadMore"
                             onClick={() => setIsExpanded(!isExpanded)}
                             aria-expanded={isExpanded}
