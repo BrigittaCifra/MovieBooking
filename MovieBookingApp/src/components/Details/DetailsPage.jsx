@@ -3,7 +3,7 @@
 // <DetailsHero movie={movie} trailerUrl={trailer} TrailerIsLoading={TrailerIsLoading} />
 import { getTrailer } from "../../services/getTrailer.js";
 import { useEffect, useState } from "react";
-import { DetailsHero } from "./DetailsHero";
+import { DetailsHero } from "./DetailsHero.jsx";
 
 export default function DetailsPage({ movie }) {
     const [trailerUrl, setTrailerUrl] = useState(null);

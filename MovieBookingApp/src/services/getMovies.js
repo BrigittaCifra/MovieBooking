@@ -57,6 +57,10 @@ export async function getMovie(movie) {
             runtime: omdbData.Runtime !== "N/A"
                 ? omdbData.Runtime
                 : "Runtime unknown",
+            
+            released: omdbData.Released !== "N/A"
+                ?omdbData.Released
+                : "-",
 
             // genre kommer som träng med komma, split gör om det till array
             genre: omdbData.Genre !== "N/A"
@@ -73,6 +77,10 @@ export async function getMovie(movie) {
             // Skådespelare, kommer som en sträng, gör om till array
             actors: omdbData.Actors !== "N/A"
             ? omdbData.Actors.split(", ") : [],
+
+            director: omdbData.Director !== "N/A"
+            ? omdbData.Director
+            : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
@@ -92,8 +100,12 @@ export async function getMovie(movie) {
             rating: "-",
             age: "-",
             runtime: "-",
+            released: "-",
             genre: "Unknown",
+            country: "Unknown",
+            language: "Unknown",
             actors: "Unknown",
+            director: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
             heroImg: "/images/placeholderHero.png",
             showtimes: movieShowtimes
