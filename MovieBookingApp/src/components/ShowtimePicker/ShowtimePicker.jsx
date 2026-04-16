@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../Button/Button.jsx';
+import SelectableCard from '../SelectableCard/SelectableCard.jsx'
 import { showtimesData } from '../../services/movieData.js';
 import './ShowtimePicker.css';
 
@@ -30,13 +30,14 @@ function ShowtimePicker({ movieId = "9" }) {
                 <div className='date'>
                     {/* Loopar igenom showtimesData arrayen */}
                     {movie.map((e) => (
-                        <Button
+                        <SelectableCard
                             key={e.id}
                             onClick={() => {
                                 setActiveDate(e.id);
                                 setActiveShowtime(0);
                             }}
                             type={dateStyling(e.id)}
+                            span={e.date}
                             text={e.day}
                         />
                     ))}
@@ -47,7 +48,7 @@ function ShowtimePicker({ movieId = "9" }) {
                 {/* Loopar igenom showtimesData arrayen */}
                 <div className='showtime'>
                     {findActiveDate().map((e, index) => (
-                        <Button
+                        <SelectableCard
                             key={index}
                             onClick={() => {
                                 setActiveShowtime(index)

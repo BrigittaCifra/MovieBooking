@@ -43,15 +43,3 @@
     width: fit-content;
     padding: var(--space-2);
 }
-
-/* -use cases---------------------------------------------------------------------------- */
-.card {
-    border-radius: var(--radius-sm);
-    padding: 1.5rem 2rem;
-
-    border: 1px solid var(--clr-border-subtle);
-}
-
-.active {
-    background-color: var(--clr-accent-dim);
-}

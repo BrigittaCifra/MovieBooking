@@ -1,5 +1,4 @@
 .showtime-picker {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -13,7 +12,7 @@
 
 .date,
 .showtime {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 230px));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
