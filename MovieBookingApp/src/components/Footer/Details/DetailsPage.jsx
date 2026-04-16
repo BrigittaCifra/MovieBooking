@@ -3,6 +3,7 @@
 import { getTrailer } from "../../../services/getTrailer.js";
 import { useEffect, useState } from "react";
 import DetailsHero from "./DetailsHero.jsx";
+import "./DetailsPage.css";
 
 
 
@@ -12,7 +13,7 @@ const mockMovie = {
   genre: ["Action", "Sci-Fi", "Thriller"],
   runtime: "148 min",
   rated: "PG-13",
-  description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea...",
+  description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea. A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea.",
   language: "English",
   country: "USA",
   actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
@@ -42,7 +43,7 @@ export default function DetailsPage({ movie }) {
     }, [movie]);
 
     return (
-        <div>
+        <div className="detailsPage">
             {/* 
             <DetailsHero
             movie={movie}
