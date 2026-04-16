@@ -19,7 +19,7 @@ const mockMovie = {
   actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
   director: "Christopher Nolan",
   released: "16 July 2010",
-  heroImg: "/images/placeholderHero.png"
+  heroImg: "https://images4.alphacoders.com/112/1122038.jpg"
 };
 const mockTrailer = "https://www.youtube.com/embed/YoHD9XEInc0";
 

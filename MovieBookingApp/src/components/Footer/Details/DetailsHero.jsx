@@ -9,24 +9,44 @@ import "./DetailsHero.css";
 export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+
     const maxLength = 150;
     const shortText = movie.description.slice(0, maxLength);
     const shouldShowReadMore = movie.description.length > maxLength;
     return (
         // Visa video om tillgänglig, annars bild
         <div className="detailsHero">
-            {isTrailerLoading ? (
-                <div className="heroLoading" />
-            ) : trailerUrl ? (
-                <iframe className="heroFrame"
-                    src={trailerUrl}
-                    title={`Trailer for ${movie.title}`}
-                    allowFullScreen
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                />
-            ) : (
-                <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
-            )}
+            <div className="heroContainer">
+                {isTrailerLoading ? (
+                    <div className="heroLoading" />
+                ) : trailerUrl ? (
+                    isPlaying ? (
+                        <div className="heroVideo">
+                            <button className="closeButton" onClick={() => setIsPlaying(false)}>
+                                <span className="material-symbols-outlined">close</span>
+                            </button>
+                            <iframe className="heroFrame"
+                                src={`${trailerUrl}?autoplay=1`}
+                                title={`Trailer for ${movie.title}`}
+                                allow="accelerometer; fullscreen; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                            <div className="heroOverlay"></div>
+
+                        </div>
+                    ) : (
+                        <div className="heroPreview" onClick={() => setIsPlaying(true)}>
+                            <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
+                            <div className="heroOverlay"></div>
+                            <button className="playButton">
+                                <span className="material-symbols-outlined">play_circle</span>
+                            </button>
+                        </div>
+                    )
+                ) : (
+                    <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
+                )}
+            </div>
             <div className="infoContainer">
                 <div className="detailsHeading">
                     <h1>{movie.title}</h1>
@@ -49,23 +69,23 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                         </p>
                         {/* toggle expanded */}
                         {shouldShowReadMore && (
-                            <div className="toggleContainer"> 
-                            <button className="toggleReadMore"
-                                onClick={() => setIsExpanded(!isExpanded)}
-                                aria-expanded={isExpanded}
-                                aria-controls="movie-description">
-                                {isExpanded ? "Show less" : "Read more"}
-                            </button>
+                            <div className="toggleContainer">
+                                <button className="toggleReadMore"
+                                    onClick={() => setIsExpanded(!isExpanded)}
+                                    aria-expanded={isExpanded}
+                                    aria-controls="movie-description">
+                                    {isExpanded ? "Show less" : "Read more"}
+                                </button>
                             </div>
                         )}
-                        
+
                     </div>
                     <details>
                         <summary>
                             Details
                             <span className="material-symbols-outlined chevron">
-    expand_more
-  </span>
+                                expand_more
+                            </span>
                         </summary>
                         <dl>
                             <dt>Title</dt>
