@@ -1,0 +1,45 @@
+.btn {
+    font-family: var(--font-body);
+
+    background-color: transparent;
+    color: var(--clr-text-primary);
+    border: none;
+
+    padding: var(--space-2) var(--space-6);
+    border-radius: var(--radius-full);
+
+    /*För knappar med ikoner*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+}
+
+/* -Primary--------------------------------------------------------------------------- */
+.primary {
+    background-color: #D4AF37;
+    color: var(--clr-text-on-accent);
+    transition: var(--transition-fast);
+}
+
+.primary:hover {
+    background-color: #e6c15a;
+    transition: var(--transition-fast);
+}
+
+/* -Secondary--------------------------------------------------------------------------- */
+.secondary {
+    border: 2px solid #c9a96e;
+    transition: var(--transition-fast);
+}
+
+.secondary:hover {
+    /*TBA*/
+    transition: var(--transition-fast);
+}
+
+/* -different sizes---------------------------------------------------------------------- */
+.small {
+    width: fit-content;
+    padding: var(--space-2);
+}
