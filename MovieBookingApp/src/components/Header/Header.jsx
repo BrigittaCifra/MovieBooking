@@ -3,6 +3,7 @@ import { favoriteIcon, menuOpenIcon, menuCloseIcon, locationIcon } from '../Icon
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
+import SearchBar from "../SearchBar";
 
 function Header() {
     //Håller koll på om hamburgar menyn på mobila enheter (upp till 768 px) är öppen eller stängd
@@ -38,7 +39,7 @@ function Header() {
                         <ul>
                             {menuLinks.map((e) => { return <li key={e.id}><a href="#">{e.name}</a></li> })}
                         </ul>
-                        <input type="text" placeholder="Search..." aria-label="Search" />
+                        <SearchBar />
 
                         <div>
                             <Button text={<>{favoriteIcon} Favoriter</>} type='secondary' />
@@ -51,26 +52,29 @@ function Header() {
 
                 {/* Desktop nav — dold på mobil */}
                 <div className="desktop-nav">
-                    {/* Vänster sida */}
-                    <div>
-                        <a href="#" className='header_logo'>CinEvent</a>
+            <div className="desktop-nav-left">
+            <a href="#" className='header_logo'>CinEvent</a>
 
-                        <div>
-                            <ul>
-                                {menuLinks.map((e) => { return <li key={e.id}><a href="#">{e.name}</a></li> })}
-                            </ul>
-                            <input type="text" placeholder="Search..." aria-label="Search" />
-                        </div>
-                    </div>
+              <div className="desktop-nav-links-search">
+                 <ul>
+                   {menuLinks.map((e) => (
+                    <li key={e.id}>
+                        <a href="#">{e.name}</a>
+                    </li>
+                ))}
+            </ul>
 
-                    {/* Höger sida */}
-                    <div>
-                        <Button text={<>{locationIcon} Välj plats</>} type='small' />
-                        <Button text={favoriteIcon} type='small' />
-                        <Button text="Logga in" type='secondary' />
-                        <Button text='Bli medlem' type='primary' />
-                    </div>
-                </div>
+            <SearchBar />
+        </div>
+    </div>
+
+    <div className="desktop-nav-right">
+        <Button text={<>{locationIcon} Välj plats</>} type='small' />
+        <Button text={favoriteIcon} type='small' />
+        <Button text="Logga in" type='secondary' />
+        <Button text='Bli medlem' type='primary' />
+    </div>
+</div>
 
             </nav >
         </header >

@@ -238,10 +238,16 @@ function SearchBar() {
                   </p>
                 </div>
 
+                <div className="movie-actions">
+                  <button className="btn-play">▶ Play</button>
+                  <button className="btn-trailer">🎬 Watch Trailer</button>
+                </div>
+
                 <div className="movie-overview">
                   <h3>Overview</h3>
                   <p>{movieDetails?.overview || "No description available"}</p>
                 </div>
+                
               </>
             )}
           </div>
