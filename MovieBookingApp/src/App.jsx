@@ -1,15 +1,19 @@
 import { useState } from 'react'
-import './App.css'
+import './App.css';
 import Footer from "./components/Footer/Footer";
+import SearchBar from "./components/SearchBar";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      <SearchBar />
+      <main>
+    {/* framtida content */}
+      </main>
+
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
