@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "./DetailsHero.css";
 
 
@@ -9,10 +9,26 @@ import "./DetailsHero.css";
 export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isTruncated, setIsTruncated] = useState(false);
+    const descriptionRef = useRef(null);
 
-    const maxLength = 150;
-    const shortText = movie.description.slice(0, maxLength);
-    const shouldShowReadMore = movie.description.length > maxLength;
+// useEffect för responsiv anpassning av innehåll i description
+// useEffect gör att skärmen mäts efter render och ger därför rätt värden för hur mycket text som visas
+    useEffect(() => {
+        function checkIfTruncated() {
+            if (descriptionRef.current) {
+                const isCutOff = 
+                descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight;
+                setIsTruncated(isCutOff);
+            }
+        }
+        checkIfTruncated();
+        // lyssnar på resize av skärm och anpassar efter storlek
+        window.addEventListener("resize", checkIfTruncated);
+
+        return () => window.removeEventListener("resize", checkIfTruncated);
+    }, [movie.description, isExpanded]);
+
     return (
         // Visa video om tillgänglig, annars bild
         <div className="detailsHero">
@@ -22,7 +38,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 ) : trailerUrl ? (
                     isPlaying ? (
                         <div className="heroVideo">
-                            <button className="closeButton" onClick={() => setIsPlaying(false)}>
+                            <button type="button" className="closeButton" onClick={() => setIsPlaying(false)}>
                                 <span className="material-symbols-outlined">close</span>
                             </button>
                             <iframe className="heroFrame"
@@ -38,7 +54,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                         <div className="heroPreview" onClick={() => setIsPlaying(true)}>
                             <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
                             <div className="heroOverlay"></div>
-                            <button className="playButton">
+                            <button type="button" className="playButton">
                                 <span className="material-symbols-outlined">play_circle</span>
                             </button>
                         </div>
@@ -47,7 +63,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                     <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
                 )}
             </div>
-            <div className="infoContainer">
+            <div className="infoContainer container">
                 <div className="detailsHeading">
                     <h1>{movie.title}</h1>
                     <div className="detailsHeadingInfo">
@@ -62,23 +78,24 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <div className="detailsContent">
                     <div className="detailsDescription">
                         <h3>Description</h3>
-                        <p id="movie-description">
-                            {isExpanded || !shouldShowReadMore
-                                ? movie.description
-                                : `${shortText}...`}
-                        </p>
-                        {/* toggle expanded */}
-                        {shouldShowReadMore && (
-                            <div className="toggleContainer">
-                                <button className="toggleReadMore"
-                                    onClick={() => setIsExpanded(!isExpanded)}
-                                    aria-expanded={isExpanded}
-                                    aria-controls="movie-description">
-                                    {isExpanded ? "Show less" : "Read more"}
-                                </button>
-                            </div>
+                        <div className={`descriptionWrapper ${isExpanded ? "expanded" : ""}`}>
+                            <p id="movie-description"
+                                ref={descriptionRef}
+                                className={`descriptionText ${isExpanded ? "expanded" : ""}`}
+                                >
+                                {movie.description}
+                            </p>
+                            {!isExpanded && isTruncated && <div className="descriptionFade"></div>}
+                        </div>
+                        {(isTruncated || isExpanded) && (
+                            <button type="button" className="toggleReadMore"
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                aria-expanded={isExpanded}
+                                aria-controls="movie-description"
+                            >
+                                {isExpanded ? "Show less" : "Read more"}
+                            </button>
                         )}
-
                     </div>
                     <details>
                         <summary>
