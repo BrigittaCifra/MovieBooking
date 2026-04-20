@@ -4,16 +4,19 @@ import Footer from "./components/Footer/Footer";
 import HeroCarousel from "./components/HeroCarousel/HeroCarousel";
 import Header from './components/Header/Header.jsx'
 import SearchBar from "./components/SearchBar";
+import MembershipForm from "./components/MembershipForm/MembershipForm";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showMembershipForm, setShowMembershipForm] = useState(false)
 
   return (
     <>
-      <Header />
+      <Header onMembershipClick={() => setShowMembershipForm(true)} />
       <HeroCarousel />
       <SearchBar />
-
+      {showMembershipForm && (
+        <MembershipForm onClose={() => setShowMembershipForm(false)} />
+      )}
       <Footer />
     </>
   );
