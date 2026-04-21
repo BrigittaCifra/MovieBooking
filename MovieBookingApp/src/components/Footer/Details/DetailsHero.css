@@ -43,6 +43,7 @@
 .closeButton span {
     color: var(--clr-text-primary);
     font-size: 40px;
+    cursor: pointer;
 }
 
 .playButton {
@@ -60,6 +61,7 @@
 .playButton span {
     color: var(--clr-text-primary);
     font-size: 46px;
+    cursor: pointer;
 }
 
 .heroOverlay {
@@ -215,6 +217,11 @@ details {
     border-radius: var(--radius-md);
 }
 
+/*HOVER EFFECTS----------------------------------------------------------------*/
+.playButton span:hover, .closeButton span:hover, .toggleReadMore:hover, .chevron:hover, summary:hover .chevron {
+    color: var(--clr-accent);
+    cursor: pointer;
+}
 
 /*MEDIA QUERIES---------------------------------------------------------------*/
 
@@ -254,5 +261,11 @@ details {
     .infoContainer {
         width: 100%;
     }
+}
 
+@media (min-width: 1200px) {
+    .detailsDescription h3,
+summary {
+    font-size: var(--text-3xl);
+}
 }

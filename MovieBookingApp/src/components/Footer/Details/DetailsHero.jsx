@@ -12,8 +12,6 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     const [isTruncated, setIsTruncated] = useState(false);
     const descriptionRef = useRef(null);
 
-    descriptionRef = useRef(null);
-
     // Kollar om beskrivningen får plats eller kapas i nuvarande layout
     // Används för att avgöra om "Read more"-knappen och fade-effekten ska visas
     useEffect(() => {
