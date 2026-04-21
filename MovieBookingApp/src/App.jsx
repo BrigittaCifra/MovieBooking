@@ -18,8 +18,7 @@ function App() {
   return (
     <>
 <<<<<<< HEAD
-    <DetailsPage />
-      <Footer />
+    
 =======
      
 >>>>>>> main
