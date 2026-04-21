@@ -3,8 +3,9 @@ import { favoriteIcon, menuOpenIcon, menuCloseIcon, locationIcon } from '../Icon
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
+import SearchBar from "../SearchBar";
 
-function Header() {
+function Header({ onMembershipClick }) {
     //Håller koll på om hamburgar menyn på mobila enheter (upp till 768 px) är öppen eller stängd
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,12 +39,12 @@ function Header() {
                         <ul>
                             {menuLinks.map((e) => { return <li key={e.id}><a href="#">{e.name}</a></li> })}
                         </ul>
-                        <input type="text" placeholder="Search..." aria-label="Search" />
+                        <SearchBar />
 
                         <div>
                             <Button text={<>{favoriteIcon} Favoriter</>} type='secondary' />
                             <Button text="Logga in" type='secondary' />
-                            <Button text='Bli medlem' type='primary' />
+                            <Button text='Bli medlem' type='primary' onClick={onMembershipClick} />
                         </div>
 
                     </div>
@@ -51,24 +52,27 @@ function Header() {
 
                 {/* Desktop nav — dold på mobil */}
                 <div className="desktop-nav">
-                    {/* Vänster sida */}
-                    <div>
+                    <div className="desktop-nav-left">
                         <a href="#" className='header_logo'>CinEvent</a>
 
-                        <div>
+                        <div className="desktop-nav-links-search">
                             <ul>
-                                {menuLinks.map((e) => { return <li key={e.id}><a href="#">{e.name}</a></li> })}
+                                {menuLinks.map((e) => (
+                                    <li key={e.id}>
+                                        <a href="#">{e.name}</a>
+                                    </li>
+                                ))}
                             </ul>
-                            <input type="text" placeholder="Search..." aria-label="Search" />
+
+                            <SearchBar />
                         </div>
                     </div>
 
-                    {/* Höger sida */}
-                    <div>
+                    <div className="desktop-nav-right">
                         <Button text={<>{locationIcon} Välj plats</>} type='small' />
                         <Button text={favoriteIcon} type='small' />
                         <Button text="Logga in" type='secondary' />
-                        <Button text='Bli medlem' type='primary' />
+                        <Button text='Bli medlem' type='primary' onClick={onMembershipClick} />
                     </div>
                 </div>
 

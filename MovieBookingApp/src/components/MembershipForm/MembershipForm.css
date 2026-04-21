@@ -1,0 +1,228 @@
+/* Sektionens yttre wrapper med luft ovanför och under */
+.membership_section {
+    padding: var(--space-20) 0;
+    min-height: 100vh;
+}
+
+/* Centrerad rubrikdel ovanför formuläret */
+.membership_header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+/* Liten guldtagg ovanför rubriken */
+.membership_tag {
+    display: inline-block;
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--clr-accent-dim);
+    border: 1px solid var(--clr-accent);
+    color: var(--clr-accent);
+    margin-bottom: var(--space-4);
+}
+
+/* Stor rubrik med display-typsnitt */
+.membership_title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    color: var(--clr-text-primary);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+}
+
+/* Beskrivningstext under rubriken */
+.membership_subtitle {
+    font-size: var(--text-base);
+    color: var(--clr-text-secondary);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: var(--leading-base);
+}
+
+/* Formulärets huvudcontainer, centrerad med max-bredd */
+.membership_form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+/* Två fält bredvid varandra */
+.membership_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+}
+
+/* Wrapper för label, input och felmeddelande */
+.membership_field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* Etikett ovanför inputfält */
+.membership_label {
+    font-size: var(--text-sm);
+    color: var(--clr-text-secondary);
+    font-weight: var(--weight-medium);
+}
+
+/* Inputfält med mörkbakgrund och kantlinje */
+.membership_input {
+    background: var(--clr-bg-subtle);
+    border: 1px solid var(--clr-border-default);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-size: var(--text-sm);
+    font-family: var(--font-body);
+    color: var(--clr-text-primary);
+    transition: border-color var(--transition-fast);
+    outline: none;
+}
+
+/* Platshållartext i inputfält */
+.membership_input::placeholder {
+    color: var(--clr-text-muted);
+}
+
+/* Guldkantlinje när fältet är aktivt */
+.membership_input:focus {
+    border-color: var(--clr-accent);
+}
+
+/* Röd kantlinje när fältet har ett fel */
+.membership_input--error {
+    border-color: var(--clr-status-almost);
+}
+
+/* Felmeddelande under inputfält */
+.membership_error {
+    font-size: var(--text-xs);
+    color: var(--clr-status-almost);
+}
+
+/* Skicka-knapp, full bredd */
+.membership_submit {
+    margin-top: var(--space-4);
+    padding: 0.85rem 2rem;
+    background: var(--clr-accent);
+    color: var(--clr-text-on-accent);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    width: 100%;
+}
+
+/* Hover-effekt när knappen är aktiv */
+.membership_submit:hover:not(:disabled) {
+    background: var(--clr-accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Inaktiv knapp när formuläret inte är giltigt */
+.membership_submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Bekräftelseskärm efter registrering */
+.membership_success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: var(--space-4);
+    text-align: center;
+}
+
+/* Cirkulär bockikon */
+.membership_success_icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    background: var(--clr-accent-dim);
+    border: 1px solid var(--clr-accent);
+    color: var(--clr-accent);
+    font-size: var(--text-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rubrik på bekräftelseskärmen */
+.membership_success h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--clr-text-primary);
+    letter-spacing: 0.05em;
+}
+
+/* Beskrivningstext på bekräftelseskärmen */
+.membership_success p {
+    color: var(--clr-text-secondary);
+    font-size: var(--text-base);
+    max-width: 400px;
+    line-height: var(--leading-base);
+}
+
+/* Mobilanpassning: en kolumn istället för två */
+@media (max-width: 580px) {
+    .membership_row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mörkt överlager som täcker hela sidan bakom popupen */
+.membership_overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--clr-bg-overlay);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+/* Själva popup-rutan */
+.membership_modal {
+    background: var(--clr-bg-surface);
+    border: 1px solid var(--clr-border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    width: 100%;
+    max-width: 660px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Stängknapp uppe i högra hörnet */
+.membership_close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: transparent;
+    border: none;
+    color: var(--clr-text-muted);
+    font-size: var(--text-lg);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+/* Stängknappens hover-effekt */
+.membership_close:hover {
+    color: var(--clr-text-primary);
+}
