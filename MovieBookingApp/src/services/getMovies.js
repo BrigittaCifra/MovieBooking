@@ -10,9 +10,9 @@ if (!TMDB_API_KEY || !OMDB_API_KEY) {
 }
 
 export async function getMovie(movie) {
-     // matchar ihop showtimesData med movie id
-     // innan try för att nås från try och catch
-        const movieShowtimes = showtimesData.filter((showtime) => showtime.movieId === movie.id);
+    // matchar ihop showtimesData med movie id
+    // innan try för att nås från try och catch
+    const movieShowtimes = showtimesData.filter((showtime) => showtime.movieId === movie.id);
     try {
         const omdbResponse = await fetch(`https://www.omdbapi.com/?t=${movie.title}&apikey=${OMDB_API_KEY}`);
         const omdbData = await omdbResponse.json();
@@ -40,13 +40,13 @@ export async function getMovie(movie) {
             comingSoon: movie.comingSoon,
 
             description: omdbData.Plot !== "N/A"
-            ? omdbData.Plot
-            : "No description available",
+                ? omdbData.Plot
+                : "No description available",
 
             // omdöme
             rating: omdbData.imdbRating !== "N/A"
-            ? omdbData.imdbRating
-            : "No rating",
+                ? omdbData.imdbRating
+                : "No rating",
 
             // åldersgräns
             age: omdbData.Rated !== "N/A"
@@ -55,16 +55,32 @@ export async function getMovie(movie) {
 
             // längd
             runtime: omdbData.Runtime !== "N/A"
-            ? omdbData.Runtime
-            : "Runtime unknown",
+                ? omdbData.Runtime
+                : "Runtime unknown",
+            
+            released: omdbData.Released !== "N/A"
+                ?omdbData.Released
+                : "-",
 
             // genre kommer som träng med komma, split gör om det till array
             genre: omdbData.Genre !== "N/A"
-            ? omdbData.Genre.split(", ") : [],
+               ? omdbData.Genre.split(", ") : [],
+
+            country: omdbData.Country !== "N/A"
+                ? omdbData.Country
+                : "Unknown",
+
+            language: omdbData.Language !== "N/A"
+                ? omdbData.Language
+                : "Unknown",
 
             // Skådespelare, kommer som en sträng, gör om till array
             actors: omdbData.Actors !== "N/A"
             ? omdbData.Actors.split(", ") : [],
+
+            director: omdbData.Director !== "N/A"
+            ? omdbData.Director
+            : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
@@ -84,10 +100,14 @@ export async function getMovie(movie) {
             rating: "-",
             age: "-",
             runtime: "-",
+            released: "-",
             genre: "Unknown",
+            country: "Unknown",
+            language: "Unknown",
             actors: "Unknown",
+            director: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
-            heroImg:"/images/placeholderHero.png",
+            heroImg: "/images/placeholderHero.png",
             showtimes: movieShowtimes
         };
     }
@@ -95,8 +115,13 @@ export async function getMovie(movie) {
 
 // använder getMovie och anropar alla
 export async function getMovies() {
-    const movies = await Promise.all(
-        titleData.map((movie) => getMovie(movie))
-    );
-    return movies;
+    try {
+        const movies = await Promise.all(
+            titleData.map((movie) => getMovie(movie))
+        );
+        return movies;
+    } catch (error) {
+        console.error("Error fetching movies");
+        return [];
+    }
 }

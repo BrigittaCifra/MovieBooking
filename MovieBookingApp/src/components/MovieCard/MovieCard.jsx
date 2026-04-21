@@ -24,7 +24,4 @@ export default function MovieCard({ movie }) {
     )
 }
 
-/* 
-<span>{movie.age}</span>
 
-*/
