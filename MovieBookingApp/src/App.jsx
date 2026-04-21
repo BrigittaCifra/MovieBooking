@@ -2,8 +2,6 @@ import { Routes, Route } from "react-router";
 import { useState } from 'react';
 import './App.css';
 
-import MembershipForm from "./components/MembershipForm/MembershipForm";
-
 //Layout
 import Layout from './components/Layout/Layout.jsx';
 
@@ -14,8 +12,6 @@ import Booking from './pages/Booking.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 function App() {
-  const [showMembershipForm, setShowMembershipForm] = useState(false)
-
   return (
     <Routes>
       <Route element={<Layout />}>
