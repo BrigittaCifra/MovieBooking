@@ -1,0 +1,18 @@
+.showtime-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.showtime-picker>div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.date,
+.showtime {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
