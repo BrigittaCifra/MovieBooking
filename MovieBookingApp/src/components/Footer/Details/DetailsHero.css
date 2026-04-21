@@ -1,3 +1,5 @@
+/* HERO TRAILER AND IMAGE--------------------------------------------------------*/
+
 .detailsHero {
     margin: 0 auto;
     width: 100%;
@@ -36,7 +38,6 @@
     top: 2rem;
     right: 0.5rem;
     z-index: 2;
-
 }
 
 .closeButton span {
@@ -54,7 +55,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-
 }
 
 .playButton span {
@@ -73,11 +73,21 @@
     z-index: 1;
 }
 
+/*MOVIE DETAILS---------------------------------------------------------------*/
+/*HERO INFO-------------------------------------------------------------------*/
 .infoContainer {
     display: flex;
     flex-direction: column;
     gap: 2.2rem;
     padding: 0 1rem;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    margin: 8px 0 0;
+    background-color: var(--clr-text-secondary);
+    border-radius: 50%;
 }
 
 .detailsContent {
@@ -87,7 +97,6 @@
     padding: 1rem;
     background-color: var(--clr-bg-surface);
     border-radius: var(--radius-sm);
-   
 }
 
 .detailsHeading h1 {
@@ -97,6 +106,15 @@
     text-align: center;
 }
 
+.detailsHeadingInfo {
+    font-weight: var(--weight-light);
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    color: var(--clr-text-secondary);
+}
+
+/*Description----------------------------------------------------------------*/
 .detailsDescription h3,
 summary {
     font-family: var(--font-display);
@@ -149,23 +167,7 @@ summary {
     margin-left: auto;
 }
 
-.detailsHeadingInfo {
-    
-    font-weight: var(--weight-light);
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    color: var(--clr-text-secondary);
-}
-
-.dot {
-    width: 5px;
-    height: 5px;
-    margin: 8px 0 0;
-    background-color: var(--clr-text-secondary);
-    border-radius: 50%;
-}
-
+/*DETAILS SECTION - DROPDOWN------------------------------------------------*/
 summary {
     list-style: none;
     display: flex;
@@ -188,24 +190,24 @@ details[open] summary .chevron {
     transform: rotate(180deg);
 }
 
-  dl {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        column-gap: 0;
-        row-gap: 1rem;
-        align-items: end;
-    }
+dl {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    column-gap: 0;
+    row-gap: 1rem;
+    align-items: end;
+}
 
-    dt {
-        margin: 0;
-        border-bottom: 1px solid var(--clr-border-subtle);
-    }
+dt {
+    margin: 0;
+    border-bottom: 1px solid var(--clr-border-subtle);
+}
 
-    dd {
-        margin: 0;
-        border-bottom: 1px solid var(--clr-border-subtle);
-         color: var(--clr-text-secondary);
-    }
+dd {
+    margin: 0;
+    border-bottom: 1px solid var(--clr-border-subtle);
+    color: var(--clr-text-secondary);
+}
 
 details {
     background-color: var(--clr-bg-surface);
@@ -214,24 +216,32 @@ details {
 }
 
 
-/*MEDIA QUERIES-----------------------------*/
+/*MEDIA QUERIES---------------------------------------------------------------*/
 
 @media (min-width: 768px) {
     .descriptionText {
         -webkit-line-clamp: 7;
     }
 
+    .playButton span {
+        font-size: 68px;
+    }
+
+    .detailsHeading h1 {
+        font-size: var(--text-hero);
+    }
 }
 
 @media (min-width: 900px) {
     .detailsContent {
-      display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
         background: none;
     }
 
-    details, .detailsDescription {
+    details,
+    .detailsDescription {
         padding: 1rem;
         background-color: var(--clr-bg-surface);
         border-radius: var(--radius-sm)

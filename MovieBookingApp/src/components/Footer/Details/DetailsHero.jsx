@@ -12,31 +12,35 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     const [isTruncated, setIsTruncated] = useState(false);
     const descriptionRef = useRef(null);
 
-// useEffect för responsiv anpassning av innehåll i description
-// useEffect gör att skärmen mäts efter render och ger därför rätt värden för hur mycket text som visas
+    descriptionRef = useRef(null);
+
+    // Kollar om beskrivningen får plats eller kapas i nuvarande layout
+    // Används för att avgöra om "Read more"-knappen och fade-effekten ska visas
     useEffect(() => {
         function checkIfTruncated() {
             if (descriptionRef.current) {
-                const isCutOff = 
-                descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight;
+                const isCutOff =
+                    descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight;
                 setIsTruncated(isCutOff);
             }
         }
+        //Kör direkt när komponenten renderas eller när innehållet ändras
         checkIfTruncated();
-        // lyssnar på resize av skärm och anpassar efter storlek
+        // Kör om kontrollen vid resize så att truncation följer skärmstorleken
         window.addEventListener("resize", checkIfTruncated);
 
         return () => window.removeEventListener("resize", checkIfTruncated);
     }, [movie.description, isExpanded]);
 
     return (
-        // Visa video om tillgänglig, annars bild
+        // Visar trailer om den finns och användaren har startat den
         <div className="detailsHero">
             <div className="heroContainer">
                 {isTrailerLoading ? (
                     <div className="heroLoading" />
                 ) : trailerUrl ? (
                     isPlaying ? (
+                        /* När användaren startat trailern visas video istället för bild */
                         <div className="heroVideo">
                             <button type="button" className="closeButton" onClick={() => setIsPlaying(false)}>
                                 <span className="material-symbols-outlined">close</span>
@@ -48,9 +52,9 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                                 allowFullScreen
                             />
                             <div className="heroOverlay"></div>
-
                         </div>
                     ) : (
+                         /* Om trailer finns men inte spelas visas en klickbar bild */
                         <div className="heroPreview" onClick={() => setIsPlaying(true)}>
                             <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
                             <div className="heroOverlay"></div>
@@ -60,6 +64,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                         </div>
                     )
                 ) : (
+                    /* Fallback om ingen trailer finns */
                     <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
                 )}
             </div>
@@ -67,7 +72,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <div className="detailsHeading">
                     <h1>{movie.title}</h1>
                     <div className="detailsHeadingInfo">
-                        {/* Tar de två förste genrerna i arrayen och separerar med kommatecken*/}
+                       {/* Begränsar genrerna i rubriksektionen för att hålla layouten ren */}
                         <p>{`${movie.genre.slice(0, 2).join(", ")}`}</p>
                         <div className="dot" />
                         <p>{movie.runtime}</p>
@@ -78,15 +83,18 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <div className="detailsContent">
                     <div className="detailsDescription">
                         <h3>Description</h3>
+                        {/* Wrapper används för att kunna lägga fade-effekt över trunkerad text */}
                         <div className={`descriptionWrapper ${isExpanded ? "expanded" : ""}`}>
                             <p id="movie-description"
                                 ref={descriptionRef}
                                 className={`descriptionText ${isExpanded ? "expanded" : ""}`}
-                                >
+                            >
                                 {movie.description}
                             </p>
+                            {/* Fade visas bara när texten är trunkerad och inte expanderad */}
                             {!isExpanded && isTruncated && <div className="descriptionFade"></div>}
                         </div>
+                        {/* Knappen visas bara om texten faktiskt kapas, eller om den redan är öppen(see less) */}
                         {(isTruncated || isExpanded) && (
                             <button type="button" className="toggleReadMore"
                                 onClick={() => setIsExpanded(!isExpanded)}
@@ -97,6 +105,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                             </button>
                         )}
                     </div>
+                    {/* Details/summary används för en enkel utfällbar sektion utan extra state */}
                     <details>
                         <summary>
                             Details
