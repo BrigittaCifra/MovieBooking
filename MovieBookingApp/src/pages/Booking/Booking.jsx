@@ -1,6 +1,8 @@
+import './Booking.css'
+
 function Booking() {
     return (
-        <>Booking</>
+        <div>Booking</div>
     )
 }
 

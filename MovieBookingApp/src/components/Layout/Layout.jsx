@@ -14,7 +14,7 @@ function Layout() {
                 <MembershipForm onClose={() => setShowMembershipForm(false)} />
             )}
 
-            <main>
+            <main style={{ marginTop: "89px" }}>
                 <Outlet />
             </main>
 
