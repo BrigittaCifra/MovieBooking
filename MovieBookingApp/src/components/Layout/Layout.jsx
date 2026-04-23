@@ -1,5 +1,8 @@
 import { Outlet } from "react-router";
 import { useState } from 'react';
+import './Layout.css';
+
+//Components
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import MembershipForm from '../MembershipForm/MembershipForm.jsx';
@@ -14,7 +17,7 @@ function Layout() {
                 <MembershipForm onClose={() => setShowMembershipForm(false)} />
             )}
 
-            <main style={{ marginTop: "89px" }}>
+            <main>
                 <Outlet />
             </main>
 

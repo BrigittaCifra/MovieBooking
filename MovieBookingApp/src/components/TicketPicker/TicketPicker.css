@@ -1,0 +1,17 @@
+.ticket-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ticket-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ticket-container>div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

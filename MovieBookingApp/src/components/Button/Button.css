@@ -44,3 +44,7 @@
     width: fit-content;
     padding: var(--space-2);
 }
+
+.medium {
+    width: 8rem;
+}

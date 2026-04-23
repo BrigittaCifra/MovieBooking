@@ -15,7 +15,6 @@ function Input({ type = "text", label, id, value, onChange, error, ...rest }) {
                 value={value}
                 onChange={onChange}
                 {...rest}
-            /* onBlur={handleBlur} */
             />
             {error && <span className="error-message">{error}</span>}
         </div >

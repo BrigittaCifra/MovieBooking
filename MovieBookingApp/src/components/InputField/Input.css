@@ -22,6 +22,10 @@
     outline: none;
 }
 
+.input:focus {
+    border-color: var(--clr-accent);
+}
+
 .input-error {
     border-color: var(--clr-status-almost);
 }
