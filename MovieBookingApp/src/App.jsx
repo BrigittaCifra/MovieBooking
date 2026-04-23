@@ -15,13 +15,6 @@ function App() {
   return (
     <>
 
-    <MovieCard movie={{
-    id: 1,
-    title: "Test Movie",
-    genre: ["Action"],
-    portraitImg: "https://th.bing.com/th/id/R.698b466bb373cee5851d23a43a05fffb?rik=y0osLJt7k1Z50w&pid=ImgRaw&r=0"
-}}/>
-      <Footer />
      
     </>
   );
