@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { Link, NavLink } from 'react-router';
 import { favoriteIcon, menuOpenIcon, menuCloseIcon, locationIcon } from '../Icons.jsx';
+
+//Components
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
@@ -11,8 +14,8 @@ function Header({ onMembershipClick }) {
 
     //Meny länkarna finns utanför JSX delen för att enkelt kunna lägga till fler meny länkar i framtiden
     const menuLinks = [
-        { id: 1, name: "Filmer" },
-        { id: 2, name: "Evenemang" }
+        { id: 1, name: "Movies" },
+        { id: 2, name: "Events" }
     ];
 
     return (
@@ -21,14 +24,14 @@ function Header({ onMembershipClick }) {
 
                 {/* Mobil nav — dold på desktop */}
                 <div className='mobile-nav-top'>
-                    <a href="#" className='header_logo'>CinEvent</a>
+                    <Link to="/" className='header_logo'>CinEvent</Link>
 
                     <div>
-                        <Button text={<>{locationIcon} Välj plats</>} type='small' />
+                        <Button text={<>{locationIcon} Select location</>} type='small' />
                         <Button
                             text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
                             onClick={() => setMobileMenuOpen((prev) => !prev)}
-                            ariaLabel={mobileMenuOpen ? "Stäng meny" : "Öppna meny"}
+                            ariaLabel={mobileMenuOpen ? "Close menu" : "Open menu"}
                         />
                     </div>
                 </div>
@@ -37,14 +40,14 @@ function Header({ onMembershipClick }) {
 
                         {/* Meny länkar */}
                         <ul>
-                            {menuLinks.map((e) => { return <li key={e.id}><a href="#">{e.name}</a></li> })}
+                            {menuLinks.map((e) => { return <li key={e.id}><Link to={`/${e.name}`}>{e.name}</Link></li> })}
                         </ul>
                         <SearchBar />
 
                         <div>
-                            <Button text={<>{favoriteIcon} Favoriter</>} type='secondary' />
-                            <Button text="Logga in" type='secondary' />
-                            <Button text='Bli medlem' type='primary' onClick={onMembershipClick} />
+                            <Button text={<>{favoriteIcon} Favorites</>} type='secondary' />
+                            <Button text="Log in" type='secondary' />
+                            <Button text='Membership' type='primary' onClick={onMembershipClick} />
                         </div>
 
                     </div>
@@ -53,13 +56,13 @@ function Header({ onMembershipClick }) {
                 {/* Desktop nav — dold på mobil */}
                 <div className="desktop-nav">
                     <div className="desktop-nav-left">
-                        <a href="#" className='header_logo'>CinEvent</a>
+                        <Link to="/" className='header_logo'>CinEvent</Link>
 
                         <div className="desktop-nav-links-search">
                             <ul>
                                 {menuLinks.map((e) => (
                                     <li key={e.id}>
-                                        <a href="#">{e.name}</a>
+                                        <Link to={`/${e.name}`}>{e.name}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -69,10 +72,10 @@ function Header({ onMembershipClick }) {
                     </div>
 
                     <div className="desktop-nav-right">
-                        <Button text={<>{locationIcon} Välj plats</>} type='small' />
+                        <Button text={<>{locationIcon} Select location</>} type='small' />
                         <Button text={favoriteIcon} type='small' />
-                        <Button text="Logga in" type='secondary' />
-                        <Button text='Bli medlem' type='primary' onClick={onMembershipClick} />
+                        <Button text="Log in" type='secondary' />
+                        <Button text='Membership' type='primary' onClick={onMembershipClick} />
                     </div>
                 </div>
 
