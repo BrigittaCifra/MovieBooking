@@ -1,5 +1,4 @@
 
-// import FavoritesButton from "/FavoritesButton.jsx";
 
 // lägg till länk till details när component finns
 // logik kring aria-label - add to favorites / remove from favorites

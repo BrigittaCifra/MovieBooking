@@ -1,4 +1,8 @@
 import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+
+import { getTrailer } from "../services/getTrailer.js";
+import useMoviesStore from "../stores/moviesStore.js";
 
 //Components
 import DetailsHero from "../components/Details/DetailsPage";
@@ -20,6 +24,7 @@ function MovieDetails({ movie }) {
     useEffect(() => {
         if (!movie) return;
 
+        // använder getTrailer service
         async function fetchTrailer() {
             setIsTrailerLoading(true);
             try {
