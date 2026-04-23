@@ -1,32 +1,29 @@
 
-// import FavoritesButton from "/FavoritesButton.jsx";
-
-// lägg till länk till details när component finns
 // logik kring aria-label - add to favorites / remove from favorites
-
+import { useNavigate } from "react-router";
 import "./movieCard.css";
 import "../../styles/variables.css";
 import useFavoritesStore from "../../stores/favoritesStore.js";
 
 export default function MovieCard({ movie }) {
+    const navigate = useNavigate();
     const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
-    console.log("favorites in component", favorites);
     const exists = favorites.some((fav) => fav.id === movie.id);
-    console.log("exists", exists, "favorites", favorites);
-    /*const isFavorite = useFavoritesStore((state) => state.isFavorite);
-    const favorites = useFavoritesStore((state) => state.favorites);
-    const exists = isFavorite(movie.id);*/ 
 
     return (
-        <div className="movieCard" aria-label={`View details for ${movie.title}`}>
-            <button className="favoritesButton" aria-label="Add to favorites" 
-            onClick={() => {
-                toggleFavorite(movie);
-                }}>
+        <div className="movieCard"
+            aria-label={`View details for ${movie.title}`}
+            onClick={() => navigate(`/movies/${movie.id}`)}
+            >
+            <button
+                className="favoritesButton"
+                aria-label="Add to favorites"
+                onClick={() => { toggleFavorite(movie) }}
+            >
                 <span className={`material-symbols-outlined ${exists ? "filled" : ""}`}>
-    favorite
-</span>
+                    favorite
+                </span>
             </button>
             <img className="cardImg" src={movie.portraitImg} alt={movie.title} loading="lazy" />
             <div className="cardInfo">
@@ -35,7 +32,6 @@ export default function MovieCard({ movie }) {
                     {movie.genre.length === 1 ? <span>{movie.genre[0]}</span>
                         : <span>{`${movie.genre[0]} · ${movie.genre[1]}`}</span>}
                 </div>
-
             </div>
         </div>
     )
