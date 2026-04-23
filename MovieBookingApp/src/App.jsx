@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css';
 import Footer from "./components/Footer/Footer";
-import DetailsPage from "./components/Footer/Details/DetailsPage";
+import DetailsPage from "./components/Details/DetailsPage.jsx";
 import ShowtimePicker from './components/ShowtimePicker/ShowtimePicker.jsx';
 import HeroCarousel from "./components/HeroCarousel/HeroCarousel";
 import Header from './components/Header/Header.jsx'

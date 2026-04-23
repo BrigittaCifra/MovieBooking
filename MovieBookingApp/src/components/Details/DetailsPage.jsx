@@ -1,6 +1,6 @@
 
 // DetailsHero tar trailer från DetailsPage
-import { getTrailer } from "../../../services/getTrailer.js";
+import { getTrailer } from "../../services/getTrailer.js";
 import { useEffect, useState } from "react";
 import DetailsHero from "./DetailsHero.jsx";
 import "./DetailsPage.css";
