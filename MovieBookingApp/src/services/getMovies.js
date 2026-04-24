@@ -1,6 +1,6 @@
 
 // importerar mockdata
-import { titleData, showtimesData } from "./mockData.js";
+import { titleData, showtimesData } from "./movieData.js"; //Antar att det här ska vara movieData.js och inte mockData.js
 
 // importera API nycklar
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -35,6 +35,7 @@ export async function getMovie(movie) {
         // objektet som skapas (med validering)
         return {
             id: movie.id,
+            tmdbId: tmdbData.results[0].id,
             title: movie.title,
             newRelease: movie.newRelease,
             comingSoon: movie.comingSoon,
@@ -50,21 +51,21 @@ export async function getMovie(movie) {
 
             // åldersgräns
             age: omdbData.Rated !== "N/A"
-            ? omdbData.Rated
-            : "-",
+                ? omdbData.Rated
+                : "-",
 
             // längd
             runtime: omdbData.Runtime !== "N/A"
                 ? omdbData.Runtime
                 : "Runtime unknown",
-            
+
             released: omdbData.Released !== "N/A"
-                ?omdbData.Released
+                ? omdbData.Released
                 : "-",
 
             // genre kommer som träng med komma, split gör om det till array
             genre: omdbData.Genre !== "N/A"
-               ? omdbData.Genre.split(", ") : [],
+                ? omdbData.Genre.split(", ") : [],
 
             country: omdbData.Country !== "N/A"
                 ? omdbData.Country
@@ -76,11 +77,11 @@ export async function getMovie(movie) {
 
             // Skådespelare, kommer som en sträng, gör om till array
             actors: omdbData.Actors !== "N/A"
-            ? omdbData.Actors.split(", ") : [],
+                ? omdbData.Actors.split(", ") : [],
 
             director: omdbData.Director !== "N/A"
-            ? omdbData.Director
-            : "Unknown",
+                ? omdbData.Director
+                : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
