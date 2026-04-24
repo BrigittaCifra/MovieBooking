@@ -35,6 +35,7 @@ export async function getMovie(movie) {
         // objektet som skapas (med validering)
         return {
             id: movie.id,
+            tmdbId: tmdbData.results[0].id,
             title: movie.title,
             newRelease: movie.newRelease,
             comingSoon: movie.comingSoon,
