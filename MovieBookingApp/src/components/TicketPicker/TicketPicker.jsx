@@ -1,4 +1,4 @@
-import { useState } from "react";
+import useBookingStore from '../../stores/bookingStore.js';
 import './TicketPicker.css';
 
 //Components
@@ -7,17 +7,17 @@ import Button from '../Button/Button.jsx';
 //Icons
 import { add, remove } from '../Icons.jsx';
 
-function TicketPicker({ ticket, setTicket }) {
-    const ticketList = [
-        { id: 1, age: "Adult", price: 120 },
-        { id: 2, age: "Child", price: 90 },
-        { id: 3, age: "Senior", price: 110 }
-    ];
+function TicketPicker() {
+    const tickets = useBookingStore((state) => state.tickets);
+    const addTicket = useBookingStore((state) => state.addTicket);
+    const removeTicket = useBookingStore((state) => state.removeTicket);
+
+    console.log(tickets);
 
     return (
         <section className="ticket-section">
             <h2>Select tickets</h2>
-            {ticketList.map((e) => (
+            {tickets.map((e) => (
                 <div key={e.id} className="ticket-container">
                     <div>
                         <h3>{e.age}</h3>
@@ -27,13 +27,13 @@ function TicketPicker({ ticket, setTicket }) {
                         <Button
                             text={remove}
                             type='secondary small'
-                            onClick={setTicket}
+                            onClick={() => removeTicket(e.id)}
                         />
-                        <p>{ticket}</p>
+                        <p>{e.amount}</p>
                         <Button
                             text={add}
                             type='secondary small'
-                            onClick={setTicket}
+                            onClick={() => addTicket(e.id)}
                         />
                     </div>
                 </div>

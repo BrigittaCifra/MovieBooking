@@ -1,14 +1,22 @@
 import { useState } from 'react';
-import SelectableCard from '../SelectableCard/SelectableCard.jsx'
 import { showtimesData } from '../../services/movieData.js';
+//import useMovieStore from "../../stores/favoritesStore.js";
 import './ShowtimePicker.css';
 
+//Components
+import SelectableCard from '../SelectableCard/SelectableCard.jsx'
+
 //React router kommer ersätta propen i en senare uppdatering
-function ShowtimePicker({ movieId = "9" }) {
+function ShowtimePicker({ movieId = "1" }) {
     //React router skickar params som strängar
     const idNum = Number.parseInt(movieId);
     //Hämtar showtimesData för en film baserat på movieId
     const movie = showtimesData.filter((e) => e.movieId === idNum);
+
+    //Felhantering - om arrayen är tom stoppas komponenten här
+    if (movie.length === 0) {
+        return <p>Inga tider hittades</p>
+    }
 
     //Håller på vad användaren har valt
     //movie[0].id sätter första visnings datumet för filmen som aktiv
