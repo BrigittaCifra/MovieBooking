@@ -7,7 +7,7 @@ import Layout from './components/Layout/Layout.jsx';
 
 //Pages
 import Home from './pages/Home.jsx';
-import MovieDetails from './pages/MovieDetails/MovieDetails.jsx';
+import MovieDetails from './pages/MovieDetails.jsx';
 import Booking from './pages/Booking/Booking.jsx';
 import NotFound from './pages/NotFound.jsx';
 

@@ -3,10 +3,10 @@ import { useState } from "react";
 import './MovieDetails.css';
 
 //Components
-import DetailsPage from "../../components/Details/DetailsPage.jsx";
-import ShowtimePicker from '../../components/ShowtimePicker/ShowtimePicker.jsx';
-import TicketPicker from "../../components/TicketPicker/TicketPicker.jsx";
-import Button from "../../components/Button/Button.jsx";
+import DetailsPage from "../components/Details/DetailsPage.jsx";
+import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
+import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
+import Button from "../components/Button/Button.jsx";
 
 function MovieDetails() {
     const { id } = useParams();
