@@ -1,5 +1,4 @@
 
-// import FavoritesButton from "/FavoritesButton.jsx";
 
 // lägg till länk till details när component finns
 // logik kring aria-label - add to favorites / remove from favorites
@@ -11,9 +10,8 @@ import useFavoritesStore from "../../stores/favoritesStore.js";
 export default function MovieCard({ movie }) {
     const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
-    console.log("favorites in component", favorites);
     const exists = favorites.some((fav) => fav.id === movie.id);
-    console.log("exists", exists, "favorites", favorites);
+    
     /*const isFavorite = useFavoritesStore((state) => state.isFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
     const exists = isFavorite(movie.id);*/ 
