@@ -1,0 +1,180 @@
+.booking-page {
+    display: flex;
+    gap: 40px;
+    padding: 40px 80px;
+    min-height: 100vh;
+    background-color: var(--color-bg, #0a0a0a);
+    color: #fff;
+}
+
+.booking-left {
+    flex: 2;
+}
+
+.booking-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 80px;
+}
+
+.booking-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.5rem;
+    color: var(--color-primary, #c9a84c);
+    margin-bottom: 24px;
+}
+
+.booking-selected {
+    margin-bottom: 24px;
+}
+
+.booking-selected h3 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.booking-seat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #222;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.booking-clear {
+    margin-top: 12px;
+    background: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.85rem;
+}
+
+.booking-clear:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+}
+
+.booking-payment {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.booking-payment h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    color: var(--color-primary, #c9a84c);
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1px solid #333;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    color: #fff;
+    transition: border-color 0.2s;
+}
+
+.payment-option input {
+    accent-color: var(--color-primary, #c9a84c);
+}
+
+.payment-option.active {
+    border-color: var(--color-primary, #c9a84c);
+}
+
+.booking-submit {
+    background-color: var(--color-primary, #c9a84c);
+    color: #000;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+
+.booking-submit:hover {
+    opacity: 0.85;
+}
+
+.booking-movie-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.booking-movie-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    color: var(--color-primary, #c9a84c);
+}
+
+.booking-movie-img {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.booking-movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.booking-summary {
+    border-top: 1px solid #333;
+    padding-top: 16px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.booking-summary p {
+    color: #888;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.booking-summary h3 {
+    font-size: 2rem;
+    color: #fff;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.booking-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 16px;
+    font-family: "DM Sans", sans-serif;
+    color: #fff;
+    text-align: center;
+}
+
+.booking-success h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    color: var(--color-primary, #c9a84c);
+}

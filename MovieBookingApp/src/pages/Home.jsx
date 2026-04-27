@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import useMoviesStore from '../stores/moviesStore.js';
 //Components
 import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx'
 
