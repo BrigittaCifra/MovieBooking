@@ -10,6 +10,8 @@ const useBookingStore = create((set, get) => ({
 
     seats: [],
 
+    showtime: [],
+
     //Lägger till tickets
     addTicket: (id) =>
         //set funktionen anropas
@@ -33,6 +35,9 @@ const useBookingStore = create((set, get) => ({
             )
         })),
 
+    setShowtime: (day, date, time) =>
+        set({ showtime: { day, date, time } }),
+
     //Hämtar totala värdet
     getSum: () => {
         const tickets = get().tickets.filter((ticket) => ticket.amount > 0);
@@ -48,6 +53,3 @@ const useBookingStore = create((set, get) => ({
 }));
 
 export default useBookingStore;
-
-//hämta gångra priset för varje enskild biljett klass beroende på antal.
-//plusa på sum

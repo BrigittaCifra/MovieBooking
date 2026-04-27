@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { showtimesData } from '../../services/movieData.js';
+import useBookingStore from '../../stores/bookingStore.js';
 //import useMovieStore from "../../stores/favoritesStore.js";
 import './ShowtimePicker.css';
 
@@ -8,10 +9,18 @@ import SelectableCard from '../SelectableCard/SelectableCard.jsx'
 
 //React router kommer ersätta propen i en senare uppdatering
 function ShowtimePicker({ movieId = "1" }) {
+    const showtime = useBookingStore((state) => state.showtime);
+    const setShowtime = useBookingStore((state) => state.setShowtime);
+
     //React router skickar params som strängar
     const idNum = Number.parseInt(movieId);
     //Hämtar showtimesData för en film baserat på movieId
     const movie = showtimesData.filter((e) => e.movieId === idNum);
+
+    // Sätt initialt värde endast en gång när komponenten mountas
+    useEffect(() => {
+        setShowtime(movie[0].day, movie[0].date, movie[0].times[0]);
+    }, []);
 
     //Felhantering - om arrayen är tom stoppas komponenten här
     if (movie.length === 0) {
@@ -23,12 +32,16 @@ function ShowtimePicker({ movieId = "1" }) {
     const [activeDate, setActiveDate] = useState(movie[0].id);
     const [activeShowtime, setActiveShowtime] = useState(0);
 
+    //console.log(`activeDate: ${activeDate}, type of: ${typeof activeDate} \n activeShowtime: ${activeShowtime}, type of: ${typeof activeShowtime}`);
+
     //Sätter en aktiv css klass på aktiva komponenten
     const dateStyling = (id) => `card ${activeDate === id ? "active" : ""}`;
     const showtimeStyling = (id) => `card ${activeShowtime === id ? "active" : ""}`;
 
     //Hämtar ut alla visningstider för det aktiva datumet
-    const findActiveDate = () => movie.find((e) => e.id === activeDate).times;
+    const findTimesArray = () => movie.find((e) => e.id === activeDate).times;
+    //Hämtar ut den valda visningstiden 
+    const findActiveDate = () => movie.find((e) => e.id === activeDate);
 
     return (
         <div className='showtime-picker'>
@@ -43,6 +56,7 @@ function ShowtimePicker({ movieId = "1" }) {
                             onClick={() => {
                                 setActiveDate(e.id);
                                 setActiveShowtime(0);
+                                setShowtime(e.day, e.date, e.times[0]);
                             }}
                             type={dateStyling(e.id)}
                             span={e.date}
@@ -55,11 +69,12 @@ function ShowtimePicker({ movieId = "1" }) {
                 <h3>Showtime</h3>
                 {/* Loopar igenom showtimesData arrayen */}
                 <div className='showtime'>
-                    {findActiveDate().map((e, index) => (
+                    {findTimesArray().map((e, index) => (
                         <SelectableCard
                             key={index}
                             onClick={() => {
-                                setActiveShowtime(index)
+                                setActiveShowtime(index);
+                                setShowtime(findActiveDate().day, findActiveDate().date, e);
                             }}
                             text={e}
                             type={showtimeStyling(index)}

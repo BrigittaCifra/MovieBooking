@@ -12,8 +12,6 @@ function TicketPicker() {
     const addTicket = useBookingStore((state) => state.addTicket);
     const removeTicket = useBookingStore((state) => state.removeTicket);
 
-    console.log(tickets);
-
     return (
         <section className="ticket-section">
             <h2>Select tickets</h2>
