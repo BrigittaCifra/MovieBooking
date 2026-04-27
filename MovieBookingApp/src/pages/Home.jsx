@@ -1,26 +1,29 @@
-//Components
-import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx'
+import { useEffect } from 'react';
+import useMoviesStore from '../stores/moviesStore.js';
+import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx';
+import MovieCarousel from '../components/MovieCarousel/MovieCarousel.jsx';
 
 function Home() {
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const movies = useMoviesStore((state) => state.movies);
 
     useEffect(() => {
-        //för en fetch per session
         if (movies.length === 0) {
             fetchMovies();
         }
     }, []);
 
-    //Något om newRelease för filmer till hero carousel? alla med newRelease=true i karusell?
-    //isf tar Hero t.ex. movies={newRelease} & cardCarousel elr vad man vill döpa till movies={movies}
-    // karusellen för cards mappar med movie
+    const newReleases = movies.filter((m) => m.newRelease === true);
+    const comingSoon = movies.filter((m) => m.comingSoon === true);
 
     return (
         <>
             <HeroCarousel />
+            <MovieCarousel movies={newReleases} title="NU PÅ BIO" />
+            <MovieCarousel movies={comingSoon} title="KOMMER SNART" />
+            <MovieCarousel movies={movies} title="ALLA FILMER" />
         </>
-    )
+    );
 }
 
 export default Home;

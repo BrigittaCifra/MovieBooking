@@ -5,10 +5,10 @@ import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
 
 //Components
-import DetailsHero from "../components/Details/DetailsPage";
+import DetailsHero from "../components/Details/DetailsHero";
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
 
-function MovieDetails({ movie }) {
+function MovieDetails() {
     const { id } = useParams();
     //Hämtar specifik film baserat på id från store
    const getMovieById = useMoviesStore((state) => state.getMovieById);

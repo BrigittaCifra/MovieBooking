@@ -1,6 +1,6 @@
 
 // importerar mockdata
-import { titleData, showtimesData } from "./mockData.js";
+import { titleData, showtimesData } from "./movieData.js";
 
 // importera API nycklar
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
