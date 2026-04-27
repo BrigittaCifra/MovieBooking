@@ -30,6 +30,8 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
         return () => window.removeEventListener("resize", checkIfTruncated);
     }, [movie.description, isExpanded]);
 
+    if (!movie) return <p>Loading...</p>;
+    
     return (
         // Visar trailer om den finns och användaren har startat den
         <div className="detailsHero">
