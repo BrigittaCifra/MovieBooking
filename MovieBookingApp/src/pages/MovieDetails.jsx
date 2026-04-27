@@ -48,8 +48,7 @@ function MovieDetails() {
 
     return (
         <>
-            <DetailsHero movie={movie} />
-            <ShowtimePicker movieId={id} /*Jag tror att det blir showtimes={movie.showtimes} */ />
+            {movie && <DetailsHero movie={movie} />}
             <section className='booking-details'>
                 <ShowtimePicker movieId={id} />
                 <TicketPicker />
