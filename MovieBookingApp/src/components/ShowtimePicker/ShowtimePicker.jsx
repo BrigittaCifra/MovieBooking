@@ -17,22 +17,36 @@ function ShowtimePicker({ movieId = "1" }) {
     //Hämtar showtimesData för en film baserat på movieId
     const movie = showtimesData.filter((e) => e.movieId === idNum);
 
-    // Sätt initialt värde endast en gång när komponenten mountas
-    useEffect(() => {
-        setShowtime(movie[0].day, movie[0].date, movie[0].times[0]);
-    }, []);
-
     //Felhantering - om arrayen är tom stoppas komponenten här
     if (movie.length === 0) {
         return <p>Inga tider hittades</p>
     }
 
-    //Håller på vad användaren har valt
-    //movie[0].id sätter första visnings datumet för filmen som aktiv
-    const [activeDate, setActiveDate] = useState(movie[0].id);
-    const [activeShowtime, setActiveShowtime] = useState(0);
+    const [activeDate, setActiveDate] = useState(() => {
 
-    //console.log(`activeDate: ${activeDate}, type of: ${typeof activeDate} \n activeShowtime: ${activeShowtime}, type of: ${typeof activeShowtime}`);
+        //Om det redan finns ett värde i storen
+        if (showtime.day) {
+            // Hittar showtimes-objektet vars day matchar det sparade värdet i storen
+            const match = movie.find((e) => e.day === showtime.day);
+            return match.id;
+        }
+        // Första gången, sätter ett initialt värde
+        setShowtime(movie[0].day, movie[0].date, movie[0].times[0]);
+        return movie[0].id;
+
+    });
+
+    const [activeShowtime, setActiveShowtime] = useState(() => {
+
+        //Om det redan finns ett värde i storen
+        if (showtime.time) {
+            // Hitta dagen som matchar storen, leta sedan efter indexet för den sparade tiden
+            const currentDay = movie.find((e) => e.day === showtime.day);
+            return currentDay.times.findIndex((e) => e === showtime.time);
+        }
+        return 0;
+
+    });
 
     //Sätter en aktiv css klass på aktiva komponenten
     const dateStyling = (id) => `card ${activeDate === id ? "active" : ""}`;
