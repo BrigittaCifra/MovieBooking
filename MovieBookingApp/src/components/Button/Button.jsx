@@ -1,9 +1,9 @@
 import './Button.css';
 import '../../styles/variables.css';
 
-function Button({ text, type = "", onClick, ariaLabel, ...rest }) {
+function Button({ text, btnType = "", onClick, ariaLabel, ...rest }) {
 
-    const className = `btn ${type}`;
+    const className = `btn ${btnType}`;
 
     return (
         <button

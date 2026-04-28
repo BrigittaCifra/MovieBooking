@@ -24,13 +24,13 @@ function TicketPicker() {
                     <div>
                         <Button
                             text={remove}
-                            type='secondary small'
+                            btnType='secondary small'
                             onClick={() => removeTicket(e.id)}
                         />
                         <p>{e.amount}</p>
                         <Button
                             text={add}
-                            type='secondary small'
+                            btnType='secondary small'
                             onClick={() => addTicket(e.id)}
                         />
                     </div>

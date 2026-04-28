@@ -1,8 +1,7 @@
 //Components
 import { useEffect } from 'react';
 import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx'
-import useMoviesStore from '../stores/moviesStore.js';
-
+import useMoviesStore from "../stores/moviesStore.js";
 function Home() {
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const movies = useMoviesStore((state) => state.movies);

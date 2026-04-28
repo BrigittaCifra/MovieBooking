@@ -6,7 +6,7 @@ import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
 
 //Components
-import DetailsHero from "../components/Details/DetailsHero.jsx"; //Jag utgår från att det är DetailsHero.jsx och inte DetailsPage.jsx
+import DetailsHero from "../components/Details/DetailsHero";
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
 import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
 import Button from "../components/Button/Button.jsx";
@@ -19,12 +19,21 @@ function MovieDetails() {
     const movies = useMoviesStore((state) => state.movies);
     // filmobjektet som details använder 
     const movie = getMovieById(Number(id));
+    // triggar API anropen
+    const fetchMovies = useMoviesStore((state) => state.fetchMovies);
 
     const navigate = useNavigate();
 
     // används av details hero för uppspelning av trailer
     const [trailerUrl, setTrailerUrl] = useState(null);
     const [isTrailerLoading, setIsTrailerLoading] = useState(true);
+
+    useEffect(() => {
+        // fallback ifall filmerna inte hämtats i home page först
+        if (movies.length === 0) {
+            fetchMovies();
+        }
+    }, []);
 
     useEffect(() => {
         if (!movie) return;
@@ -46,15 +55,21 @@ function MovieDetails() {
 
     //lägg till här för att filtrera filmer till karuseller
 
+    if (!movie) return <p>Loading...</p>;
     return (
         <>
-            {movie && <DetailsHero movie={movie} />}
+            <DetailsHero
+                movie={movie}
+                trailerUrl={trailerUrl}
+                isTrailerLoading={isTrailerLoading}
+            />
+
             <section className='booking-details'>
-                <ShowtimePicker movieId={id} />
+                <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
                 <TicketPicker />
                 <Button
                     text="Book tickets"
-                    type="primary medium"
+                    btnType="primary medium"
                     onClick={() => navigate("/Booking")}
                 />
             </section>

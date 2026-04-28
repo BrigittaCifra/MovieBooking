@@ -27,7 +27,7 @@ function Header({ onMembershipClick }) {
                     <Link to="/" className='header_logo'>CinEvent</Link>
 
                     <div>
-                        <Button text={<>{locationIcon} Select location</>} type='small' />
+                        <Button text={<>{locationIcon} Select location</>} btnType='small' />
                         <Button
                             text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
                             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -45,9 +45,9 @@ function Header({ onMembershipClick }) {
                         <SearchBar />
 
                         <div>
-                            <Button text={<>{favoriteIcon} Favorites</>} type='secondary' />
-                            <Button text="Log in" type='secondary' />
-                            <Button text='Membership' type='primary' onClick={onMembershipClick} />
+                            <Button text={<>{favoriteIcon} Favorites</>} btnType='secondary' />
+                            <Button text="Log in" btnType='secondary' />
+                            <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                         </div>
 
                     </div>
@@ -72,10 +72,10 @@ function Header({ onMembershipClick }) {
                     </div>
 
                     <div className="desktop-nav-right">
-                        <Button text={<>{locationIcon} Select location</>} type='small' />
-                        <Button text={favoriteIcon} type='small' />
-                        <Button text="Log in" type='secondary' />
-                        <Button text='Membership' type='primary' onClick={onMembershipClick} />
+                        <Button text={<>{locationIcon} Select location</>} btnType='small' />
+                        <Button text={favoriteIcon} btnType='small' />
+                        <Button text="Log in" btnType='secondary' />
+                        <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                     </div>
                 </div>
 

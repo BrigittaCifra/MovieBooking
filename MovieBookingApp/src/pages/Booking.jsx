@@ -21,27 +21,43 @@ function Booking() {
 
     //Skapas genom custom hooks
     const email = useFormInput("");
-    const error = useValidator();
+    //const error = useValidator();
+
+    const [error, setError] = useState(null);
+
+    const handleBlur = (e) => {
+        if (!e.target.value || e.target.value.trim().length === 0) {
+            setError("Email is required");
+            return;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)) {
+            setError("Invalid email address");
+            return;
+        }
+
+        setError(null);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        validate(email.value);
-        //setSubmitted(true);
-    };
+    }
 
     return (
         <>
             <form action="" onSubmit={handleSubmit}>
                 <h2>Log in to start earning points</h2>
-                <Button text="Log in" type="primary medium" />
+                <Button
+                    btnType="primary medium"
+                    text="Log in"
+                />
                 <h2>Contact info</h2>
                 <Input
                     type="email"
                     label="Email"
                     id="email"
                     value={email.value}
-                    // error={error}
                     onChange={email.onChange}
+                    onBlur={handleBlur}
+                    error={error}
                 />
 
                 <h2>Payment</h2>
@@ -67,8 +83,10 @@ function Booking() {
                 <span>Total</span>
                 <h2>{getSum()}</h2>
                 <Button
-                    type="primary medium"
+                    btnType="primary medium"
                     text="Purchase"
+                    type="Submit"
+                    disabled={!!error || !email.value}
                 />
             </form>
         </>
