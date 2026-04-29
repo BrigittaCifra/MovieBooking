@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import useMoviesStore from '../stores/moviesStore.js';
-import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx';
-import MovieCarousel from '../components/MovieCarousel/MovieCarousel.jsx';
+
+//Components
+import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx'
+import useMoviesStore from "../stores/moviesStore.js";
 
 function Home() {
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
@@ -13,17 +14,11 @@ function Home() {
         }
     }, []);
 
-    const newReleases = movies.filter((m) => m.newRelease === true);
-    const comingSoon = movies.filter((m) => m.comingSoon === true);
-
     return (
         <>
             <HeroCarousel />
-            <MovieCarousel movies={newReleases} title="NU PÅ BIO" />
-            <MovieCarousel movies={comingSoon} title="KOMMER SNART" />
-            <MovieCarousel movies={movies} title="ALLA FILMER" />
         </>
-    );
+    )
 }
 
 export default Home;

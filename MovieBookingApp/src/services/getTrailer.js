@@ -7,7 +7,7 @@ export async function getTrailer(movieId) {
 
         // TMDB returns flera klipp, hitta trailer från youtube
         const trailer = data.results.find(video =>
-            video.type === "Trailer" && video.site === "Youtube"
+            video.type === "Trailer" && video.site === "YouTube"
         );
 
         const trailerUrl = trailer
