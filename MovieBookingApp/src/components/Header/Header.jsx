@@ -18,6 +18,7 @@ function Header({ onMembershipClick }) {
         { id: 2, name: "Events" }
     ];
 
+
     return (
         <header>
             <nav className='container'>
@@ -73,7 +74,9 @@ function Header({ onMembershipClick }) {
 
                     <div className="desktop-nav-right">
                         <Button text={<>{locationIcon} Select location</>} type='small' />
-                        <Button text={favoriteIcon} type='small' />
+                        <NavLink to="/favorites">
+                            <Button text={favoriteIcon} type='small' />
+                        </NavLink>
                         <Button text="Log in" type='secondary' />
                         <Button text='Membership' type='primary' onClick={onMembershipClick} />
                     </div>

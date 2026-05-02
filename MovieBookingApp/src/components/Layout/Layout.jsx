@@ -9,7 +9,8 @@ function Layout() {
 
     return (
         <>
-            <Header onMembershipClick={() => setShowMembershipForm(true)} />
+            <Header 
+            onMembershipClick={() => setShowMembershipForm(true)} />
             {showMembershipForm && (
                 <MembershipForm onClose={() => setShowMembershipForm(false)} />
             )}

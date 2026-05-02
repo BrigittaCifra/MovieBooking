@@ -1,9 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import "./DetailsHero.css";
-
-
-
+import useFavoritesStore from "../../stores/favoritesStore.js";
 
 
 export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
@@ -11,6 +9,10 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isTruncated, setIsTruncated] = useState(false);
     const descriptionRef = useRef(null);
+
+    const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+    const favorites = useFavoritesStore((state) => state.favorites);
+    const exists = favorites.some((fav) => fav.id === movie.id);
 
     // Kollar om beskrivningen får plats eller kapas i nuvarande layout
     // Används för att avgöra om "Read more"-knappen och fade-effekten ska visas
@@ -31,7 +33,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
     }, [movie.description, isExpanded]);
 
     if (!movie) return <p>Loading...</p>;
-    
+
     return (
         // Visar trailer om den finns och användaren har startat den
         <div className="detailsHero">
@@ -54,7 +56,7 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                             <div className="heroOverlay"></div>
                         </div>
                     ) : (
-                         /* Om trailer finns men inte spelas visas en klickbar bild */
+                        /* Om trailer finns men inte spelas visas en klickbar bild */
                         <div className="heroPreview" onClick={() => setIsPlaying(true)}>
                             <img className="heroFrame" src={movie.heroImg} alt={movie.title} />
                             <div className="heroOverlay"></div>
@@ -71,8 +73,17 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
             <div className="infoContainer container">
                 <div className="detailsHeading">
                     <h1>{movie.title}</h1>
+                    <button
+                        className="detailFavoritesButton"
+                        aria-label="Add to favorites"
+                        onClick={() => { toggleFavorite(movie) }}
+                    >
+                        <span className={`material-symbols-outlined ${exists ? "filled" : ""}`}>
+                            favorite
+                        </span>
+                    </button>
                     <div className="detailsHeadingInfo">
-                       {/* Begränsar genrerna i rubriksektionen för att hålla layouten ren */}
+                        {/* Begränsar genrerna i rubriksektionen för att hålla layouten ren */}
                         <p>{`${movie.genre.slice(0, 2).join(", ")}`}</p>
                         <div className="dot" />
                         <p>{movie.runtime}</p>

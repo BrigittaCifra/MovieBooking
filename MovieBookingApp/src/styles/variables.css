@@ -104,7 +104,7 @@ a {
   --radius-full: 9999px; /* helt rund, t.ex. pills och cirkulära knappar */
 
   /* Navbar */
-  --navbar-height: 68px; /* navbarens höjd, används för att undvika överlapp */
+  --navbar-height: 80px; /* navbarens höjd, används för att undvika överlapp */
 
   /* Animationshastigheter */
   --transition-fast:   150ms ease; /* snabb, t.ex. hover på knappar */
