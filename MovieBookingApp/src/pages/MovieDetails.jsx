@@ -70,7 +70,7 @@ function MovieDetails() {
                 <Button
                     text="Book tickets"
                     btnType="primary medium"
-                    onClick={() => navigate("/Booking")}
+                    onClick={() => navigate(`/Booking/${id}`)}
                 />
             </section>
         </>

@@ -8,9 +8,9 @@ const useBookingStore = create((set, get) => ({
         { id: 4, amount: 0, age: "Student", price: 100 },
     ]),
 
-    seats: [],
-
     showtime: [],
+
+    selectedSeats: [],
 
     //Lägger till tickets
     addTicket: (id) =>
@@ -48,6 +48,27 @@ const useBookingStore = create((set, get) => ({
         4. ticket.amount * ticket.price är uträckningen som sker för varje iteration
         5. 0 är start värdet */
         return tickets.reduce((sum, ticket) => sum + ticket.amount * ticket.price, 0);
+    },
+
+    toggleSeat: (seat) =>
+        set((state) => {
+            const exists = state.selectedSeats.some(
+                (s) => s.row === seat.row && s.number === seat.number
+            );
+            return {
+                selectedSeats: exists
+                    ? state.selectedSeats.filter(
+                        (s) => !(s.row === seat.row && s.number === seat.number)
+                    )
+                    : [...state.selectedSeats, seat],
+            };
+        }),
+
+    clearSeats: () => set({ selectedSeats: [] }),
+
+    getTotalPrice: () => {
+        const { selectedSeats } = get();
+        return selectedSeats.length * 129;
     },
 
 }));
