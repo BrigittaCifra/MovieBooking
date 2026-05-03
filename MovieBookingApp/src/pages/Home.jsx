@@ -5,6 +5,7 @@ import HeroCarousel from '../components/HeroCarousel/HeroCarousel.jsx'
 import useMoviesStore from "../stores/moviesStore.js";
 import Campaign from '../components/Campaign/Campaign.jsx';
 import MembershipForm from '../components/MembershipForm/MembershipForm.jsx';
+import MovieCarousel from '../components/MovieCarousel/MovieCarousel.jsx';
 
 function Home() {
     const [showMembershipForm, setShowMembershipForm] = useState(false);
@@ -12,15 +13,13 @@ function Home() {
     const movies = useMoviesStore((state) => state.movies);
 
     useEffect(() => {
-        //för en fetch per session
         if (movies.length === 0) {
             fetchMovies();
         }
     }, []);
 
-    //Något om newRelease för filmer till hero carousel? alla med newRelease=true i karusell?
-    //isf tar Hero t.ex. movies={newRelease} & cardCarousel elr vad man vill döpa till movies={movies}
-    // karusellen för cards mappar med movie
+    const newReleases = movies.filter((m) => m.newRelease === true);
+    const comingSoon = movies.filter((m) => m.comingSoon === true);
 
     return (
         <>
@@ -29,6 +28,9 @@ function Home() {
             {showMembershipForm && (
                 <MembershipForm onClose={() => setShowMembershipForm(false)} />
             )}
+            <MovieCarousel movies={newReleases} title="NU PÅ BIO" />
+            <MovieCarousel movies={comingSoon} title="KOMMER SNART" />
+            <MovieCarousel movies={movies} title="ALLA FILMER" />
         </>
     )
 }
