@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router';
 import "./footer.css";
 
 export default function Footer() {
@@ -10,36 +11,36 @@ export default function Footer() {
           </div>
 
           <div className="footer_col">
-            <h4>Utforska</h4>
-            <a href="#">Nu på bio</a>
-            <a href="#">Kommande</a>
-            <a href="#">Erbjudanden</a>
-            <a href="#">Presentkort</a>
+            <h4>explore</h4>
+            <Link to="/">New to cinema</Link>
+            <Link to="/">Coming soon</Link>
+            <Link to="/">Offers</Link>
+            <Link to="/">Gift cards</Link>
           </div>
 
           <div className="footer_col">
-            <h4>Hjälp</h4>
-            <a href="#">Vanliga frågor</a>
-            <a href="#">Återbetalningar</a>
-            <a href="#">Tillgänglighet</a>
-            <a href="#">Kontakt</a>
+            <h4>Help</h4>
+            <Link to="/">Common questions</Link>
+            <Link to="/">Refunds</Link>
+            <Link to="/">Accessibility</Link>
+            <Link to="/">Contact</Link>
           </div>
 
           <div className="footer_col">
-            <h4>Följ oss</h4>
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">TikTok</a>
-            <a href="#">Newsletter</a>
+            <h4>Follow us</h4>
+            <Link to="/">Instagram</Link>
+            <Link to="/">Facebook</Link>
+            <Link to="/">TikTok</Link>
+            <Link to="/">Newsletter</Link>
           </div>
         </div>
 
         <div className="footer_bottom">
           <span>© CinEvent AB</span>
           <div className="footer_legal">
-            <a href="#">Integritetspolicy</a>
-            <a href="#">Användarvillkor</a>
-            <a href="#">Cookies</a>
+            <Link to="/">Privacy Policy</Link>
+            <Link to="/">Terms of Use</Link>
+            <Link to="/">Cookies</Link>
           </div>
         </div>
       </div>

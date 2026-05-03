@@ -1,21 +1,26 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router";
+import { useState } from 'react';
 import './App.css';
-import Footer from "./components/Footer/Footer";
-import HeroCarousel from "./components/HeroCarousel/HeroCarousel";
-import Header from './components/Header/Header.jsx'
-import SearchBar from "./components/SearchBar";
+
+//Layout
+import Layout from './components/Layout/Layout.jsx';
+
+//Pages
+import Home from './pages/Home.jsx';
+import MovieDetails from './pages/MovieDetails.jsx';
+import Booking from './pages/Booking.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Header />
-      <HeroCarousel />
-      <SearchBar />
-
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/booking/:id" element={<Booking />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
