@@ -13,11 +13,11 @@ function SearchBar() {
 
   const searchRef = useRef(null);
 
-  useEffect(() => {
-    if (movies.length === 0) {
-      fetchMovies();
-    }
-  }, [movies.length, fetchMovies]);
+useEffect(() => {
+  if (movies.length === 0) {
+    fetchMovies();
+  }
+}, [movies.length, fetchMovies]);
 
   useEffect(() => {
     if (query.length < 2) {
