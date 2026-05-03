@@ -150,13 +150,6 @@ function Booking() {
                         </div>
                     )}
 
-                    <div>
-                        <p>Date:</p>
-                        <p>{showtime.day}</p>
-                        <p>{showtime.date}</p>
-                        <p>{showtime.time}</p>
-                    </div>
-
                     <span>Total</span>
                     <h2>{getSum()}</h2>
                     <Button
@@ -182,6 +175,9 @@ function Booking() {
                             <span>📅 {movie.released}</span>
                             <span>⏱ {movie.runtime}</span>
                             <span>👤 {movie.age}</span>
+                        </div>
+                        <div className="booking-summary">
+                            <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}  </span>
                         </div>
                     </>
                 )}

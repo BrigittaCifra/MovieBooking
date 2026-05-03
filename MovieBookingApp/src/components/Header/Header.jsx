@@ -74,9 +74,9 @@ function Header({ onMembershipClick }) {
 
                     <div className="desktop-nav-right">
                         <LocationSelector />
-                        <Button text={favoriteIcon} type='small' />
-                        <Button text="Log in" type='secondary' />
-                        <Button text='Membership' type='primary' onClick={onMembershipClick} />
+                        <Button text={favoriteIcon} btnType='small' />
+                        <Button text="Log in" btnType='secondary' />
+                        <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                     </div>
                 </div>
 
