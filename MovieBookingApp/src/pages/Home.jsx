@@ -25,13 +25,13 @@ function Home() {
     return (
         <>
             <HeroCarousel />
+            <MovieCarousel movies={newReleases} title="NU PÅ BIO" />
+            <MovieCarousel movies={comingSoon} title="KOMMER SNART" />
+            <MovieCarousel movies={movies} title="ALLA FILMER" />
             <Campaign onMembershipClick={() => setShowMembershipForm(true)} />
             {showMembershipForm && (
                 <MembershipForm onClose={() => setShowMembershipForm(false)} />
             )}
-            <MovieCarousel movies={newReleases} title="NU PÅ BIO" />
-            <MovieCarousel movies={comingSoon} title="KOMMER SNART" />
-            <MovieCarousel movies={movies} title="ALLA FILMER" />
         </>
     )
 }

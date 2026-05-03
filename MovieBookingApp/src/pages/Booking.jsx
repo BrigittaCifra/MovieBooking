@@ -14,6 +14,7 @@ import TicketPicker from '../components/TicketPicker/TicketPicker.jsx'
 import MovieCard from '../components/MovieCard/MovieCard.jsx'
 import SeatMap from "../components/SeatMap/SeatMap";
 
+//CSS
 import './Booking.css'
 
 function Booking() {
@@ -61,6 +62,7 @@ function Booking() {
         clearSeats();
     }
 
+    //Boknings bekräftelse 
     if (isSubmitted) {
         return (
             <div className="booking-success">
@@ -73,6 +75,25 @@ function Booking() {
     return (
         <div className="booking-page">
             <div className="booking-left">
+
+
+                <h2>Log in to start earning points</h2>
+                <Button
+                    btnType="primary medium"
+                    text="Log in"
+                />
+
+                <h2>Contact info</h2>
+                <Input
+                    type="email"
+                    label="Email"
+                    id="email"
+                    value={email.value}
+                    onChange={email.onChange}
+                    onBlur={handleBlur}
+                    error={error}
+                />
+
                 <h1 className="booking-title">Välj biljetter</h1>
                 <SeatMap />
 
@@ -113,26 +134,8 @@ function Booking() {
                         />
                         Klarna
                     </label>
-                    <button className="booking-submit" onClick={handleSubmit}>
-                        Slutför köp
-                    </button>
                 </div>
                 <form action="" onSubmit={handleSubmit}>
-                    <h2>Log in to start earning points</h2>
-                    <Button
-                        btnType="primary medium"
-                        text="Log in"
-                    />
-                    <h2>Contact info</h2>
-                    <Input
-                        type="email"
-                        label="Email"
-                        id="email"
-                        value={email.value}
-                        onChange={email.onChange}
-                        onBlur={handleBlur}
-                        error={error}
-                    />
 
                     <h2>Payment</h2>
                     <Input label="Add a voucher" />
