@@ -76,41 +76,46 @@ function Booking() {
         <div className="booking-page">
             <div className="booking-left">
 
+                <div>
+                    <h2>Log in to start earning points</h2>
+                    <Button
+                        btnType="primary medium"
+                        text="Log in"
+                    />
 
-                <h2>Log in to start earning points</h2>
-                <Button
-                    btnType="primary medium"
-                    text="Log in"
-                />
+                </div>
 
-                <h2>Contact info</h2>
-                <Input
-                    type="email"
-                    label="Email"
-                    id="email"
-                    value={email.value}
-                    onChange={email.onChange}
-                    onBlur={handleBlur}
-                    error={error}
-                />
+                <div>
+                    <h2>Contact info</h2>
+                    <Input
+                        type="email"
+                        label="Email"
+                        id="email"
+                        value={email.value}
+                        onChange={email.onChange}
+                        onBlur={handleBlur}
+                        error={error}
+                    />
+                </div>
 
-                <h1 className="booking-title">Välj biljetter</h1>
-                <SeatMap />
-
-                {selectedSeats.length > 0 && (
-                    <div className="booking-selected">
-                        <h3>Valda platser</h3>
-                        {selectedSeats.map((seat, index) => (
-                            <div key={index} className="booking-seat-row">
-                                <span>Rad {seat.row}, Stol {seat.number}, Salong 1</span>
-                                <span>129 kr</span>
-                            </div>
-                        ))}
-                        <button className="booking-clear" onClick={clearSeats}>
-                            Avmarkera platser
-                        </button>
-                    </div>
-                )}
+                <div>
+                    <h1 className="booking-title">Välj biljetter</h1>
+                    <SeatMap />
+                    {selectedSeats.length > 0 && (
+                        <div className="booking-selected">
+                            <h3>Valda platser</h3>
+                            {selectedSeats.map((seat, index) => (
+                                <div key={index} className="booking-seat-row">
+                                    <span>Rad {seat.row}, Stol {seat.number}, Salong 1</span>
+                                    <span>129 kr</span>
+                                </div>
+                            ))}
+                            <button className="booking-clear" onClick={clearSeats}>
+                                Avmarkera platser
+                            </button>
+                        </div>
+                    )}
+                </div>
 
                 <div className="booking-payment">
                     <h2>Betalning</h2>
@@ -135,28 +140,15 @@ function Booking() {
                         Klarna
                     </label>
                 </div>
-                <form action="" onSubmit={handleSubmit}>
 
+                <form action="" onSubmit={handleSubmit}>
                     <h2>Payment</h2>
                     <Input label="Add a voucher" />
-
-                    <h2>Booking details</h2>
-                    <p>Tickets:</p>
-                    {tickets.map((e) =>
-                        e.amount > 0 &&
-                        <div key={e.id}>
-                            <p>{e.age}</p>
-                            <p>{e.amount} x {e.price}</p>
-                        </div>
-                    )}
-
-                    <span>Total</span>
-                    <h2>{getSum()}</h2>
                     <Button
                         btnType="primary medium"
                         text="Purchase"
                         type="Submit"
-                        disabled={!!error || !email.value}
+                        disabled={error || !email.value}
                     />
                 </form>
             </div>
@@ -176,14 +168,28 @@ function Booking() {
                             <span>⏱ {movie.runtime}</span>
                             <span>👤 {movie.age}</span>
                         </div>
-                        <div className="booking-summary">
-                            <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}  </span>
+                        <div className="booking-summary booking-movie-info">
+                            <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}</span>
+                            <div className='booking-tickets'>
+                                <span>👤 </span>
+                                <div>
+                                    {tickets.map((e) =>
+                                        e.amount > 0 &&
+                                        <div key={e.id}>
+                                            <span>{e.age} </span>
+                                            <span>{e.amount} x {e.price}</span>
+                                        </div>
+                                    )}</div>
+                            </div>
                         </div>
                     </>
                 )}
                 <div className="booking-summary">
                     <p>Summa</p>
+                    {/* Utgår från att priset sätt utifrån sätten*/}
                     <h3>{getTotalPrice()} kr</h3>
+                    {/* Utgår från att priset sätt utifrån valda biljetter*/}
+                    <h3>{getSum()}</h3>
                 </div>
             </div>
         </div>
