@@ -7,6 +7,7 @@
     border: 1px solid var(--clr-border-subtle);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
+    margin: 0 auto;
 }
 
 .movieCard:hover {

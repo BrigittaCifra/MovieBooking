@@ -1,6 +1,4 @@
 
-
-// lägg till länk till details när component finns
 // logik kring aria-label - add to favorites / remove from favorites
 import { useNavigate } from "react-router";
 import "./movieCard.css";
@@ -12,20 +10,23 @@ export default function MovieCard({ movie }) {
     const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
     const exists = favorites.some((fav) => fav.id === movie.id);
-    
+
     /*const isFavorite = useFavoritesStore((state) => state.isFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
-    const exists = isFavorite(movie.id);*/ 
+    const exists = isFavorite(movie.id);*/
 
     return (
         <div className="movieCard"
             aria-label={`View details for ${movie.title}`}
             onClick={() => navigate(`/movies/${movie.id}`)}
-            >
+        >
             <button
                 className="favoritesButton"
                 aria-label="Add to favorites"
-                onClick={() => { toggleFavorite(movie) }}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(movie);
+                }}
             >
                 <span className={`material-symbols-outlined ${exists ? "filled" : ""}`}>
                     favorite

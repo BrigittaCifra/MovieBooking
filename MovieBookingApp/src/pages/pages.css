@@ -1,0 +1,16 @@
+.favorites-grid, .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 100px 24px 24px;
+    justify-content: center;
+}
+
+
+
+.removeBtn {
+    height: fit-content;
+    margin-left: 1.5rem;
+    margin-bottom: 3rem;
+}
+
