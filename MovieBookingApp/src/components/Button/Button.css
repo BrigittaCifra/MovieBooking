@@ -36,6 +36,8 @@
 
 .secondary:hover {
     /*TBA*/
+    background-color: var(--clr-accent-subtle);
+    color: var(--clr-accent-hover);
     transition: var(--transition-fast);
 }
 

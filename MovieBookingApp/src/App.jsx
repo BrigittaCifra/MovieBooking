@@ -10,6 +10,7 @@ import Home from './pages/Home.jsx';
 import MovieDetails from './pages/MovieDetails.jsx';
 import Booking from './pages/Booking.jsx';
 import Favorites from './pages/Favorites.jsx';
+import AllMovies from './pages/AllMovies.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<AllMovies />} />
         <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="Booking" element={<Booking />} />
         <Route path="/favorites" element={<Favorites />} />
