@@ -69,6 +69,7 @@ VITE_OMDB_API_KEY=din_omdb_api_key
 VITE_TMDB_API_KEY=din_tmdb_api_key
 ```
 ⚠️ `.env` should not be pushed to GitHub
+---
 Each team member needs their own API keys
 
 ---
