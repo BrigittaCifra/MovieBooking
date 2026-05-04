@@ -28,6 +28,11 @@
     transition: var(--transition-fast);
 }
 
+.primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 /* -Secondary--------------------------------------------------------------------------- */
 .secondary {
     border: 2px solid #c9a96e;
@@ -45,4 +50,8 @@
 .small {
     width: fit-content;
     padding: var(--space-2);
+}
+
+.medium {
+    width: 8rem;
 }

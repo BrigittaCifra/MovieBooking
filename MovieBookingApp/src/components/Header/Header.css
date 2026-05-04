@@ -1,6 +1,7 @@
 /* Mobil */
 header {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   padding: var(--space-6) 0;
@@ -43,7 +44,7 @@ a:hover {
   align-items: center;
 }
 
-.mobile-nav-top > div {
+.mobile-nav-top>div {
   display: flex;
   align-items: center;
 }
@@ -59,7 +60,7 @@ a:hover {
   margin-top: var(--space-4);
 }
 
-.mobile-nav-bottom > div {
+.mobile-nav-bottom>div {
   padding-top: var(--space-12);
   display: flex;
   flex-direction: column;
@@ -68,6 +69,7 @@ a:hover {
 
 /* Desktop */
 @media (min-width: 992px) {
+
   .mobile-nav-top,
   .mobile-nav-bottom {
     display: none;

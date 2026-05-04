@@ -1,0 +1,9 @@
+.booking-details {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--container-pad);
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

@@ -1,5 +1,6 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import './MovieDetails.css';
 
 import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
@@ -7,6 +8,8 @@ import useMoviesStore from "../stores/moviesStore.js";
 //Components
 import DetailsHero from "../components/Details/DetailsHero";
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
+import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
+import Button from "../components/Button/Button.jsx";
 
 function MovieDetails() {
     const { id } = useParams();
@@ -18,6 +21,8 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     // triggar API anropen
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
+
+    const navigate = useNavigate();
 
     // används av details hero för uppspelning av trailer
     const [trailerUrl, setTrailerUrl] = useState(null);
@@ -53,13 +58,25 @@ function MovieDetails() {
     if (!movie) return <p>Loading...</p>;
     return (
         <>
-            <DetailsHero 
-            movie={movie}
-            trailerUrl={trailerUrl}
-            isTrailerLoading={isTrailerLoading} />
-            <ShowtimePicker movieId={id} /*Jag tror att det blir showtimes={movie.showtimes} */ />
+            <DetailsHero
+                movie={movie}
+                trailerUrl={trailerUrl}
+                isTrailerLoading={isTrailerLoading}
+            />
+
+            <section className='booking-details'>
+                <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
+                <TicketPicker />
+                <Button
+                    text="Book tickets"
+                    btnType="primary medium"
+                    onClick={() => navigate(`/Booking/${id}`)}
+                />
+            </section>
         </>
     )
+
+
 }
 
 export default MovieDetails;
