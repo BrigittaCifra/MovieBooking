@@ -1,4 +1,3 @@
-
 // importerar mockdata
 import { titleData, showtimesData } from "./movieData.js";
 
@@ -46,33 +45,33 @@ export async function getMovie(movie) {
                 ? omdbData.Plot
                 : "No description available",
 
-                /*
-                // Kommenterar ut denna tillfälligt då vi inte använder omdöme just nu
-                // Ta bort eller lägg tillbaks senare
-            // omdöme
-            rating: omdbData.imdbRating !== "N/A"
-                ? omdbData.imdbRating
-                : "No rating",
+            /*
+            // Kommenterar ut denna tillfälligt då vi inte använder omdöme just nu
+            // Ta bort eller lägg tillbaks senare
+        // omdöme
+        rating: omdbData.imdbRating !== "N/A"
+            ? omdbData.imdbRating
+            : "No rating",
 */
 
             // åldersgräns
             rated: omdbData.Rated !== "N/A"
-            ? omdbData.Rated
-            : "-",
+                ? omdbData.Rated
+                : "-",
 
             // längd
             runtime: omdbData.Runtime !== "N/A"
                 ? omdbData.Runtime
                 : "Runtime unknown",
-            
+
             released: omdbData.Released !== "N/A"
-                ?omdbData.Released
+                ? omdbData.Released
                 : "-",
 
             // genre kommer som träng med komma, split gör om det till array
             genre: omdbData?.Genre && omdbData.Genre !== "N/A"
-               ? omdbData.Genre.split(", ") 
-               : [],
+                ? omdbData.Genre.split(", ")
+                : [],
 
             country: omdbData.Country !== "N/A"
                 ? omdbData.Country
@@ -84,11 +83,11 @@ export async function getMovie(movie) {
 
             // Skådespelare, kommer som en sträng, gör om till array
             actors: omdbData?.Actors && omdbData.Actors !== "N/A"
-            ? omdbData.Actors.split(", ") : [],
+                ? omdbData.Actors.split(", ") : [],
 
             director: omdbData.Director !== "N/A"
-            ? omdbData.Director
-            : "Unknown",
+                ? omdbData.Director
+                : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 

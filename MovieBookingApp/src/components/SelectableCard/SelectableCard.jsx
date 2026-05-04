@@ -1,10 +1,14 @@
 import './SelectableCard.css';
 
-function SelectableCard({ text, span, icon, type = "", onClick, ariaLabel }) {
+function SelectableCard({ text, span, icon, type = "", onClick, ...rest }) {
     const className = `card ${type}`;
 
     return (
-        <button className={className} onClick={onClick} aria-label={ariaLabel}>
+        <button
+            className={className}
+            onClick={onClick}
+            {...rest}
+        >
             {icon}
             <div>
                 <span>{span}</span>

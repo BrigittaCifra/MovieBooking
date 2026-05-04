@@ -1,18 +1,33 @@
-import { useState, useEffect } from "react";
+//Hooks
+import { useState, useEffect } from 'react'
 import { useParams } from "react-router";
-import useBookingStore from "../stores/bookingStore";
+import useFormInput from '../hooks/useFormInput.js'
+
+//Zustand
+import useBookingStore from '../stores/bookingStore.js'
 import useMoviesStore from "../stores/moviesStore";
+
+//Components
+import Input from '../components/InputField/Input.jsx'
+import Button from '../components/Button/Button.jsx'
+import TicketPicker from '../components/TicketPicker/TicketPicker.jsx'
+import MovieCard from '../components/MovieCard/MovieCard.jsx'
 import SeatMap from "../components/SeatMap/SeatMap";
-import "./Booking.css";
+
+//CSS
+import './Booking.css'
 
 function Booking() {
     const { id } = useParams();
+
+    //Movie store
     const getMovieById = useMoviesStore((state) => state.getMovieById);
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const movies = useMoviesStore((state) => state.movies);
     const movie = getMovieById(Number(id));
 
-    const { selectedSeats, clearSeats, getTotalPrice } = useBookingStore();
+    //Booking store
+    const { selectedSeats, clearSeats, getTotalPrice, tickets, showtime, getSum } = useBookingStore();
     const [paymentMethod, setPaymentMethod] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -22,13 +37,32 @@ function Booking() {
         }
     }, []);
 
-    const handleSubmit = () => {
+    //Skapas genom custom hooks
+    const email = useFormInput("");
+    const [error, setError] = useState(null);
+
+    //Hanterar validering när användaren lämnar input fälltet
+    const handleBlur = (e) => {
+        if (!e.target.value || e.target.value.trim().length === 0) {
+            setError("Email is required");
+            return;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)) {
+            setError("Invalid email address");
+            return;
+        }
+
+        setError(null);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (selectedSeats.length === 0) return alert("Välj minst en plats!");
         if (!paymentMethod) return alert("Välj betalningsmetod!");
         setIsSubmitted(true);
         clearSeats();
-    };
+    }
 
+    //Boknings bekräftelse 
     if (isSubmitted) {
         return (
             <div className="booking-success">
@@ -41,23 +75,47 @@ function Booking() {
     return (
         <div className="booking-page">
             <div className="booking-left">
-                <h1 className="booking-title">Välj biljetter</h1>
-                <SeatMap />
 
-                {selectedSeats.length > 0 && (
-                    <div className="booking-selected">
-                        <h3>Valda platser</h3>
-                        {selectedSeats.map((seat, index) => (
-                            <div key={index} className="booking-seat-row">
-                                <span>Rad {seat.row}, Stol {seat.number}, Salong 1</span>
-                                <span>129 kr</span>
-                            </div>
-                        ))}
-                        <button className="booking-clear" onClick={clearSeats}>
-                            Avmarkera platser
-                        </button>
-                    </div>
-                )}
+                <div>
+                    <h2>Log in to start earning points</h2>
+                    <Button
+                        btnType="primary medium"
+                        text="Log in"
+                    />
+
+                </div>
+
+                <div>
+                    <h2>Contact info</h2>
+                    <Input
+                        type="email"
+                        label="Email"
+                        id="email"
+                        value={email.value}
+                        onChange={email.onChange}
+                        onBlur={handleBlur}
+                        error={error}
+                    />
+                </div>
+
+                <div>
+                    <h1 className="booking-title">Välj biljetter</h1>
+                    <SeatMap />
+                    {selectedSeats.length > 0 && (
+                        <div className="booking-selected">
+                            <h3>Valda platser</h3>
+                            {selectedSeats.map((seat, index) => (
+                                <div key={index} className="booking-seat-row">
+                                    <span>Rad {seat.row}, Stol {seat.number}, Salong 1</span>
+                                    <span>129 kr</span>
+                                </div>
+                            ))}
+                            <button className="booking-clear" onClick={clearSeats}>
+                                Avmarkera platser
+                            </button>
+                        </div>
+                    )}
+                </div>
 
                 <div className="booking-payment">
                     <h2>Betalning</h2>
@@ -81,10 +139,18 @@ function Booking() {
                         />
                         Klarna
                     </label>
-                    <button className="booking-submit" onClick={handleSubmit}>
-                        Slutför köp
-                    </button>
                 </div>
+
+                <form action="" onSubmit={handleSubmit}>
+                    <h2>Payment</h2>
+                    <Input label="Add a voucher" />
+                    <Button
+                        btnType="primary medium"
+                        text="Purchase"
+                        type="Submit"
+                        disabled={error || !email.value}
+                    />
+                </form>
             </div>
 
             <div className="booking-right">
@@ -102,15 +168,32 @@ function Booking() {
                             <span>⏱ {movie.runtime}</span>
                             <span>👤 {movie.age}</span>
                         </div>
+                        <div className="booking-summary booking-movie-info">
+                            <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}</span>
+                            <div className='booking-tickets'>
+                                <span>👤 </span>
+                                <div>
+                                    {tickets.map((e) =>
+                                        e.amount > 0 &&
+                                        <div key={e.id}>
+                                            <span>{e.age} </span>
+                                            <span>{e.amount} x {e.price}</span>
+                                        </div>
+                                    )}</div>
+                            </div>
+                        </div>
                     </>
                 )}
                 <div className="booking-summary">
                     <p>Summa</p>
+                    {/* Utgår från att priset sätt utifrån sätten*/}
                     <h3>{getTotalPrice()} kr</h3>
+                    {/* Utgår från att priset sätt utifrån valda biljetter*/}
+                    <h3>{getSum()}</h3>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default Booking;
