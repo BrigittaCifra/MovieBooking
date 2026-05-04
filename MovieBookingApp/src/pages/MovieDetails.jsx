@@ -10,6 +10,7 @@ import DetailsHero from "../components/Details/DetailsHero";
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
 import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
 import Button from "../components/Button/Button.jsx";
+import LocationSelectorWidget from "../components/LocationSelector/LocationSelectorWidget.jsx"
 
 function MovieDetails() {
     const { id } = useParams();
@@ -65,6 +66,7 @@ function MovieDetails() {
             />
 
             <section className='booking-details'>
+                <LocationSelectorWidget />
                 <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
                 <TicketPicker />
                 <Button
