@@ -68,9 +68,7 @@ Create a `.env`-file in the project folder and add:
 VITE_OMDB_API_KEY=din_omdb_api_key
 VITE_TMDB_API_KEY=din_tmdb_api_key
 ```
----
-⚠️ `.env` should not be pushed to GitHub
----
+⚠️ `.env` should not be pushed to GitHub.  
 Each team member needs their own API keys
 
 ---
