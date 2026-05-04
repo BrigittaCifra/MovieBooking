@@ -1,58 +1,58 @@
 # Cinevent
 
-## Projektbeskrivning
+## Project Description
 
-Cinevent är en webbapplikation för att boka biobiljetter.  
-Användaren kan bläddra bland filmer, söka efter filmer, se detaljerad information om en film, titta på trailer och välja visningstid.
+Cinevent is a web application for booking movie tickets.  
+Users can browse movies, search for specific titles, view detailed information about a movie, watch trailers, select showtimes and book tickets.
 
-Projektet är byggt med React och Vite.
-
----
-
-## Funktioner
-
-- Visa filmer på startsidan
-- Söka efter filmer i searchbaren
-- Klicka på en film och komma till en detailsida
-- Visa information om filmen (genre, beskrivning, rating m.m.)
-- Visa trailer via YouTube
-- Visa tillgängliga visningstider
-- Boka/markera sittplatser
-- Favoritmarkera filmer (under utveckling)
-- Välja stad för att se tillgängliga filmer
-- Registreringsformulär för att bli medlem
-- Inlogg för medlemmar
+The project is built with React and Vite.
 
 ---
 
-## Tekniker
+## Features
 
-- React
-- Vite
-- React Router
-- Zustand (state management)
-- CSS
-- JavaScript
-- OMDB API
-- TMDB API
+- Display movies on the homepage  
+- Search for movies using the search bar  
+- Click on a movie to navigate to a details page  
+- View movie information (genre, description, rating, etc.)  
+- Watch trailers via YouTube  
+- View available showtimes  
+- Book/select seats  
+- Mark movies as favorites (in development)  
+- Select city to view available movies  
+- Registration form for membership  
+- Member login  
+
+---
+
+## Technologies
+
+- React  
+- Vite  
+- React Router  
+- Zustand (state management)  
+- CSS  
+- JavaScript  
+- OMDB API  
+- TMDB API  
 
 ---
 
 ## Installation
 
-Klona projektet:
+Clone the repository:
 
 ```bash
 git clone https://github.com/BrigittaCifra/MovieBooking.git
 ```
 
-Gå in i projektmappen:
+Navigate to the project folder:
 
 ```bash
 cd MovieBooking/MovieBookingApp
 ```
 
-Installera dependencies:
+Install dependencies:
 
 ```bash
 npm install
@@ -60,50 +60,52 @@ npm install
 
 ---
 
-## Miljövariabler
+## Environment Variables
 
-Skapa en `.env`-fil i projektmappen och lägg till:
+Create a `.env`-file in the project folder and add:
 
 ```env
 VITE_OMDB_API_KEY=din_omdb_api_key
 VITE_TMDB_API_KEY=din_tmdb_api_key
 ```
-⚠️ `.env` ska inte pushas till GitHub  
-Alla i teamet behöver egna API-nycklar  
+⚠️ `.env` should not be pushed to GitHub
+Each team member needs their own API keys
 
 ---
 
-## Starta projektet
+## Run the Project
 
-Kör:
+Run:
 
 ```bash
 npm run dev
 ```
 
-Öppna i webbläsaren:
+Open in your browser:
 
 http://localhost:5173/
 
 
 ---
 
-## Projektstruktur
+## Project Structure
 
+```
 src/
-components/
-pages/
-services/
-stores/
+  components/
+  pages/
+  services/
+  stores/
+```
 
-- components → återanvändbara komponenter  
-- pages → sidor (Home, MovieDetails osv)  
-- services → API-anrop  
+- components → reusable components
+- pages → pages (Home, MovieDetails osv)  
+- services → API calls
 - stores → global state (Zustand)
 
 ---
 
-## Gruppmedlemmar
+## Team Members
  
 - Brigitta Cifra
 - Andreas Strandt
