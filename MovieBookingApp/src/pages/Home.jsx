@@ -12,10 +12,6 @@ function Home() {
         }
     }, []);
 
-    //Något om newRelease för filmer till hero carousel? alla med newRelease=true i karusell?
-    //isf tar Hero t.ex. movies={newRelease} & cardCarousel elr vad man vill döpa till movies={movies}
-    // karusellen för cards mappar med movie
-
     return (
         <>
             <HeroCarousel />
