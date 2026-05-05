@@ -185,7 +185,7 @@ function Booking() {
                                         e.amount > 0 &&
                                         <div key={e.id}>
                                             <span>{e.age} </span>
-                                            <span>{e.amount} x {e.price}</span>
+                                            <span>x {e.amount}</span>
                                         </div>
                                     )}
                                 </div>
@@ -197,8 +197,6 @@ function Booking() {
                     <p>Summa</p>
                     {/* Utgår från att priset sätt utifrån sätten*/}
                     <h3>{getTotalPrice()} kr</h3>
-                    {/* Utgår från att priset sätt utifrån valda biljetter*/}
-                    <h3>{getSum()}</h3>
                 </div>
             </div>
         </div>

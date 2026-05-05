@@ -2,10 +2,10 @@ import { create } from "zustand";
 
 const useBookingStore = create((set, get) => ({
     tickets: ([
-        { id: 1, amount: 0, age: "Adult", price: 120 },
-        { id: 2, amount: 0, age: "Child", price: 90 },
-        { id: 3, amount: 0, age: "Senior", price: 100 },
-        { id: 4, amount: 0, age: "Student", price: 100 },
+        { id: 1, amount: 0, age: "Adult" },
+        { id: 2, amount: 0, age: "Child" },
+        { id: 3, amount: 0, age: "Senior" },
+        { id: 4, amount: 0, age: "Student" },
     ]),
 
     showtime: [],
@@ -37,18 +37,6 @@ const useBookingStore = create((set, get) => ({
 
     setShowtime: (day, date, time) =>
         set({ showtime: { day, date, time } }),
-
-    //Hämtar totala värdet
-    getSum: () => {
-        const tickets = get().tickets.filter((ticket) => ticket.amount > 0);
-        /* Det här är vad reduce() gör:
-        1. sum är det totala värdet som byggs på för varje iteration
-        2. ticket är det nuvarande värdet
-        3. sum + är vad som ska hända med uträckningen
-        4. ticket.amount * ticket.price är uträckningen som sker för varje iteration
-        5. 0 är start värdet */
-        return tickets.reduce((sum, ticket) => sum + ticket.amount * ticket.price, 0);
-    },
 
     toggleSeat: (seat) =>
         set((state) => {

@@ -16,8 +16,7 @@ function Header({ onMembershipClick }) {
     //Meny länkarna finns utanför JSX delen för att enkelt kunna lägga till fler meny länkar i framtiden
     const menuLinks = [
         { id: 1, name: "Movies", path: "/movies" },
-        { id: 2, name: "Events" },
-        { id: 3, name: "Favorites", path: "/favorites" }
+        { id: 2, name: "Favorites", path: "/favorites" }
     ];
 
 
@@ -48,7 +47,6 @@ function Header({ onMembershipClick }) {
                         <SearchBar />
 
                         <div>
-                            <Button text={<>{favoriteIcon} Favorites</>} btnType='secondary' />
                             <Button text="Log in" btnType='secondary' />
                             <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                         </div>
@@ -76,9 +74,6 @@ function Header({ onMembershipClick }) {
 
                     <div className="desktop-nav-right">
                         <LocationSelector />
-                        <NavLink to="/favorites">
-                            <Button text={favoriteIcon} btnType='small' />
-                        </NavLink>
                         <Button text="Log in" btnType='secondary' />
                         <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                     </div>

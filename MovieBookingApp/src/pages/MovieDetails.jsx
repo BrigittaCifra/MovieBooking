@@ -4,6 +4,7 @@ import './MovieDetails.css';
 
 import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
+import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
 import DetailsHero from "../components/Details/DetailsHero";
@@ -22,6 +23,9 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     // triggar API anropen
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
+
+    //City store
+    const cities = useCitiesStore((state) => state.cities);
 
     const navigate = useNavigate();
 
@@ -54,6 +58,12 @@ function MovieDetails() {
         fetchTrailer();
     }, [movie]);
 
+    if (!movie) return <p>Loading...</p>;
+
+    //Hämtar ut alla city id:n
+    const cityIds = movie.showtimes.map((e) => e.cityId);
+    const availableCities = cities.filter((city) => cityIds.includes(city.id));
+
     //lägg till här för att filtrera filmer till karuseller
 
     if (!movie) return <p>Loading...</p>;
@@ -64,17 +74,21 @@ function MovieDetails() {
                 trailerUrl={trailerUrl}
                 isTrailerLoading={isTrailerLoading}
             />
-
-            <section className='booking-details'>
-                <LocationSelectorWidget />
-                <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
-                <TicketPicker />
-                <Button
-                    text="Book tickets"
-                    btnType="primary medium"
-                    onClick={() => navigate(`/Booking/${id}`)}
-                />
-            </section>
+            {availableCities.length === 0
+                ? <section className='booking-details'>
+                    <p>No showtimes found</p>
+                </section>
+                : <section className='booking-details'>
+                    <LocationSelectorWidget />
+                    <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
+                    <TicketPicker />
+                    <Button
+                        text="Book tickets"
+                        btnType="primary medium"
+                        onClick={() => navigate(`/Booking/${id}`)}
+                    />
+                </section>
+            }
         </>
     )
 
