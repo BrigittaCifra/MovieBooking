@@ -33,40 +33,40 @@ export const titleData = [
 
 export const showtimesData = [
     // Airplane!
-    { id: 1, movieId: 1, day: "monday", times: ["14:00", "17:00"], date: "4 May" },
-    { id: 2, movieId: 1, day: "tuesday", times: ["14:00", "17:00"], date: "5 May" },
-    { id: 3, movieId: 1, day: "friday", times: ["13:00", "16:30"], date: "8 May" },
-    { id: 4, movieId: 1, day: "saturday", times: ["11:00", "14:00", "16:00"], date: "9 May" },
-    { id: 5, movieId: 1, day: "sunday", times: ["11:00", "14:00", "16:00"], date: "10 May" },
+    { id: 1, movieId: 1, day: "monday", times: ["14:00", "17:00"], date: "4 May", cityId: 1 },
+    { id: 2, movieId: 1, day: "tuesday", times: ["14:00", "17:00"], date: "5 May", cityId: 1 },
+    { id: 3, movieId: 1, day: "friday", times: ["13:00", "16:30"], date: "8 May", cityId: 1 },
+    { id: 4, movieId: 1, day: "saturday", times: ["11:00", "14:00", "16:00"], date: "9 May", cityId: 2 },
+    { id: 5, movieId: 1, day: "sunday", times: ["11:00", "14:00", "16:00"], date: "10 May", cityId: 2 },
 
     // Avatar
-    { id: 6, movieId: 2, day: "tuesday", times: ["16:00", "18:30"], date: "12 May" },
-    { id: 7, movieId: 2, day: "thursday", times: ["18:30", "20:00"], date: "14 May" },
-    { id: 8, movieId: 2, day: "friday", times: ["18:30", "20:00"], date: "15 May" },
-    { id: 9, movieId: 2, day: "saturday", times: ["16:00", "19:30", "21:00"], date: "16 May" },
-    { id: 10, movieId: 2, day: "sunday", times: ["15:30", "17:00"], date: "17 May" },
+    { id: 6, movieId: 2, day: "tuesday", times: ["16:00", "18:30"], date: "12 May", cityId: 1 },
+    { id: 7, movieId: 2, day: "thursday", times: ["18:30", "20:00"], date: "14 May", cityId: 1 },
+    { id: 8, movieId: 2, day: "friday", times: ["18:30", "20:00"], date: "15 May", cityId: 2 },
+    { id: 9, movieId: 2, day: "saturday", times: ["16:00", "19:30", "21:00"], date: "16 May", cityId: 3 },
+    { id: 10, movieId: 2, day: "sunday", times: ["15:30", "17:00"], date: "17 May", cityId: 3 },
 
     // The Drama
-    { id: 11, movieId: 3, day: "tuesday", times: ["20:00", "21:30"], date: "19 May" },
-    { id: 12, movieId: 3, day: "wednesday", times: ["20:00", "21:30"], date: "20 May" },
-    { id: 13, movieId: 3, day: "friday", times: ["17:00", "18:30", "20:00", "22:00"], date: "22 May" },
-    { id: 14, movieId: 3, day: "saturday", times: ["17:30", "19:30", "22:00"], date: "23 May" },
-    { id: 15, movieId: 3, day: "sunday", times: ["18:00", "19:30", "21:00"], date: "24 May" },
+    { id: 11, movieId: 3, day: "tuesday", times: ["20:00", "21:30"], date: "19 May", cityId: 1 },
+    { id: 12, movieId: 3, day: "wednesday", times: ["20:00", "21:30"], date: "20 May", cityId: 6 },
+    { id: 13, movieId: 3, day: "friday", times: ["17:00", "18:30", "20:00", "22:00"], date: "22 May", cityId: 6 },
+    { id: 14, movieId: 3, day: "saturday", times: ["17:30", "19:30", "22:00"], date: "23 May", cityId: 6 },
+    { id: 15, movieId: 3, day: "sunday", times: ["18:00", "19:30", "21:00"], date: "24 May", cityId: 6 },
 
     // GOAT
-    { id: 16, movieId: 4, day: "wednesday", times: ["12:00", "14:00", "17:00"], date: "27 May" },
-    { id: 17, movieId: 4, day: "thursday", times: ["16:30", "17:30"], date: "28 May" },
-    { id: 18, movieId: 4, day: "friday", times: ["12:00", "14:30", "16:00", "17:30"], date: "29 May" },
-    { id: 19, movieId: 4, day: "saturday", times: ["11:00", "14:00", "15:30", "17:00"], date: "30 May" },
-    { id: 20, movieId: 4, day: "sunday", times: ["11:00", "13:00", "15:30"], date: "31 May" },
+    { id: 16, movieId: 4, day: "wednesday", times: ["12:00", "14:00", "17:00"], date: "27 May", cityId: 1 },
+    { id: 17, movieId: 4, day: "thursday", times: ["16:30", "17:30"], date: "28 May", cityId: 2 },
+    { id: 18, movieId: 4, day: "friday", times: ["12:00", "14:30", "16:00", "17:30"], date: "29 May", cityId: 3 },
+    { id: 19, movieId: 4, day: "saturday", times: ["11:00", "14:00", "15:30", "17:00"], date: "30 May", cityId: 3 },
+    { id: 20, movieId: 4, day: "sunday", times: ["11:00", "13:00", "15:30"], date: "31 May", cityId: 4 },
 
     // Hoppers
-    { id: 21, movieId: 5, day: "tuesday", times: ["14:00", "17:00"], date: "2 June" },
-    { id: 22, movieId: 5, day: "wednesday", times: ["12:00", "14:00", "17:00"], date: "3 June" },
-    { id: 23, movieId: 5, day: "thursday", times: ["16:30", "17:30"], date: "4 June" },
-    { id: 24, movieId: 5, day: "friday", times: ["12:00", "14:30", "16:00", "17:30"], date: "5 June" },
-    { id: 25, movieId: 5, day: "saturday", times: ["11:00", "14:00", "15:30", "17:00"], date: "6 June" },
-    { id: 26, movieId: 5, day: "sunday", times: ["11:00", "13:00", "15:30"], date: "7 June" },
+    { id: 21, movieId: 5, day: "tuesday", times: ["14:00", "17:00"], date: "2 June", cityId: 1 },
+    { id: 22, movieId: 5, day: "wednesday", times: ["12:00", "14:00", "17:00"], date: "3 June", cityId: 1 },
+    { id: 23, movieId: 5, day: "thursday", times: ["16:30", "17:30"], date: "4 June", cityId: 5 },
+    { id: 24, movieId: 5, day: "friday", times: ["12:00", "14:30", "16:00", "17:30"], date: "5 June", cityId: 5 },
+    { id: 25, movieId: 5, day: "saturday", times: ["11:00", "14:00", "15:30", "17:00"], date: "6 June", cityId: 6 },
+    { id: 26, movieId: 5, day: "sunday", times: ["11:00", "13:00", "15:30"], date: "7 June", cityId: 6 },
 
     // Project Hail Mary
     { id: 27, movieId: 6, day: "monday", times: ["18:30"], date: "8 June" },

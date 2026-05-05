@@ -11,7 +11,20 @@ Tar gärna emot feedback ifall jag tänker fel:)
 */
 
 const useCitiesStore = create((set) => ({
-    cities: (["Stockholm", "Göteborg", "Malmö", "Uppsala", "Västerås", "Umeå"])
+
+    cities: ([
+        { id: 1, name: "Stockholm" },
+        { id: 2, name: "Göteborg" },
+        { id: 3, name: "Malmö" },
+        { id: 4, name: "Uppsala" },
+        { id: 5, name: "Västerås" },
+        { id: 6, name: "Umeå" },
+    ]),
+
+    activeCity: 1,
+
+    setActiveCity: (id) => set({ activeCity: id })
+
 }));
 
 export default useCitiesStore;

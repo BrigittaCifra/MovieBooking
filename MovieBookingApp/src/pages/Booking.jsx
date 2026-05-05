@@ -4,8 +4,9 @@ import { useParams } from "react-router";
 import useFormInput from '../hooks/useFormInput.js'
 
 //Zustand
-import useBookingStore from '../stores/bookingStore.js'
+import useBookingStore from '../stores/bookingStore.js';
 import useMoviesStore from "../stores/moviesStore";
+import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
 import Input from '../components/InputField/Input.jsx'
@@ -30,6 +31,12 @@ function Booking() {
     const { selectedSeats, clearSeats, getTotalPrice, tickets, showtime, getSum } = useBookingStore();
     const [paymentMethod, setPaymentMethod] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    //Cities store
+    const activeCity = useCitiesStore((state) => state.activeCity);
+    const cities = useCitiesStore((state) => state.cities);
+
+    const cityName = () => cities.find((e) => e.id === activeCity).name;
 
     useEffect(() => {
         if (movies.length === 0) {
@@ -169,6 +176,7 @@ function Booking() {
                             <span>👤 {movie.age}</span>
                         </div>
                         <div className="booking-summary booking-movie-info">
+                            <span>📍 {cityName()}</span>
                             <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}</span>
                             <div className='booking-tickets'>
                                 <span>👤 </span>
@@ -179,7 +187,8 @@ function Booking() {
                                             <span>{e.age} </span>
                                             <span>{e.amount} x {e.price}</span>
                                         </div>
-                                    )}</div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </>
