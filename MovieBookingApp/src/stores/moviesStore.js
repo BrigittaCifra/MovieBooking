@@ -12,7 +12,8 @@ const useMoviesStore = create((set, get) => ({
         try {
             const data = await getMovies();
             // lägger data i store(movies)
-            set({ movies: data });
+        
+            set({ movies: data, isLoading: false });
         } catch (error) {
             set({ error: "Could not load movies", isLoading: false });
         }

@@ -2,11 +2,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 16px;
-    padding: 100px 24px 24px;
+    padding: 24px;
     justify-content: center;
 }
 
-
+.allMoviesWrapper h2, .allFavoritesWrapper h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    padding: 24px 24px 0;
+}
 
 .removeBtn {
     height: fit-content;

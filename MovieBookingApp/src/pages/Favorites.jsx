@@ -17,7 +17,8 @@ function Favorites() {
     if (isLoading) return <Loading />
 
     return (
-        <div>
+        <div className="allFavoritesWrapper">
+            <h2>Favorites</h2>
             <div className="favorites-grid">
                 {favoriteMovies.length === 0
                     ? <p>Nothing saved!</p>

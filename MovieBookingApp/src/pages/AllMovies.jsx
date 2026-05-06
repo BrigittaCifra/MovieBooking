@@ -21,10 +21,14 @@ function AllMovies() {
         if (isLoading) return <Loading />;
 
     return (
+        <div className="allMoviesWrapper">
+        <h2>All Movies</h2>
         <div className="movies-grid">
+            
             {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
             ))}
+        </div>
         </div>
     );
 }
