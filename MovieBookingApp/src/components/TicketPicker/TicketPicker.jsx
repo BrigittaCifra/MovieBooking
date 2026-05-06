@@ -19,7 +19,6 @@ function TicketPicker() {
                 <div key={e.id} className="ticket-container">
                     <div>
                         <h3>{e.age}</h3>
-                        <p>{e.price} kr</p>
                     </div>
                     <div>
                         <Button

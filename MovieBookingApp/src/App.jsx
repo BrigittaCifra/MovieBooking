@@ -18,8 +18,10 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<AllMovies />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/movies">
+          <Route index element={<AllMovies />} />
+          <Route path=":id" element={<MovieDetails />} />
+        </Route>
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />

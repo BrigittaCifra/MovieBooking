@@ -4,8 +4,9 @@ import { useParams } from "react-router";
 import useFormInput from '../hooks/useFormInput.js'
 
 //Zustand
-import useBookingStore from '../stores/bookingStore.js'
+import useBookingStore from '../stores/bookingStore.js';
 import useMoviesStore from "../stores/moviesStore";
+import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
 import Input from '../components/InputField/Input.jsx'
@@ -30,6 +31,12 @@ function Booking() {
     const { selectedSeats, clearSeats, getTotalPrice, tickets, showtime, getSum } = useBookingStore();
     const [paymentMethod, setPaymentMethod] = useState("");
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    //Cities store
+    const activeCity = useCitiesStore((state) => state.activeCity);
+    const cities = useCitiesStore((state) => state.cities);
+
+    const cityName = () => cities.find((e) => e.id === activeCity).name;
 
     useEffect(() => {
         if (movies.length === 0) {
@@ -119,6 +126,7 @@ function Booking() {
 
                 <div className="booking-payment">
                     <h2>Betalning</h2>
+                    <Input label="Add a voucher" />
                     <label className={`payment-option ${paymentMethod === "swish" ? "active" : ""}`}>
                         <input
                             type="radio"
@@ -142,8 +150,6 @@ function Booking() {
                 </div>
 
                 <form action="" onSubmit={handleSubmit}>
-                    <h2>Payment</h2>
-                    <Input label="Add a voucher" />
                     <Button
                         btnType="primary medium"
                         text="Purchase"
@@ -169,6 +175,7 @@ function Booking() {
                             <span>👤 {movie.age}</span>
                         </div>
                         <div className="booking-summary booking-movie-info">
+                            <span>📍 {cityName()}</span>
                             <span>📅 {showtime.date}, {showtime.day + " " + showtime.time}</span>
                             <div className='booking-tickets'>
                                 <span>👤 </span>
@@ -177,9 +184,10 @@ function Booking() {
                                         e.amount > 0 &&
                                         <div key={e.id}>
                                             <span>{e.age} </span>
-                                            <span>{e.amount} x {e.price}</span>
+                                            <span>x {e.amount}</span>
                                         </div>
-                                    )}</div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </>
@@ -188,8 +196,6 @@ function Booking() {
                     <p>Summa</p>
                     {/* Utgår från att priset sätt utifrån sätten*/}
                     <h3>{getTotalPrice()} kr</h3>
-                    {/* Utgår från att priset sätt utifrån valda biljetter*/}
-                    <h3>{getSum()}</h3>
                 </div>
             </div>
         </div>
