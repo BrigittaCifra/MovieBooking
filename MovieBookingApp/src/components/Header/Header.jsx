@@ -46,7 +46,6 @@ function Header({ onMembershipClick }) {
                         <SearchBar />
 
                         <div>
-                            <Button text={<>{favoriteIcon} Favorites</>} btnType='secondary' />
                             <Button text="Log in" btnType='secondary' />
                             <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                         </div>
@@ -74,9 +73,6 @@ function Header({ onMembershipClick }) {
 
                     <div className="desktop-nav-right">
                         <LocationSelector />
-                        <NavLink to="/favorites">
-                            <Button text={favoriteIcon} btnType='small' />
-                        </NavLink>
                         <Button text="Log in" btnType='secondary' />
                         <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                     </div>

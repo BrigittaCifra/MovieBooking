@@ -20,6 +20,19 @@
     gap: 2rem;
 }
 
+.booking-left>div:nth-child(1),
+.booking-left>div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.booking-left h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    color: var(--color-primary, #c9a84c);
+}
+
 .booking-right {
     order: 1;
     flex: 1;

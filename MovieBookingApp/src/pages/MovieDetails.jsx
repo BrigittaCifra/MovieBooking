@@ -4,12 +4,14 @@ import './MovieDetails.css';
 
 import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
+import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
 import DetailsHero from "../components/Details/DetailsHero";
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
 import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
 import Button from "../components/Button/Button.jsx";
+import LocationSelectorWidget from "../components/LocationSelector/LocationSelectorWidget.jsx"
 
 function MovieDetails() {
     const { id } = useParams();
@@ -21,6 +23,9 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     // triggar API anropen
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
+
+    //City store
+    const cities = useCitiesStore((state) => state.cities);
 
     const navigate = useNavigate();
 
@@ -53,9 +58,14 @@ function MovieDetails() {
         fetchTrailer();
     }, [movie]);
 
+    if (!movie) return <p>Loading...</p>;
+
+    //Hämtar ut alla city id:n
+    const cityIds = movie.showtimes.map((e) => e.cityId);
+    const availableCities = cities.filter((city) => cityIds.includes(city.id));
+
     //lägg till här för att filtrera filmer till karuseller
 
-    if (!movie) return <p>Loading...</p>;
     return (
         <>
             <DetailsHero
@@ -63,15 +73,20 @@ function MovieDetails() {
                 trailerUrl={trailerUrl}
                 isTrailerLoading={isTrailerLoading}
             />
-
             <section className='booking-details'>
-                <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
-                <TicketPicker />
-                <Button
-                    text="Book tickets"
-                    btnType="primary medium"
-                    onClick={() => navigate(`/Booking/${id}`)}
-                />
+                {availableCities.length === 0
+                    ? <p>No showtimes found</p>
+                    : <>
+                        <LocationSelectorWidget movieData={movie} />
+                        <ShowtimePicker movieData={movie} />
+                        <TicketPicker />
+                        <Button
+                            text="Book tickets"
+                            btnType="primary medium"
+                            onClick={() => navigate(`/Booking/${id}`)}
+                        />
+                    </>
+                }
             </section>
         </>
     )
