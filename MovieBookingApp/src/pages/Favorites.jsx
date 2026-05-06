@@ -1,14 +1,24 @@
-import MovieCard from '../components/MovieCard/MovieCard.jsx';
+
+// Stores
 import useFavoritesStore from "../stores/favoritesStore.js";
+import useMoviesStore from "../stores/moviesStore.js";
+
+// Components
+import MovieCard from '../components/MovieCard/MovieCard.jsx';
+import Loading from '../components/Loading/Loading.jsx';
 import './pages.css';
 import '../components/Button/Button.css';
 
-export default function Favorites() {
+function Favorites() {
     const favoriteMovies = useFavoritesStore((state) => state.favorites);
     const clearFavorites = useFavoritesStore((state) => state.clearFavorites);
-    console.log("favoriteMovies", favoriteMovies);
+    const isLoading = useMoviesStore(state => state.isLoading);
+    
+    if (isLoading) return <Loading />
+
     return (
-        <div>
+        <div className="allFavoritesWrapper">
+            <h2>Favorites</h2>
             <div className="favorites-grid">
                 {favoriteMovies.length === 0
                     ? <p>Nothing saved!</p>
@@ -27,3 +37,5 @@ export default function Favorites() {
         </div>
     )
 }
+
+export default Favorites;

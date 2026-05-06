@@ -7,11 +7,15 @@ import useMoviesStore from "../stores/moviesStore.js";
 import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
-import DetailsHero from "../components/Details/DetailsHero";
+import DetailsHero from '../components/Details/DetailsHero';
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
+import Button from '../components/Button/Button.jsx';
+import Loading from '../components/Loading/Loading.jsx';
 import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
-import Button from "../components/Button/Button.jsx";
 import LocationSelectorWidget from "../components/LocationSelector/LocationSelectorWidget.jsx"
+
+//Page
+import NotFound from './NotFound.jsx'
 
 function MovieDetails() {
     const { id } = useParams();
@@ -23,6 +27,8 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     // triggar API anropen
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
+    // Loading state från store
+    const isLoading = useMoviesStore((state) => state.isLoading);
 
     //City store
     const cities = useCitiesStore((state) => state.cities);
@@ -38,7 +44,7 @@ function MovieDetails() {
         if (movies.length === 0) {
             fetchMovies();
         }
-    }, []);
+    }, [movies.length, fetchMovies]);
 
     useEffect(() => {
         if (!movie) return;
@@ -52,19 +58,19 @@ function MovieDetails() {
                 setIsTrailerLoading(false);
             } catch (err) {
                 console.error("Error fetching trailer");
-                return null;
+                setTrailerUrl(null);
+                setIsTrailerLoading(false);
             }
         }
         fetchTrailer();
     }, [movie]);
 
-    if (!movie) return <p>Loading...</p>;
+    if (isLoading) return <Loading />;
+    if (!movie) return <NotFound />;
 
     //Hämtar ut alla city id:n
     const cityIds = movie.showtimes.map((e) => e.cityId);
     const availableCities = cities.filter((city) => cityIds.includes(city.id));
-
-    //lägg till här för att filtrera filmer till karuseller
 
     return (
         <>

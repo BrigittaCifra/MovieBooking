@@ -25,9 +25,9 @@ export const titleData = [
     { id: 21, title: "The Mummy", newRelease: false, comingSoon: true },
     { id: 22, title: "Animal Farm", newRelease: false, comingSoon: true },
     { id: 23, title: "Mother Mary", newRelease: false, comingSoon: true },
-    { id: 24, title: "Mortal Combat 2", newRelease: false, comingSoon: true },
+    { id: 24, title: "Hokum", newRelease: false, comingSoon: true },
     { id: 25, title: "Hamlet", newRelease: false, comingSoon: true },
-    { id: 26, title: "Bus Boys", newRelease: false, comingSoon: true },
+    { id: 26, title: "The Sheep Detectives", newRelease: false, comingSoon: true },
 
 ];
 

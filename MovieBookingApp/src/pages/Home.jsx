@@ -7,11 +7,13 @@ import useMoviesStore from "../stores/moviesStore.js";
 import Campaign from '../components/Campaign/Campaign.jsx';
 import MembershipForm from '../components/MembershipForm/MembershipForm.jsx';
 import MovieCarousel from '../components/MovieCarousel/MovieCarousel.jsx';
+import Loading from '../components/Loading/Loading.jsx';
 
 function Home() {
     const [showMembershipForm, setShowMembershipForm] = useState(false);
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const movies = useMoviesStore((state) => state.movies);
+    const isLoading = useMoviesStore(state => state.isLoading);
 
     useEffect(() => {
         if (movies.length === 0) {
@@ -21,6 +23,9 @@ function Home() {
 
     const newReleases = movies.filter((m) => m.newRelease === true);
     const comingSoon = movies.filter((m) => m.comingSoon === true);
+
+    if (isLoading) return <Loading />;
+    
 
     return (
         <>

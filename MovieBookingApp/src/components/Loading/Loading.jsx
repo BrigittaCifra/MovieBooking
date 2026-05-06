@@ -2,8 +2,8 @@ import './Loading.css';
 
 function Loading() {
     return (
-        <div className="loading">
-            <img src="../../public/images/spinner.png" alt="Loading..." />
+        <div className="loadingWrapper" aria-label="Loading">
+            <div className="loadingSpinner"></div>
         </div>
     );
 }

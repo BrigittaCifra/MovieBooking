@@ -1,0 +1,22 @@
+.loadingWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: transparent
+}
+
+.loadingSpinner {
+   width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: conic-gradient(#d3b24e, transparent);
+  mask: radial-gradient(farthest-side, transparent 70%, black 71%);
+ animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
