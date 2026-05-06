@@ -126,6 +126,7 @@ function Booking() {
 
                 <div className="booking-payment">
                     <h2>Betalning</h2>
+                    <Input label="Add a voucher" />
                     <label className={`payment-option ${paymentMethod === "swish" ? "active" : ""}`}>
                         <input
                             type="radio"
@@ -149,8 +150,6 @@ function Booking() {
                 </div>
 
                 <form action="" onSubmit={handleSubmit}>
-                    <h2>Payment</h2>
-                    <Input label="Add a voucher" />
                     <Button
                         btnType="primary medium"
                         text="Purchase"

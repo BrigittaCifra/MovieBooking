@@ -74,21 +74,21 @@ function MovieDetails() {
                 trailerUrl={trailerUrl}
                 isTrailerLoading={isTrailerLoading}
             />
-            {availableCities.length === 0
-                ? <section className='booking-details'>
-                    <p>No showtimes found</p>
-                </section>
-                : <section className='booking-details'>
-                    <LocationSelectorWidget />
-                    <ShowtimePicker movieId={id} /> {/*Jag tror att det blir showtimes={movie.showtimes} */}
-                    <TicketPicker />
-                    <Button
-                        text="Book tickets"
-                        btnType="primary medium"
-                        onClick={() => navigate(`/Booking/${id}`)}
-                    />
-                </section>
-            }
+            <section className='booking-details'>
+                {availableCities.length === 0
+                    ? <p>No showtimes found</p>
+                    : <>
+                        <LocationSelectorWidget />
+                        <ShowtimePicker movieData={movie} />
+                        <TicketPicker />
+                        <Button
+                            text="Book tickets"
+                            btnType="primary medium"
+                            onClick={() => navigate(`/Booking/${id}`)}
+                        />
+                    </>
+                }
+            </section>
         </>
     )
 

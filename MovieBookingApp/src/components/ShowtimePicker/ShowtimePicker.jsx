@@ -6,32 +6,73 @@ import useCitiesStore from "../../stores/citiesStore.js";
 import SelectableCard from '../SelectableCard/SelectableCard.jsx'
 import './ShowtimePicker.css';
 
-function ShowtimePicker({ movieId }) {
+function ShowtimePicker({ movieData }) {
+    //Booking store
     const showtime = useBookingStore((state) => state.showtime);
     const setShowtime = useBookingStore((state) => state.setShowtime);
 
+    //City store
     const activeCity = useCitiesStore((state) => state.activeCity);
 
-    const idNum = Number.parseInt(movieId);
-    const movie = showtimesData.filter((e) => e.movieId === idNum && e.cityId === activeCity);
+    //Hämtar ut alla visningar för den aktiva staden
+    const movie = movieData.showtimes.filter((e) => e.cityId === activeCity);
 
+    //Om det inte hittades visningar för den aktiva staden
     if (movie.length === 0) {
         return <p>No showtimes found</p>
     }
 
-    const [activeDate, setActiveDate] = useState(movie[0].id);
-    const [activeShowtime, setActiveShowtime] = useState(0);
+    const [activeDate, setActiveDate] = useState(() => {
 
-    useEffect(() => {
-        setActiveDate(movie[0].id);
-        setActiveShowtime(0);
+        //Om det redan finns ett värde i storen
+        if (showtime.id) {
+            const match = movie.find((e) => e.id === showtime.id);
+            return match.id;
+        }
+        // Första gången, sätter ett initialt värde
         setShowtime(movie[0].day, movie[0].date, movie[0].times[0]);
+        return movie[0].id;
+
+    });
+
+    const [activeShowtime, setActiveShowtime] = useState(() => {
+
+        //Om det redan finns ett värde i storen
+        if (showtime.time) {
+            // Hitta dagen som matchar storen, leta sedan efter indexet för den sparade tiden
+            const currentDay = movie.find((e) => e.id === showtime.id);
+            return currentDay.times.findIndex((e) => e === showtime.time);
+        }
+        return 0;
+
+    });
+
+    //useEffect behövs här för att kunna uppdatera activeDate och activeShowtime baserat på om activecity ändras och trigga igång en ny render
+    useEffect(() => {
+
+        //Hämtar ut movie objektet vars id matchar
+        const savedDate = movie.find((e) => e.id === showtime.id);
+
+        //Om savedDate är undefined (vilket är alltid fallet närman byter activeCity)
+        if (!savedDate) {
+            //Återställ det visuella datumvalet till första datumet för den nya staden (lokalt till komponenten)
+            setActiveDate(movie[0].id);
+            //Återställ det visuella tidsvalet till första tiden för valda datumet (lokalt till komponenten)
+            setActiveShowtime(0);
+            //Uppdatera booking store med den nya stadens första datum och tid 
+            setShowtime(movie[0].day, movie[0].date, movie[0].times[0], movie[0].id);
+            return;
+        }
+
     }, [activeCity]);
 
+    //Sätter en aktiv css klass på aktiva komponenten
     const dateStyling = (id) => `card ${activeDate === id ? "active" : ""}`;
     const showtimeStyling = (id) => `card ${activeShowtime === id ? "active" : ""}`;
 
-    const findTimesArray = () => movie.find((e) => e.id === activeDate)?.times ?? [];
+    //Hämtar ut alla visningstider för det aktiva datumet
+    const findTimesArray = () => movie.find((e) => e.id === activeDate).times;
+    //Hämtar ut den valda visningstiden 
     const findActiveDate = () => movie.find((e) => e.id === activeDate);
 
     return (
@@ -46,7 +87,7 @@ function ShowtimePicker({ movieId }) {
                             onClick={() => {
                                 setActiveDate(e.id);
                                 setActiveShowtime(0);
-                                setShowtime(e.day, e.date, e.times[0]);
+                                setShowtime(e.day, e.date, e.times[0], e.id);
                             }}
                             type={dateStyling(e.id)}
                             span={e.date}

@@ -35,8 +35,8 @@ const useBookingStore = create((set, get) => ({
             )
         })),
 
-    setShowtime: (day, date, time) =>
-        set({ showtime: { day, date, time } }),
+    setShowtime: (day, date, time, id) =>
+        set({ showtime: { day, date, time, id } }),
 
     toggleSeat: (seat) =>
         set((state) => {
