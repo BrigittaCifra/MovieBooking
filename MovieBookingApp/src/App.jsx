@@ -13,8 +13,13 @@ import Favorites from './pages/Favorites.jsx';
 import AllMovies from './pages/AllMovies.jsx';
 import NotFound from './pages/NotFound.jsx';
 
+//temporary
+import Loading from './components/Loading/Loading.jsx';
+
 function App() {
   return (
+    <Loading />
+    /* 
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
@@ -24,7 +29,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes>
+    </Routes>*/
   );
 }
 
