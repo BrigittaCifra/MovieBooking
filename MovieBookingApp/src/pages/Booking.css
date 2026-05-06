@@ -197,6 +197,12 @@
     flex-direction: column;
 }
 
+.booking-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
 .booking-success {
     display: flex;
     flex-direction: column;

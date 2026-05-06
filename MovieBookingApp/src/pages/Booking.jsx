@@ -1,6 +1,7 @@
 //Hooks
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import useFormInput from '../hooks/useFormInput.js'
 
 //Zustand
@@ -20,6 +21,7 @@ import './Booking.css'
 
 function Booking() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     //Movie store
     const getMovieById = useMoviesStore((state) => state.getMovieById);
@@ -47,6 +49,10 @@ function Booking() {
     //Skapas genom custom hooks
     const email = useFormInput("");
     const [error, setError] = useState(null);
+
+    const handleCancel = () => {
+        navigate(-1);
+    };
 
     //Hanterar validering när användaren lämnar input fälltet
     const handleBlur = (e) => {
@@ -149,14 +155,22 @@ function Booking() {
                     </label>
                 </div>
 
-                <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={handleSubmit}>
+                <div className="booking-buttons">
                     <Button
                         btnType="primary medium"
                         text="Purchase"
                         type="Submit"
                         disabled={error || !email.value}
                     />
-                </form>
+                    <Button
+                        btnType="primary medium"
+                        text="Cancel"
+                        type="button"
+                        onClick={handleCancel}
+                    />
+                </div>
+            </form>
             </div>
 
             <div className="booking-right">
