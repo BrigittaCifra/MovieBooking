@@ -32,8 +32,6 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
         return () => window.removeEventListener("resize", checkIfTruncated);
     }, [movie.description, isExpanded]);
 
-    if (!movie) return <p>Loading...</p>;
-
     return (
         // Visar trailer om den finns och användaren har startat den
         <div className="detailsHero">
@@ -74,8 +72,9 @@ export default function DetailsHero({ movie, trailerUrl, isTrailerLoading }) {
                 <div className="detailsHeading">
                     <h1>{movie.title}</h1>
                     <button
+                        type="button"
                         className="detailFavoritesButton"
-                        aria-label="Add to favorites"
+                        aria-label= {exists ? "Remove from favorites" : "Add to favorites"}
                         onClick={() => { toggleFavorite(movie) }}
                     >
                         <span className={`material-symbols-outlined ${exists ? "filled" : ""}`}>

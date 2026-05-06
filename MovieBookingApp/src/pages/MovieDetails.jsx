@@ -6,10 +6,13 @@ import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
 
 //Components
-import DetailsHero from "../components/Details/DetailsHero";
+import DetailsHero from '../components/Details/DetailsHero';
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
-import TicketPicker from "../components/TicketPicker/TicketPicker.jsx";
-import Button from "../components/Button/Button.jsx";
+import TicketPicker from '../components/TicketPicker/TicketPicker.jsx';
+import Button from '../components/Button/Button.jsx';
+import Loading from '../components/Loading/Loading.jsx';
+//Page
+import NotFound from './NotFound.jsx'
 
 function MovieDetails() {
     const { id } = useParams();
@@ -21,6 +24,8 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     // triggar API anropen
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
+    // Loading state från store
+    const isLoading = useMoviesStore((state) => state.isLoading);
 
     const navigate = useNavigate();
 
@@ -33,7 +38,7 @@ function MovieDetails() {
         if (movies.length === 0) {
             fetchMovies();
         }
-    }, []);
+    }, [movies.length, fetchMovies]);
 
     useEffect(() => {
         if (!movie) return;
@@ -47,15 +52,16 @@ function MovieDetails() {
                 setIsTrailerLoading(false);
             } catch (err) {
                 console.error("Error fetching trailer");
-                return null;
+                setTrailerUrl(null);
+                setIsTrailerLoading(false);
             }
         }
         fetchTrailer();
     }, [movie]);
 
-    //lägg till här för att filtrera filmer till karuseller
+    if (isLoading) return <Loading />;
+    if (!movie) return <NotFound />;
 
-    if (!movie) return <p>Loading...</p>;
     return (
         <>
             <DetailsHero
@@ -70,7 +76,7 @@ function MovieDetails() {
                 <Button
                     text="Book tickets"
                     btnType="primary medium"
-                    onClick={() => navigate(`/Booking/${id}`)}
+                    onClick={() => navigate(`/booking/${id}`)}
                 />
             </section>
         </>

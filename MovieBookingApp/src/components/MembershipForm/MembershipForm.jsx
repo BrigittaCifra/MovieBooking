@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./MembershipForm.css";
 
 // tar emot onClose som prop för att kunna stänga popupen utifrån när den används i App.jsx
-export default function MembershipForm({ onClose }) {
+function MembershipForm({ onClose }) {
     // Lagrar värden från alla inputfält i ett objekt för enklare hantering
     const [formData, setFormData] = useState({
         firstName: "",
@@ -210,3 +210,5 @@ export default function MembershipForm({ onClose }) {
         </div>
     );
 }
+
+export default MembershipForm;
