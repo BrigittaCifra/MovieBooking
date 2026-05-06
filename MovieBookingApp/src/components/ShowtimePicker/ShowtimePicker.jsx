@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { showtimesData } from '../../services/movieData.js';
 import useBookingStore from '../../stores/bookingStore.js';
 import useCitiesStore from "../../stores/citiesStore.js";
 
@@ -16,11 +15,6 @@ function ShowtimePicker({ movieData }) {
 
     //Hämtar ut alla visningar för den aktiva staden
     const movie = movieData.showtimes.filter((e) => e.cityId === activeCity);
-
-    //Om det inte hittades visningar för den aktiva staden
-    if (movie.length === 0) {
-        return <p>No showtimes found</p>
-    }
 
     const [activeDate, setActiveDate] = useState(() => {
 
@@ -66,13 +60,22 @@ function ShowtimePicker({ movieData }) {
 
     }, [activeCity]);
 
+    //Om det inte hittades visningar för den aktiva staden
+    if (movie.length === 0) {
+        return <p>No showtimes found</p>
+    }
+
     //Sätter en aktiv css klass på aktiva komponenten
     const dateStyling = (id) => `card ${activeDate === id ? "active" : ""}`;
     const showtimeStyling = (id) => `card ${activeShowtime === id ? "active" : ""}`;
 
     //Hämtar ut alla visningstider för det aktiva datumet
-    const findTimesArray = () => movie.find((e) => e.id === activeDate).times;
-    //Hämtar ut den valda visningstiden 
+    const findTimesArray = () => {
+        const activeDay = movie.find((e) => e.id === activeDate);
+        if (!activeDay) return [];
+        return activeDay.times;
+    }
+    //Hämtar ut den valda visningstiden
     const findActiveDate = () => movie.find((e) => e.id === activeDate);
 
     return (
@@ -104,7 +107,7 @@ function ShowtimePicker({ movieData }) {
                             key={index}
                             onClick={() => {
                                 setActiveShowtime(index);
-                                setShowtime(findActiveDate().day, findActiveDate().date, e);
+                                setShowtime(findActiveDate().day, findActiveDate().date, e, findActiveDate().id);
                             }}
                             text={e}
                             type={showtimeStyling(index)}

@@ -78,7 +78,7 @@ function MovieDetails() {
                 {availableCities.length === 0
                     ? <p>No showtimes found</p>
                     : <>
-                        <LocationSelectorWidget />
+                        <LocationSelectorWidget movieData={movie} />
                         <ShowtimePicker movieData={movie} />
                         <TicketPicker />
                         <Button
