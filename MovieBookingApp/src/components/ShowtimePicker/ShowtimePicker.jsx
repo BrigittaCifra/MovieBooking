@@ -39,7 +39,9 @@ function ShowtimePicker({ movieData }) {
         if (showtime.time) {
             // Hitta dagen som matchar storen, leta sedan efter indexet för den sparade tiden
             const currentDay = movie.find((e) => e.id === showtime.id);
-            return currentDay.times.findIndex((e) => e === showtime.time);
+            if (currentDay) {
+                return currentDay.times.findIndex((e) => e === showtime.time);
+            }
         }
         return 0;
 

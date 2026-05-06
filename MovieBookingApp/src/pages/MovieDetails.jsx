@@ -66,7 +66,6 @@ function MovieDetails() {
 
     //lägg till här för att filtrera filmer till karuseller
 
-    if (!movie) return <p>Loading...</p>;
     return (
         <>
             <DetailsHero
