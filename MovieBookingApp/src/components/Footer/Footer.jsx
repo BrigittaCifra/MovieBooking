@@ -11,23 +11,23 @@ export default function Footer() {
           </div>
 
           <div className="footer_col">
-            <h4>Utforska</h4>
-            <Link to="/">Nu på bio</Link>
-            <Link to="/">Kommande</Link>
-            <Link to="/">Erbjudanden</Link>
-            <Link to="/">Presentkort</Link>
+            <h4>explore</h4>
+            <Link to="/">New to cinema</Link>
+            <Link to="/">Coming soon</Link>
+            <Link to="/">Offers</Link>
+            <Link to="/">Gift cards</Link>
           </div>
 
           <div className="footer_col">
-            <h4>Hjälp</h4>
-            <Link to="/">Vanliga frågor</Link>
-            <Link to="/">Återbetalningar</Link>
-            <Link to="/">Tillgänglighet</Link>
-            <Link to="/">Kontakt</Link>
+            <h4>Help</h4>
+            <Link to="/">Common questions</Link>
+            <Link to="/">Refunds</Link>
+            <Link to="/">Accessibility</Link>
+            <Link to="/">Contact</Link>
           </div>
 
           <div className="footer_col">
-            <h4>Följ oss</h4>
+            <h4>Follow us</h4>
             <Link to="/">Instagram</Link>
             <Link to="/">Facebook</Link>
             <Link to="/">TikTok</Link>
@@ -38,8 +38,8 @@ export default function Footer() {
         <div className="footer_bottom">
           <span>© CinEvent AB</span>
           <div className="footer_legal">
-            <Link to="/">Integritetspolicy</Link>
-            <Link to="/">Användarvillkor</Link>
+            <Link to="/">Privacy Policy</Link>
+            <Link to="/">Terms of Use</Link>
             <Link to="/">Cookies</Link>
           </div>
         </div>

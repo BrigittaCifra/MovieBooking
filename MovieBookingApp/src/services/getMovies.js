@@ -1,6 +1,5 @@
-
 // importerar mockdata
-import { titleData, showtimesData } from "./mockData.js";
+import { titleData, showtimesData } from "./movieData.js";
 
 // importera API nycklar
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -24,18 +23,20 @@ export async function getMovie(movie) {
 
         // portrait till cards & alla bilder som är högre än de är breda
         // null om path inte finns
-        const posterPath = tmdbData.results[0].poster_path;
+        const posterPath = tmdbData.results?.[0]?.poster_path;
         const portrait = posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : null;
 
         // backdrop till hero/details & alla bilder som är bredare än de är höga
         // null om path inte finns
-        const backdropPath = tmdbData.results[0].backdrop_path;
+        const backdropPath = tmdbData.results?.[0]?.backdrop_path;
         const hero = backdropPath ? `https://image.tmdb.org/t/p/w1280${backdropPath}` : null;
+
+        const tmdbId = tmdbData.results?.[0]?.id;
 
         // objektet som skapas (med validering)
         return {
             id: movie.id,
-            tmdbId: tmdbData.results[0].id,
+            tmdbId: tmdbId,
             title: movie.title,
             newRelease: movie.newRelease,
             comingSoon: movie.comingSoon,
@@ -44,28 +45,24 @@ export async function getMovie(movie) {
                 ? omdbData.Plot
                 : "No description available",
 
-            // omdöme
-            rating: omdbData.imdbRating !== "N/A"
-                ? omdbData.imdbRating
-                : "No rating",
-
             // åldersgräns
-            age: omdbData.Rated !== "N/A"
-            ? omdbData.Rated
-            : "-",
+            rated: omdbData.Rated !== "N/A"
+                ? omdbData.Rated
+                : "-",
 
             // längd
             runtime: omdbData.Runtime !== "N/A"
                 ? omdbData.Runtime
                 : "Runtime unknown",
-            
+
             released: omdbData.Released !== "N/A"
-                ?omdbData.Released
+                ? omdbData.Released
                 : "-",
 
             // genre kommer som träng med komma, split gör om det till array
-            genre: omdbData.Genre !== "N/A"
-               ? omdbData.Genre.split(", ") : [],
+            genre: omdbData?.Genre && omdbData.Genre !== "N/A"
+                ? omdbData.Genre.split(", ")
+                : [],
 
             country: omdbData.Country !== "N/A"
                 ? omdbData.Country
@@ -76,12 +73,12 @@ export async function getMovie(movie) {
                 : "Unknown",
 
             // Skådespelare, kommer som en sträng, gör om till array
-            actors: omdbData.Actors !== "N/A"
-            ? omdbData.Actors.split(", ") : [],
+            actors: omdbData?.Actors && omdbData.Actors !== "N/A"
+                ? omdbData.Actors.split(", ") : [],
 
             director: omdbData.Director !== "N/A"
-            ? omdbData.Director
-            : "Unknown",
+                ? omdbData.Director
+                : "Unknown",
 
             portraitImg: portrait || "/images/placeholderPortrait.png",
 
@@ -98,8 +95,7 @@ export async function getMovie(movie) {
             newRelease: movie.newRelease,
             comingSoon: movie.comingSoon,
             description: "Could not load description.",
-            rating: "-",
-            age: "-",
+            rated: "-",
             runtime: "-",
             released: "-",
             genre: ["Unknown"],

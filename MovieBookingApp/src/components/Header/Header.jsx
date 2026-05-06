@@ -7,6 +7,7 @@ import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
 import SearchBar from "../SearchBar";
+import LocationSelector from "../LocationSelector/LocationSelector.jsx";
 
 function Header({ onMembershipClick }) {
     //Håller koll på om hamburgar menyn på mobila enheter (upp till 768 px) är öppen eller stängd
@@ -15,7 +16,7 @@ function Header({ onMembershipClick }) {
     //Meny länkarna finns utanför JSX delen för att enkelt kunna lägga till fler meny länkar i framtiden
     const menuLinks = [
         { id: 1, name: "Movies" },
-        { id: 2, name: "Events" }
+        { id: 2, name: "Favorites" }
     ];
 
     return (
@@ -27,7 +28,7 @@ function Header({ onMembershipClick }) {
                     <Link to="/" className='header_logo'>CinEvent</Link>
 
                     <div>
-                        <Button text={<>{locationIcon} Select location</>} type='small' />
+                        <LocationSelector />
                         <Button
                             text={mobileMenuOpen ? menuCloseIcon : menuOpenIcon}
                             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -45,9 +46,9 @@ function Header({ onMembershipClick }) {
                         <SearchBar />
 
                         <div>
-                            <Button text={<>{favoriteIcon} Favorites</>} type='secondary' />
-                            <Button text="Log in" type='secondary' />
-                            <Button text='Membership' type='primary' onClick={onMembershipClick} />
+                            <Button text={<>{favoriteIcon} Favorites</>} btnType='secondary' />
+                            <Button text="Log in" btnType='secondary' />
+                            <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                         </div>
 
                     </div>
@@ -72,10 +73,12 @@ function Header({ onMembershipClick }) {
                     </div>
 
                     <div className="desktop-nav-right">
-                        <Button text={<>{locationIcon} Select location</>} type='small' />
-                        <Button text={favoriteIcon} type='small' />
-                        <Button text="Log in" type='secondary' />
-                        <Button text='Membership' type='primary' onClick={onMembershipClick} />
+                        <LocationSelector />
+                        <NavLink to="/favorites">
+                            <Button text={favoriteIcon} btnType='small' />
+                        </NavLink>
+                        <Button text="Log in" btnType='secondary' />
+                        <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
                     </div>
                 </div>
 

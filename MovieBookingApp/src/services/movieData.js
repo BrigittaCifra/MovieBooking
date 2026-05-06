@@ -1,7 +1,7 @@
 
 // Mock data for movie objects & API calls
 
-const titleData = [
+export const titleData = [
     { id: 1, title: "Airplane!", newRelease: false, comingSoon: false },
     { id: 2, title: "Avatar: Fire and Ash", newRelease: false, comingSoon: false },
     { id: 3, title: "The Drama", newRelease: false, comingSoon: false },
@@ -17,10 +17,10 @@ const titleData = [
     { id: 13, title: "Whistle", newRelease: false, comingSoon: false },
     { id: 14, title: "Tafiti", newRelease: false, comingSoon: false },
     { id: 15, title: "I Swear", newRelease: false, comingSoon: false },
-    { id: 16, title: "Operation Beaver", newRelease: false, comingSoon: false },
+    { id: 16, title: "The Devil Wears Prada 2", newRelease: true, comingSoon: false },
     { id: 17, title: "If I Had Legs I'd Kick You", newRelease: true, comingSoon: false },
     { id: 18, title: "Father Mother Sister Brother", newRelease: true, comingSoon: false },
-    { id: 19, title: "Booth Bangla", newRelease: true, comingSoon: false },
+    { id: 19, title: "Bhooth Bangla", newRelease: true, comingSoon: false },
     { id: 20, title: "Michael", newRelease: false, comingSoon: true },
     { id: 21, title: "The Mummy", newRelease: false, comingSoon: true },
     { id: 22, title: "Animal Farm", newRelease: false, comingSoon: true },
