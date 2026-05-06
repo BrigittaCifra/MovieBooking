@@ -15,10 +15,9 @@ function Header({ onMembershipClick }) {
 
     //Meny länkarna finns utanför JSX delen för att enkelt kunna lägga till fler meny länkar i framtiden
     const menuLinks = [
-        { id: 1, name: "Movies", path: "/movies" },
-        { id: 2, name: "Favorites", path: "/favorites" }
+        { id: 1, name: "Movies" },
+        { id: 2, name: "Favorites" }
     ];
-
 
     return (
         <header>

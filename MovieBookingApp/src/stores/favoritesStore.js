@@ -16,7 +16,6 @@ const useFavoritesStore = create((set, get) => ({
         
         toggleFavorite: (movie) =>
             set((state) => {
-                console.log("toggleFavorite called", movie.id);
                 const exists = state.favorites.some((f) => f.id === movie.id);
                 return {
                     favorites: exists

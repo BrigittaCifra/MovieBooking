@@ -45,15 +45,6 @@ export async function getMovie(movie) {
                 ? omdbData.Plot
                 : "No description available",
 
-            /*
-            // Kommenterar ut denna tillfälligt då vi inte använder omdöme just nu
-            // Ta bort eller lägg tillbaks senare
-        // omdöme
-        rating: omdbData.imdbRating !== "N/A"
-            ? omdbData.imdbRating
-            : "No rating",
-*/
-
             // åldersgräns
             rated: omdbData.Rated !== "N/A"
                 ? omdbData.Rated
@@ -104,16 +95,13 @@ export async function getMovie(movie) {
             newRelease: movie.newRelease,
             comingSoon: movie.comingSoon,
             description: "Could not load description.",
-            /* 
-            rating: "-",
-            */
             rated: "-",
             runtime: "-",
             released: "-",
-            genre: "Unknown",
+            genre: ["Unknown"],
             country: "Unknown",
             language: "Unknown",
-            actors: "Unknown",
+            actors: ["Unknown"],
             director: "Unknown",
             portraitImg: "/images/placeholderPortrait.png",
             heroImg: "/images/placeholderHero.png",

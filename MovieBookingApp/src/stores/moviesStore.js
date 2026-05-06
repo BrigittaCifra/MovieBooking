@@ -3,12 +3,19 @@ import { getMovies } from "../services/getMovies.js";
 
 const useMoviesStore = create((set, get) => ({
     movies: [],
+    isLoading: false,
+    error: null,
 
     // hämtar data från getMovies
     fetchMovies: async () => {
-        const data = await getMovies();
-        // lägger data i store(movies)
-        set({ movies: data });
+        set({ isLoading: true, error: null });
+        try {
+            const data = await getMovies();
+            // lägger data i store(movies)
+            set({ movies: data });
+        } catch (error) {
+            set({ error: "Could not load movies", isLoading: false });
+        }
     },
 
     // hitta movie utifrån id i movies

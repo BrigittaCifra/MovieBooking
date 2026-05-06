@@ -18,10 +18,12 @@ function ShowtimePicker({ movieData }) {
 
     const [activeDate, setActiveDate] = useState(() => {
 
+        if (movie.length === 0) return null;
+
         //Om det redan finns ett värde i storen
         if (showtime.id) {
             const match = movie.find((e) => e.id === showtime.id);
-            return match.id;
+            if (match) return match.id;
         }
         // Första gången, sätter ett initialt värde
         setShowtime(movie[0].day, movie[0].date, movie[0].times[0]);
@@ -30,6 +32,8 @@ function ShowtimePicker({ movieData }) {
     });
 
     const [activeShowtime, setActiveShowtime] = useState(() => {
+
+        if (movie.length === 0) return null;
 
         //Om det redan finns ett värde i storen
         if (showtime.time) {

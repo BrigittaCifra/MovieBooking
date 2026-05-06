@@ -8,7 +8,6 @@ header {
   background: var(--clr-bg-surface);
   border-bottom: 1px solid var(--clr-border-subtle);
   height: var(--navbar-height);
-  z-index: 100;
 }
 
 ul {

@@ -5,7 +5,7 @@ import "./movieCard.css";
 import "../../styles/variables.css";
 import useFavoritesStore from "../../stores/favoritesStore.js";
 
-export default function MovieCard({ movie }) {
+function MovieCard({ movie }) {
     const navigate = useNavigate();
     const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
     const favorites = useFavoritesStore((state) => state.favorites);
@@ -45,3 +45,4 @@ export default function MovieCard({ movie }) {
 }
 
 
+export default MovieCard;
