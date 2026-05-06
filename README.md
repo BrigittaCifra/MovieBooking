@@ -18,7 +18,7 @@ The project is built with React and Vite.
 - Watch trailers via YouTube  
 - View available showtimes  
 - Book/select seats  
-- Mark movies as favorites (in development)  
+- Mark movies as favorites
 - Select city to view available movies  
 - Registration form for membership  
 - Member login  
