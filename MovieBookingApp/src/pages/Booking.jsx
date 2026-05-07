@@ -69,8 +69,8 @@ function Booking() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (selectedSeats.length === 0) return alert("Välj minst en plats!");
-        if (!paymentMethod) return alert("Välj betalningsmetod!");
+        if (selectedSeats.length === 0) return alert("You must choose at least one seat!");
+        if (!paymentMethod) return alert("Please select a payment method!");
         setIsSubmitted(true);
         clearSeats();
     }
@@ -79,8 +79,8 @@ function Booking() {
     if (isSubmitted) {
         return (
             <div className="booking-success">
-                <h2>Tack för din bokning! 🎬</h2>
-                <p>Dina biljetter är bokade. Ha en trevlig filmkväll!</p>
+                <h2>Thank you for your booking! 🎬</h2>
+                <p>Your tickets are booked. Enjoy your movie night!</p>
             </div>
         );
     }
@@ -112,26 +112,26 @@ function Booking() {
                 </div>
 
                 <div>
-                    <h1 className="booking-title">Välj biljetter</h1>
+                    <h1 className="booking-title">Choose Tickets</h1>
                     <SeatMap />
                     {selectedSeats.length > 0 && (
                         <div className="booking-selected">
-                            <h3>Valda platser</h3>
+                            <h3>Selected Seats</h3>
                             {selectedSeats.map((seat, index) => (
                                 <div key={index} className="booking-seat-row">
-                                    <span>Rad {seat.row}, Stol {seat.number}, Salong 1</span>
+                                    <span>Row {seat.row}, Seat {seat.number}, Hall 1</span>
                                     <span>129 kr</span>
                                 </div>
                             ))}
                             <button className="booking-clear" onClick={clearSeats}>
-                                Avmarkera platser
+                                Clear seats
                             </button>
                         </div>
                     )}
                 </div>
 
                 <div className="booking-payment">
-                    <h2>Betalning</h2>
+                    <h2>Payment</h2>
                     <Input label="Add a voucher" />
                     <label className={`payment-option ${paymentMethod === "swish" ? "active" : ""}`}>
                         <input
@@ -207,7 +207,7 @@ function Booking() {
                     </>
                 )}
                 <div className="booking-summary">
-                    <p>Summa</p>
+                    <p>Total</p>
                     {/* Utgår från att priset sätt utifrån sätten*/}
                     <h3>{getTotalPrice()} kr</h3>
                 </div>
