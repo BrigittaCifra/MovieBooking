@@ -23,17 +23,17 @@ function SeatMap() {
 
     return (
         <div className="seatmap">
-            <div className="seatmap-screen">FILMDUK</div>
+            <div className="seatmap-screen">MOVIE SCREEN</div>
 
             <div className="seatmap-legend">
                 <span className="legend-item">
-                    <span className="seat-preview available"></span> Tillgänglig
+                    <span className="seat-preview available"></span> Available
                 </span>
                 <span className="legend-item">
-                    <span className="seat-preview selected"></span> Vald
+                    <span className="seat-preview selected"></span> Selected
                 </span>
                 <span className="legend-item">
-                    <span className="seat-preview taken"></span> Upptagen
+                    <span className="seat-preview taken"></span> Taken
                 </span>
             </div>
 
