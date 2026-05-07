@@ -7,7 +7,7 @@ import useMoviesStore from "../stores/moviesStore.js";
 import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
-import DetailsHero from '../components/Details/DetailsHero';
+import DetailsHero from '../components/Details/DetailsHero.jsx';
 import ShowtimePicker from '../components/ShowtimePicker/ShowtimePicker.jsx';
 import Button from '../components/Button/Button.jsx';
 import Loading from '../components/Loading/Loading.jsx';

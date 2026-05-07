@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import "./SearchBar.css";
-import useMoviesStore from "../stores/moviesStore.js";
+import useMoviesStore from "../../stores/moviesStore.js";
 
 function SearchBar() {
   const movies = useMoviesStore((state) => state.movies);
@@ -13,11 +13,11 @@ function SearchBar() {
 
   const searchRef = useRef(null);
 
-useEffect(() => {
-  if (movies.length === 0) {
-    fetchMovies();
-  }
-}, [movies.length, fetchMovies]);
+  useEffect(() => {
+    if (movies.length === 0) {
+      fetchMovies();
+    }
+  }, [movies.length, fetchMovies]);
 
   useEffect(() => {
     if (query.length < 2) {
