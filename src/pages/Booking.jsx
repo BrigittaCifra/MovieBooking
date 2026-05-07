@@ -6,7 +6,7 @@ import useFormInput from '../hooks/useFormInput.js'
 
 //Zustand
 import useBookingStore from '../stores/bookingStore.js';
-import useMoviesStore from "../stores/moviesStore";
+import useMoviesStore from "../stores/moviesStore.js";
 import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
@@ -14,7 +14,7 @@ import Input from '../components/InputField/Input.jsx'
 import Button from '../components/Button/Button.jsx'
 import TicketPicker from '../components/TicketPicker/TicketPicker.jsx'
 import MovieCard from '../components/MovieCard/MovieCard.jsx'
-import SeatMap from "../components/SeatMap/SeatMap";
+import SeatMap from "../components/SeatMap/SeatMap.jsx";
 
 //CSS
 import './Booking.css'
@@ -155,22 +155,22 @@ function Booking() {
                     </label>
                 </div>
 
-            <form action="" onSubmit={handleSubmit}>
-                <div className="booking-buttons">
-                    <Button
-                        btnType="primary medium"
-                        text="Purchase"
-                        type="Submit"
-                        disabled={error || !email.value}
-                    />
-                    <Button
-                        btnType="primary medium"
-                        text="Cancel"
-                        type="button"
-                        onClick={handleCancel}
-                    />
-                </div>
-            </form>
+                <form action="" onSubmit={handleSubmit}>
+                    <div className="booking-buttons">
+                        <Button
+                            btnType="primary medium"
+                            text="Purchase"
+                            type="Submit"
+                            disabled={error || !email.value}
+                        />
+                        <Button
+                            btnType="primary medium"
+                            text="Cancel"
+                            type="button"
+                            onClick={handleCancel}
+                        />
+                    </div>
+                </form>
             </div>
 
             <div className="booking-right">

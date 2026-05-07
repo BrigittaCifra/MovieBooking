@@ -78,6 +78,7 @@ function ShowtimePicker({ movieData }) {
     //Hämtar ut alla visningstider för det aktiva datumet
     const findTimesArray = () => {
         const activeDay = movie.find((e) => e.id === activeDate);
+        //Returnerar en tillfällig tom array tills useEffect körs
         if (!activeDay) return [];
         return activeDay.times;
     }

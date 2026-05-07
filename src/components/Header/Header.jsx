@@ -6,7 +6,7 @@ import { favoriteIcon, menuOpenIcon, menuCloseIcon, locationIcon } from '../Icon
 import Button from '../Button/Button.jsx'
 import './Header.css';
 import '../../styles/variables.css'
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 import LocationSelector from "../LocationSelector/LocationSelector.jsx";
 
 function Header({ onMembershipClick }) {
@@ -44,7 +44,6 @@ function Header({ onMembershipClick }) {
                             {menuLinks.map((e) => { return <li key={e.id}><Link to={`/${e.name}`}>{e.name}</Link></li> })}
                         </ul>
                         <SearchBar />
-
                         <div>
                             <Button text="Log in" btnType='secondary' />
                             <Button text='Membership' btnType='primary' onClick={onMembershipClick} />
@@ -66,7 +65,6 @@ function Header({ onMembershipClick }) {
                                     </li>
                                 ))}
                             </ul>
-
                             <SearchBar />
                         </div>
                     </div>
