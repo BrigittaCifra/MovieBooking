@@ -6,4 +6,6 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}.back-button-wrapper {
+    padding: 16px 80px;
 }
