@@ -37,7 +37,7 @@
   left: 0;
   width: 100%;
   background: var(--clr-bg-surface);
-  
+
   border: 1px solid var(--clr-border-subtle);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -239,11 +239,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .searchbar {
+  /*  .searchbar {
     max-width: 100%;
     padding: 0 12px;
     margin-top: 20px;
-  }
+  } */
 
   .search-results {
     max-height: 200px;
