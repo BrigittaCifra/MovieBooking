@@ -11,7 +11,7 @@ function HeroCarousel() {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=sv-SE&page=1`
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=eng-US&page=1`
         );
         if (!response.ok) throw new Error("Kunde inte hämta filmer");
         const data = await response.json();
