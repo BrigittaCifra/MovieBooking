@@ -52,7 +52,7 @@ function HeroCarousel() {
           <div className="hero-content">
             <h1 className="hero-title">{movie.title}</h1>
             <p className="hero-description">{movie.overview}</p>
-            <button className="hero-btn">Boka biljett</button>
+            <button className="hero-btn">Book tickets</button>
           </div>
 
           <div className="hero-controls">
