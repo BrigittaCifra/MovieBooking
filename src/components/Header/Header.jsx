@@ -25,7 +25,7 @@ function Header({ onMembershipClick }) {
 
                 {/* Mobil nav — dold på desktop */}
                 <div className='mobile-nav-top'>
-                    <Link to="/" className='header_logo'>CinEvent</Link>
+                    <Link to="/" className='header_logo' onClick={() => setMobileMenuOpen(false)}>CinEvent</Link>
 
                     <div>
                         <LocationSelector />
@@ -41,7 +41,7 @@ function Header({ onMembershipClick }) {
 
                         {/* Meny länkar */}
                         <ul>
-                            {menuLinks.map((e) => { return <li key={e.id}><Link to={`/${e.name}`}>{e.name}</Link></li> })}
+                            {menuLinks.map((e) => { return <li key={e.id}><Link to={`/${e.name}`} onClick={() => setMobileMenuOpen(false)}>{e.name}</Link></li> })}
                         </ul>
                         <SearchBar />
                         <div>

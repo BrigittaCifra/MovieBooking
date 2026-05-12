@@ -20,8 +20,7 @@ The project is built with React and Vite.
 - Book/select seats  
 - Mark movies as favorites
 - Select city to view available movies  
-- Registration form for membership  
-- Member login  
+- Registration form for membership   
 
 ---
 
@@ -49,7 +48,7 @@ git clone https://github.com/BrigittaCifra/MovieBooking.git
 Navigate to the project folder:
 
 ```bash
-cd MovieBooking/MovieBookingApp
+cd MovieBooking
 ```
 
 Install dependencies:
