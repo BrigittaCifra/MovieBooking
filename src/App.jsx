@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router";
-import './App.css';
 
 //Layout
 import Layout from './components/Layout/Layout.jsx';
