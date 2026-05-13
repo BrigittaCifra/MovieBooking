@@ -11,8 +11,8 @@ export async function getTrailer(movieId) {
         );
 
         const trailerUrl = trailer
-        ? `https://www.youtube.com/embed/${trailer.key}`
-        : null;
+            ? `https://www.youtube.com/embed/${trailer.key}`
+            : null;
 
         return trailerUrl;
 

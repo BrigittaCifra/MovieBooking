@@ -13,11 +13,11 @@ function Favorites() {
     const favoriteMovies = useFavoritesStore((state) => state.favorites);
     const clearFavorites = useFavoritesStore((state) => state.clearFavorites);
     const isLoading = useMoviesStore(state => state.isLoading);
-    
+
     if (isLoading) return <Loading />
 
     return (
-        <div className="allFavoritesWrapper">
+        <div className="allFavoritesWrapper container">
             <h2>Favorites</h2>
             <div className="favorites-grid">
                 {favoriteMovies.length === 0

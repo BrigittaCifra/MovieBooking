@@ -64,13 +64,6 @@ function MovieDetails() {
 
     return (
         <>
-            <div className="back-button-wrapper">
-                <Button
-                    text="← Back"
-                    btnType="secondary medium"
-                    onClick={() => navigate(-1)}
-                />
-            </div>
             <DetailsHero
                 movie={movie}
                 trailerUrl={trailerUrl}
