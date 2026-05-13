@@ -4,7 +4,6 @@ import './MovieDetails.css';
 
 import { getTrailer } from "../services/getTrailer.js";
 import useMoviesStore from "../stores/moviesStore.js";
-import useCitiesStore from "../stores/citiesStore.js";
 
 //Components
 import DetailsHero from '../components/Details/DetailsHero.jsx';
@@ -24,8 +23,6 @@ function MovieDetails() {
     const movie = getMovieById(Number(id));
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const isLoading = useMoviesStore((state) => state.isLoading);
-
-    const cities = useCitiesStore((state) => state.cities);
 
     const navigate = useNavigate();
 
@@ -60,7 +57,6 @@ function MovieDetails() {
     if (!movie) return <NotFound />;
 
     const cityIds = movie.showtimes.map((e) => e.cityId);
-    const availableCities = cities.filter((city) => cityIds.includes(city.id));
 
     return (
         <>
@@ -77,7 +73,7 @@ function MovieDetails() {
                 isTrailerLoading={isTrailerLoading}
             />
             <section className='booking-details'>
-                {availableCities.length === 0
+                {cityIds.length === 0
                     ? <p>No showtimes found</p>
                     : <>
                         <LocationSelectorWidget movieData={movie} />

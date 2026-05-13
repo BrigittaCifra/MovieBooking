@@ -12,9 +12,15 @@ function ShowtimePicker({ movieData }) {
 
     //City store
     const activeCity = useCitiesStore((state) => state.activeCity);
+    const setActiveCity = useCitiesStore((state) => state.setActiveCity);
 
     //Hämtar ut alla visningar för den aktiva staden
     const movie = movieData.showtimes.filter((e) => e.cityId === activeCity);
+
+    // Om inga visningar finns för den aktiva staden byts den till första tillgängliga staden
+    if (movie.length === 0) {
+        setActiveCity(movieData.showtimes[0].cityId);
+    }
 
     const [activeDate, setActiveDate] = useState(() => {
 
@@ -49,6 +55,9 @@ function ShowtimePicker({ movieData }) {
 
     //useEffect behövs här för att kunna uppdatera activeDate och activeShowtime baserat på om activecity ändras och trigga igång en ny render
     useEffect(() => {
+
+        //avbryter useEffect om filmen inte har visningstider för den aktiva staden
+        if (movie.length === 0) return;
 
         //Hämtar ut movie objektet vars id matchar
         const savedDate = movie.find((e) => e.id === showtime.id);

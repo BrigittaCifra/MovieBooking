@@ -1,7 +1,5 @@
 //Hooks
-import { useState } from "react";
 import useCitiesStore from "../../stores/citiesStore.js";
-import { useParams } from "react-router";
 
 //Components
 import Button from '../Button/Button.jsx';
