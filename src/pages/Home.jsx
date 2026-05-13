@@ -25,7 +25,6 @@ function Home() {
     const comingSoon = movies.filter((m) => m.comingSoon === true);
 
     if (isLoading) return <Loading />;
-    
 
     return (
         <>

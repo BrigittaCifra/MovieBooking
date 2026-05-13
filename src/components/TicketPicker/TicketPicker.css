@@ -2,6 +2,17 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    padding: 0 16px;
+}
+
+.ticket-section h2 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-regular);
+}
+
+.ticket-section h3 {
+    font-family: var(--font-bodyy);
+    font-weight: var(--weight-medium);
 }
 
 .ticket-container {
@@ -19,4 +30,10 @@
 .ticket-container p {
     min-width: 16px;
     text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .ticket-section h2 {
+        font-size: var(--text-3xl);
+    }
 }

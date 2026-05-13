@@ -55,3 +55,9 @@
 .medium {
     width: 8rem;
 }
+
+@media (min-width: 1200px) {
+    .btn {
+        font-size: var(--text-sm);
+    }
+}

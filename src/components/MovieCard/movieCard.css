@@ -8,6 +8,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .movieCard:hover {
@@ -86,3 +87,6 @@
     font-variation-settings: 'FILL' 1;
 }
 
+@media (min-width: 1300px) {
+    .movieCard {}
+}

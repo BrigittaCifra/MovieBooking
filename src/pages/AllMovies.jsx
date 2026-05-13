@@ -11,24 +11,24 @@ function AllMovies() {
     const fetchMovies = useMoviesStore((state) => state.fetchMovies);
     const isLoading = useMoviesStore(state => state.isLoading);
 
-      useEffect(() => {
-            // fallback ifall filmerna inte hämtats i home page först
-            if (movies.length === 0) {
-                fetchMovies();
-            }
-        }, []);
+    useEffect(() => {
+        // fallback ifall filmerna inte hämtats i home page först
+        if (movies.length === 0) {
+            fetchMovies();
+        }
+    }, []);
 
-        if (isLoading) return <Loading />;
+    if (isLoading) return <Loading />;
 
     return (
-        <div className="allMoviesWrapper">
-        <h2>All Movies</h2>
-        <div className="movies-grid">
-            
-            {movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-            ))}
-        </div>
+        <div className="allMoviesWrapper container">
+            <h2>All Movies</h2>
+            <div className="movies-grid">
+
+                {movies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))}
+            </div>
         </div>
     );
 }

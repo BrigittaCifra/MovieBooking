@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 0 16px;
 }
 
 .showtime-picker>div {
@@ -10,9 +11,26 @@
     gap: 1rem;
 }
 
+.showtime-picker h2 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-regular);
+}
+
+.showtime-picker h3 {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+}
+
 .date,
 .showtime {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .showtime-picker h2 {
+        font-size: var(--text-3xl);
+    }
 }

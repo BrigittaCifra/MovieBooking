@@ -1,6 +1,8 @@
 /*Global styling */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,7 +19,8 @@ a {
 }
 
 .container {
-  max-width: var(--container-max);  /* 1280px */
+  max-width: var(--container-max);
+  /* 1280px */
   margin: 0 auto;
   padding: 0 var(--container-pad);
 }
@@ -25,102 +28,170 @@ a {
 /* Globala Variabler*/
 :root {
   /* Bakgrunds färger*/
-  --clr-bg-base:        #080808;   /* sidans huvudbakgrund */
-  --clr-bg-surface:     #111111;   /* kort och paneler */
-  --clr-bg-elevated:    #1a1a1a;   /* hover-states och modaler */
-  --clr-bg-subtle:      #222222;   /* inputfält och subtila paneler */
-  --clr-bg-overlay:     rgba(0, 0, 0, 0.75); /* mörkt överlager, t.ex. bakom modaler */
+  --clr-bg-base: #080808;
+  /* sidans huvudbakgrund */
+  --clr-bg-surface: #111111;
+  /* kort och paneler */
+  --clr-bg-elevated: #1a1a1a;
+  /* hover-states och modaler */
+  --clr-bg-subtle: #222222;
+  /* inputfält och subtila paneler */
+  --clr-bg-overlay: rgba(0, 0, 0, 0.75);
+  /* mörkt överlager, t.ex. bakom modaler */
 
   /* Accentfärger (guld) */
-  --clr-accent:         #e8c96d;   /* huvudaccentfärg, knappar och highlights */
-  --clr-accent-hover:   #f0d882;   /* ljusare guld vid hover */
-  --clr-accent-dim:     rgba(232, 201, 109, 0.15); /* genomskinligt guld, bakgrunder */
-  --clr-accent-subtle:  rgba(232, 201, 109, 0.08); /* mycket subtilt guld */
+  --clr-accent: #e8c96d;
+  /* huvudaccentfärg, knappar och highlights */
+  --clr-accent-hover: #f0d882;
+  /* ljusare guld vid hover */
+  --clr-accent-dim: rgba(232, 201, 109, 0.15);
+  /* genomskinligt guld, bakgrunder */
+  --clr-accent-subtle: rgba(232, 201, 109, 0.08);
+  /* mycket subtilt guld */
 
   /* Textfärger */
-  --clr-text-primary:   #f0ece4;   /* rubriker och viktig text */
-  --clr-text-secondary: #a09a8e;   /* brödtext och beskrivningar */
-  --clr-text-muted:     #5c5650;   /* platshållare och inaktiva element */
-  --clr-text-on-accent: #0a0a0a;   /* text som ligger på guldbakgrund */
+  --clr-text-primary: #f0ece4;
+  /* rubriker och viktig text */
+  --clr-text-secondary: #a09a8e;
+  /* brödtext och beskrivningar */
+  --clr-text-muted: #5c5650;
+  /* platshållare och inaktiva element */
+  --clr-text-on-accent: #0a0a0a;
+  /* text som ligger på guldbakgrund */
 
   /* Kantlinjer */
-  --clr-border-subtle:  rgba(255, 255, 255, 0.06); /* knappt synlig kantlinje */
-  --clr-border-default: rgba(255, 255, 255, 0.12); /* normal kantlinje */
-  --clr-border-strong:  rgba(255, 255, 255, 0.22); /* tydlig kantlinje */
+  --clr-border-subtle: rgba(255, 255, 255, 0.06);
+  /* knappt synlig kantlinje */
+  --clr-border-default: rgba(255, 255, 255, 0.12);
+  /* normal kantlinje */
+  --clr-border-strong: rgba(255, 255, 255, 0.22);
+  /* tydlig kantlinje */
 
   /* Statusfärger */
-  --clr-status-almost:  #e06b2a;   /* nästan fullbokat */
-  --clr-status-full:    #6b6b6b;   /* fullbokat */
-  --clr-status-new:     #4a9eff;   /* ny film */
+  --clr-status-almost: #e06b2a;
+  /* nästan fullbokat */
+  --clr-status-full: #6b6b6b;
+  /* fullbokat */
+  --clr-status-new: #4a9eff;
+  /* ny film */
 
   /* Typsnitt */
-  --font-display:  'Bebas Neue', sans-serif; /* rubriktypsnitt */
-  --font-body:     'DM Sans', sans-serif;    /* brödtextypsnitt */
+  --font-display: 'Bebas Neue', sans-serif;
+  /* rubriktypsnitt */
+  --font-body: 'DM Sans', sans-serif;
+  /* brödtextypsnitt */
 
   /* Textstorlekar */
-  --text-xs:    0.75rem;    /* 12px - mycket liten text */
-  --text-sm:    0.875rem;   /* 14px - liten text */
-  --text-base:  1rem;       /* 16px - standardstorlek */
-  --text-lg:    1.125rem;   /* 18px - något större */
-  --text-xl:    1.25rem;    /* 20px - stor text */
-  --text-2xl:   1.5rem;     /* 24px - liten rubrik */
-  --text-3xl:   2rem;       /* 32px - mellanstor rubrik */
-  --text-4xl:   3rem;       /* 48px - stor rubrik */
-  --text-hero:  clamp(3.5rem, 8vw, 7rem); /* hjältesektion, skalas med skärmen */
+  --text-xs: 0.75rem;
+  /* 12px - mycket liten text */
+  --text-sm: 0.875rem;
+  /* 14px - liten text */
+  --text-base: 1rem;
+  /* 16px - standardstorlek */
+  --text-lg: 1.125rem;
+  /* 18px - något större */
+  --text-xl: 1.25rem;
+  /* 20px - stor text */
+  --text-2xl: 1.5rem;
+  /* 24px - liten rubrik */
+  --text-3xl: 2rem;
+  /* 32px - mellanstor rubrik */
+  --text-4xl: 3rem;
+  /* 48px - stor rubrik */
+  --text-hero: clamp(3.5rem, 8vw, 7rem);
+  /* hjältesektion, skalas med skärmen */
 
   /* Fontvikter */
-  --weight-light:   300; /* tunn text */
-  --weight-regular: 400; /* normal text */
-  --weight-medium:  500; /* halvfet text */
+  --weight-light: 300;
+  /* tunn text */
+  --weight-regular: 400;
+  /* normal text */
+  --weight-medium: 500;
+  /* halvfet text */
 
   /* Radavstånd */
-  --leading-tight:  1.1; /* tajt, används för rubriker */
-  --leading-snug:   1.3; /* något luftigare */
-  --leading-base:   1.6; /* normalt radavstånd för brödtext */
+  --leading-tight: 1.1;
+  /* tajt, används för rubriker */
+  --leading-snug: 1.3;
+  /* något luftigare */
+  --leading-base: 1.6;
+  /* normalt radavstånd för brödtext */
 
   /* Avstånd (margin, padding, gap) */
-  --space-1:  0.25rem; /* 4px  */
-  --space-2:  0.5rem;  /* 8px  */
-  --space-3:  0.75rem; /* 12px */
-  --space-4:  1rem;    /* 16px */
-  --space-5:  1.25rem; /* 20px */
-  --space-6:  1.5rem;  /* 24px */
-  --space-8:  2rem;    /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
-  --space-20: 5rem;    /* 80px */
-  --space-24: 6rem;    /* 96px */
+  --space-1: 0.25rem;
+  /* 4px  */
+  --space-2: 0.5rem;
+  /* 8px  */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
+  --space-20: 5rem;
+  /* 80px */
+  --space-24: 6rem;
+  /* 96px */
 
   /* Layout */
-  --container-max: 1280px;                    /* max bredd på innehållet */
-  --container-pad: clamp(1rem, 4vw, 2.5rem); /* sidmarginaler, anpassas till skärmen */
+  --container-max: 1280px;
+  /* max bredd på innehållet */
+  --container-pad: clamp(1rem, 4vw, 2.5rem);
+  /* sidmarginaler, anpassas till skärmen */
 
   /* Rundade hörn */
-  --radius-sm:   4px;    /* lite rundad */
-  --radius-md:   8px;    /* mellanstor rundning */
-  --radius-lg:   12px;   /* stor rundning */
-  --radius-xl:   16px;   /* mycket stor rundning */
-  --radius-full: 9999px; /* helt rund, t.ex. pills och cirkulära knappar */
+  --radius-sm: 4px;
+  /* lite rundad */
+  --radius-md: 8px;
+  /* mellanstor rundning */
+  --radius-lg: 12px;
+  /* stor rundning */
+  --radius-xl: 16px;
+  /* mycket stor rundning */
+  --radius-full: 9999px;
+  /* helt rund, t.ex. pills och cirkulära knappar */
 
   /* Navbar */
-  --navbar-height: 80px; /* navbarens höjd, används för att undvika överlapp */
+  --navbar-height: 80px;
+  /* navbarens höjd, används för att undvika överlapp */
 
   /* Animationshastigheter */
-  --transition-fast:   150ms ease; /* snabb, t.ex. hover på knappar */
-  --transition-base:   250ms ease; /* normal */
-  --transition-slow:   400ms ease; /* långsam, t.ex. menyer som glider in */
+  --transition-fast: 150ms ease;
+  /* snabb, t.ex. hover på knappar */
+  --transition-base: 250ms ease;
+  /* normal */
+  --transition-slow: 400ms ease;
+  /* långsam, t.ex. menyer som glider in */
 
   /* Skuggor */
-  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.4);          /* liten skugga */
-  --shadow-md:   0 8px 24px rgba(0, 0, 0, 0.6);         /* mellanstor skugga */
-  --shadow-lg:   0 20px 60px rgba(0, 0, 0, 0.8);        /* stor skugga */
-  --shadow-glow: 0 0 40px rgba(232, 201, 109, 0.15);    /* guldglöd runt element */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  /* liten skugga */
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  /* mellanstor skugga */
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.8);
+  /* stor skugga */
+  --shadow-glow: 0 0 40px rgba(232, 201, 109, 0.15);
+  /* guldglöd runt element */
 
   /* Z-index (vad som ligger ovanpå vad) */
-  --z-base:    1;   /* vanligt innehåll */
-  --z-overlay: 10;  /* överlager */
-  --z-navbar:  100; /* navbar, alltid ovanför innehåll */
-  --z-modal:   200; /* modal, ovanför navbar */
-  --z-toast:   300; /* notiser, alltid överst */
+  --z-base: 1;
+  /* vanligt innehåll */
+  --z-overlay: 10;
+  /* överlager */
+  --z-navbar: 100;
+  /* navbar, alltid ovanför innehåll */
+  --z-modal: 200;
+  /* modal, ovanför navbar */
+  --z-toast: 300;
+  /* notiser, alltid överst */
 }
