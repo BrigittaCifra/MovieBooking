@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router';
+import { Link } from 'react-router';
 import "./footer.css";
 
 export default function Footer() {
