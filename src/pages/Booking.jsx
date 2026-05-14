@@ -12,8 +12,6 @@ import useCitiesStore from "../stores/citiesStore.js";
 //Components
 import Input from '../components/InputField/Input.jsx'
 import Button from '../components/Button/Button.jsx'
-import TicketPicker from '../components/TicketPicker/TicketPicker.jsx'
-import MovieCard from '../components/MovieCard/MovieCard.jsx'
 import SeatMap from "../components/SeatMap/SeatMap.jsx";
 
 //CSS
@@ -95,20 +93,6 @@ function Booking() {
                         btnType="primary medium"
                         text="Log in"
                     />
-
-                </div>
-
-                <div>
-                    <h2>Contact info</h2>
-                    <Input
-                        type="email"
-                        label="Email"
-                        id="email"
-                        value={email.value}
-                        onChange={email.onChange}
-                        onBlur={handleBlur}
-                        error={error}
-                    />
                 </div>
 
                 <div>
@@ -128,6 +112,19 @@ function Booking() {
                             </button>
                         </div>
                     )}
+                </div>
+
+                <div>
+                    <h2>Contact info</h2>
+                    <Input
+                        type="email"
+                        label="Email"
+                        id="email"
+                        value={email.value}
+                        onChange={email.onChange}
+                        onBlur={handleBlur}
+                        error={error}
+                    />
                 </div>
 
                 <div className="booking-payment">

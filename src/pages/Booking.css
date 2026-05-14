@@ -14,7 +14,6 @@
 .booking-left {
     order: 2;
     flex: 2;
-
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -31,6 +30,7 @@
     font-family: "Bebas Neue", sans-serif;
     font-size: 1.8rem;
     color: var(--color-primary, #c9a84c);
+    font-weight:var(--weight-base);
 }
 
 .booking-right {
@@ -39,14 +39,13 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    /* padding-top: 80px; */
 }
 
 .booking-title {
     font-family: "Bebas Neue", sans-serif;
     font-size: 2.5rem;
     color: var(--color-primary, #c9a84c);
-    margin-bottom: 24px;
+    font-weight:var(--weight-base);
 }
 
 .booking-selected {
@@ -148,6 +147,7 @@
     font-family: "Bebas Neue", sans-serif;
     font-size: 2rem;
     color: var(--color-primary, #c9a84c);
+    
 }
 
 .booking-movie-img {
