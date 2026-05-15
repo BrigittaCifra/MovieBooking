@@ -173,7 +173,7 @@ function Booking() {
             <div className="booking-right">
                 {movie && (
                     <>
-                        <p className="booking-movie-label">Bokare</p>
+                        <p className="booking-movie-label">Booking summary</p>
                         <h2 className="booking-movie-title">{movie.title}</h2>
                         <img
                             className="booking-movie-img"

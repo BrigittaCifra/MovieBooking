@@ -50,7 +50,7 @@ function SeatMap() {
                                     className={`seat ${taken ? "taken" : ""} ${selected ? "selected" : ""}`}
                                     onClick={() => !taken && toggleSeat({ row, number })}
                                     disabled={taken}
-                                    title={`Rad ${row}, Stol ${number}`}
+                                    title={`Row ${row}, Seat ${number}`}
                                 />
                             );
                         })}
