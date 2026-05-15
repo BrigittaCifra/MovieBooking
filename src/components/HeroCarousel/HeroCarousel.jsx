@@ -13,7 +13,7 @@ function HeroCarousel() {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=eng-US&page=1`
         );
-        if (!response.ok) throw new Error("Kunde inte hämta filmer");
+        if (!response.ok) throw new Error("Could not fetch movies");
         const data = await response.json();
         setMovies(data.results.slice(0, 5));
       } catch (err) {
@@ -34,9 +34,9 @@ function HeroCarousel() {
     setCurrentIndex((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
   };
 
-  if (loading) return <div className="hero-loading">Laddar filmer...</div>;
+  if (loading) return <div className="hero-loading">Loading movies...</div>;
   if (error) return <div className="hero-error">{error}</div>;
-  if (movies.length === 0) return <div className="hero-error">Inga filmer hittades</div>;
+  if (movies.length === 0) return <div className="hero-error">No movies found</div>;
 
   const movie = movies[currentIndex];
 
